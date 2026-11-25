@@ -2,13 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script>
-    if (window.location.hostname.includes('github.io')) {
-      var baseTag = document.createElement('base');
-      baseTag.href = '/Makcake/';
-      document.head.prepend(baseTag);
-    }
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>MAK CAKE — Addis Ababa Luxury Bakery &amp; Mobile Admin App</title>
 
@@ -1820,7 +1813,7 @@
               <div class="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-berry/25 bg-blush-100 shrink-0 flex items-center justify-center">
                 <img
                   id="drawer-admin-avatar"
-                  src="/images/mak-cake-logo.png"
+                  src="./images/mak-cake-logo.png"
                   alt="MAK CAKE Admin Profile"
                   class="w-full h-full object-cover"
                   onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
@@ -1952,11 +1945,11 @@
               <label class="block text-[10.5px] font-bold text-ink-muted mb-1.5">Select Payment Method</label>
               <div class="grid grid-cols-2 gap-2">
                 <button type="button" id="upg-method-cbe" onclick="selectUpgradePayMethod('CBE')" class="p-2.5 rounded-2xl border-2 border-berry bg-blush-50 text-left flex items-center gap-2 transition-all cursor-pointer">
-                  <img src="/images/cbe-logo.png" alt="CBE" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shrink-0" />
+                  <img src="./images/cbe-logo.png" alt="CBE" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shrink-0" />
                   <span class="text-[11px] font-extrabold text-ink">CBE</span>
                 </button>
                 <button type="button" id="upg-method-tb" onclick="selectUpgradePayMethod('Telebirr')" class="p-2.5 rounded-2xl border border-blush-200 bg-white text-left flex items-center gap-2 transition-all cursor-pointer">
-                  <img src="/images/telebirr-logo.png" alt="Telebirr" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shrink-0" />
+                  <img src="./images/telebirr-logo.png" alt="Telebirr" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shrink-0" />
                   <span class="text-[11px] font-extrabold text-ink">Telebirr</span>
                 </button>
               </div>
@@ -2541,7 +2534,7 @@
             <div class="bg-white rounded-[22px] p-4 shadow-rose-sm border border-blush-200/70 space-y-3.5">
               <div class="flex items-center gap-3.5">
                 <div class="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-berry/25 bg-blush-100 shrink-0 flex items-center justify-center shadow-rose-sm">
-                  <img id="profile-avatar-preview" src="/images/mak-cake-logo.png" alt="Admin Avatar" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+                  <img id="profile-avatar-preview" src="./images/mak-cake-logo.png" alt="Admin Avatar" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
                   <svg class="hidden w-7 h-7 text-berry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
                 <div class="flex-1 min-w-0">
@@ -8305,7 +8298,7 @@
       email: 'owner@makcake.et',
       phone: '0911 23 45 67',
       role: 'Owner',
-      avatar: '/images/mak-cake-logo.png',
+      avatar: './images/mak-cake-logo.png',
       shopName: 'MAK CAKE • Bole Kitchen',
       googleConnected: false,
       googleEmail: '',
@@ -8339,7 +8332,7 @@
       const inPhone = document.getElementById('profile-input-phone');
 
       if (pAvatar) {
-        pAvatar.src = pendingProfileAvatarData || p.avatar || '/images/mak-cake-logo.png';
+        pAvatar.src = pendingProfileAvatarData || p.avatar || './images/mak-cake-logo.png';
         pAvatar.style.display = '';
       }
       if (pDispName) pDispName.textContent = p.name || 'MAK CAKE Owner';
@@ -12665,7 +12658,7 @@ function resetDemo() {
     let shopMgmtState = {
       business: {
         name: 'MAK CAKE',
-        logo: '/images/mak-cake-logo.png',
+        logo: './images/mak-cake-logo.png',
         description: 'Handcrafted luxury cakes, romantic bento duos, and celebration confections freshly baked in Addis Ababa.',
         phone: '0911 23 45 67',
         email: 'hello@makcake.et',
@@ -13052,7 +13045,7 @@ function resetDemo() {
           <div class="bg-white rounded-[22px] p-4 shadow-rose-sm border border-blush-200/70 space-y-3">
             <h3 class="text-xs font-extrabold text-ink">1. Business Information</h3>
             <div class="flex items-center gap-3 p-2.5 rounded-2xl bg-blush-50/70 border border-blush-200/70">
-              <img id="sm-biz-logo-preview" src="${smPendingLogoData || b.logo || '/images/mak-cake-logo.png'}" alt="Shop Logo" class="w-12 h-12 rounded-xl object-cover bg-white border border-blush-200 shrink-0" />
+              <img id="sm-biz-logo-preview" src="${smPendingLogoData || b.logo || './images/mak-cake-logo.png'}" alt="Shop Logo" class="w-12 h-12 rounded-xl object-cover bg-white border border-blush-200 shrink-0" />
               <div class="flex-1 min-w-0">
                 <div class="text-[11px] font-bold text-ink">Shop Logo</div>
                 <input type="file" id="sm-biz-logo-file" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleShopLogoUpload(this)" />
@@ -13281,7 +13274,7 @@ function resetDemo() {
             <div class="flex items-center justify-between pb-2.5 border-b border-stone-100">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-white border border-purple-200 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-2xs">
-                  <img src="/images/cbe-logo.png" alt="CBE" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';" />
+                  <img src="./images/cbe-logo.png" alt="CBE" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';" />
                 </div>
                 <div>
                   <h4 class="font-extrabold text-xs text-ink">Commercial Bank of Ethiopia</h4>
@@ -13314,7 +13307,7 @@ function resetDemo() {
             <div class="flex items-center justify-between pb-2.5 border-b border-stone-100">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-white border border-sky-200 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-2xs">
-                  <img src="/images/telebirr-logo.png" alt="Telebirr" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';" />
+                  <img src="./images/telebirr-logo.png" alt="Telebirr" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';" />
                 </div>
                 <div>
                   <h4 class="font-extrabold text-xs text-ink">Telebirr Mobile Money</h4>
@@ -13942,7 +13935,7 @@ function resetDemo() {
             script: (ad.title || 'Special').split('•').pop().trim().slice(0, 18),
             sub: ad.subtitle || ad.desc || 'Freshly baked in Addis Ababa',
             cta: ad.buttonText ? ad.buttonText.replace(/→/g, '').trim() : 'Order Now',
-            img: ad.image || '/images/hero-banner.jpg',
+            img: ad.image || './images/hero-banner.jpg',
             link: ad.link || '#menu'
           });
         });
@@ -13984,7 +13977,7 @@ function resetDemo() {
       const subtitle = (document.getElementById('mkt-ad-desc')?.value || '').trim();
       const link = (document.getElementById('mkt-ad-link')?.value || '').trim() || '#menu';
       const urlVal = (document.getElementById('mkt-ad-img-url')?.value || '').trim();
-      const image = mktPendingAdImg || (urlVal && urlVal !== 'Uploaded image ready' ? urlVal : '/images/hero-banner.jpg');
+      const image = mktPendingAdImg || (urlVal && urlVal !== 'Uploaded image ready' ? urlVal : './images/hero-banner.jpg');
 
       if (!title) {
         if (typeof showAdminToast === 'function') showAdminToast('Advertisement title is required');
@@ -14187,7 +14180,7 @@ function resetDemo() {
           <div class="space-y-2">
             ${mktAds.map(ad => `
               <div class="bg-white rounded-2xl p-3 shadow-rose-sm border border-blush-100 flex items-center gap-2.5">
-                <img src="${ad.image || '/images/hero-banner.jpg'}" class="w-12 h-12 rounded-xl object-cover bg-blush-50 shrink-0" />
+                <img src="${ad.image || './images/hero-banner.jpg'}" class="w-12 h-12 rounded-xl object-cover bg-blush-50 shrink-0" />
                 <div class="flex-1 min-w-0">
                   <div class="text-xs font-extrabold text-ink truncate">${ad.title}</div>
                   <div class="text-[10px] text-ink-muted truncate">${ad.subtitle || ''}</div>
@@ -15877,18 +15870,16 @@ function resetDemo() {
         const path = (window.location.pathname || '').toLowerCase();
         const forcedMode = urlParams.get('mode') || urlParams.get('view');
         let initialMode = 'customer';
-        if (forcedMode === 'admin' || path.endsWith('/admin') || path.endsWith('/admin.html')) {
+        if (forcedMode === 'admin' || path.includes('/admin') || path.endsWith('admin.html')) {
           initialMode = 'admin';
           document.body.classList.add('standalone-app', 'standalone-admin');
           document.title = 'MAK CAKE Admin — Bakery Management Portal';
-        } else if (forcedMode === 'dual' || path.endsWith('/dual') || path.endsWith('/dual.html')) {
+        } else if (forcedMode === 'dual' || path.includes('/dual') || path.endsWith('dual.html')) {
           initialMode = window.innerWidth >= 900 ? 'dual' : 'customer';
-        } else if (forcedMode === 'customer' || path === '/' || path.endsWith('/index.html') || path === '') {
+        } else {
           initialMode = 'customer';
           document.body.classList.add('standalone-app', 'standalone-customer');
           document.title = 'MAK CAKE — Artisanal Luxury Cakes Addis Ababa';
-        } else {
-          initialMode = window.innerWidth >= 900 ? 'dual' : 'customer';
         }
         setWorkspaceMode(initialMode);
         syncAll();
@@ -15921,7 +15912,7 @@ function resetDemo() {
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="/js/firebase-config.js?v=14.0"></script>
-  <script src="/js/firebase-service.js?v=14.0"></script>
+  <script src="./js/firebase-config.js?v=14.0"></script>
+  <script src="./js/firebase-service.js?v=14.0"></script>
 </body>
 </html>

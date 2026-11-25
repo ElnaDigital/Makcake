@@ -2,7 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  
+  <!-- Progressive Web App (PWA) Manifest & Meta -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#C91254" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="MAK CAKE" />
+  
+  <!-- Apple iOS Safari Standalone PWA Meta & Touch Icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MAK CAKE" />
+  <link rel="apple-touch-icon" href="./images/mak-cake-logo.png" />
+  <link rel="icon" type="image/png" href="./images/mak-cake-logo.png" />
   <title>MAK CAKE — Addis Ababa Luxury Bakery &amp; Mobile Admin App</title>
 
   <!-- Tailwind CSS -->
@@ -597,6 +610,14 @@
       border: none !important;
       border-radius: 0 !important;
       box-shadow: none !important;
+      padding-top: env(safe-area-inset-top, 0px) !important;
+      padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    }
+    /* iOS & Android PWA standalone bottom navigation padding */
+    @supports (padding: env(safe-area-inset-bottom)) {
+      body.standalone-app nav {
+        padding-bottom: max(0.4rem, env(safe-area-inset-bottom, 0px)) !important;
+      }
     }
     @media (min-width: 640px) {
       body.standalone-app {
@@ -6937,7 +6958,7 @@
     async function initPushNotifications() {
       if ('serviceWorker' in navigator) {
         try {
-          swRegistration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+          swRegistration = await navigator.serviceWorker.register('./sw.js');
           console.log('MAK CAKE Service Worker registered:', swRegistration.scope);
         } catch (err) {
           console.log('SW registration notice:', err.message);
@@ -16028,5 +16049,33 @@ function resetDemo() {
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="./js/firebase-config.js?v=14.0"></script>
   <script src="./js/firebase-service.js?v=14.0"></script>
+
+  <!-- PWA Install Prompt Banner (Android & Desktop) -->
+  <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
+    <div class="flex items-center gap-3">
+      <img src="./images/mak-cake-logo.png" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 shrink-0" />
+      <div class="flex-1 min-w-0 text-left">
+        <h4 class="font-extrabold text-xs text-ink truncate">Install MAK CAKE App</h4>
+        <p class="text-[10px] text-ink-muted leading-tight truncate">Install on home screen for 1-tap ordering & offline access</p>
+      </div>
+      <button type="button" onclick="triggerPwaInstall()" class="px-3 py-1.5 rounded-full btn-berry text-white text-xs font-bold shadow-xs active:scale-95 shrink-0 cursor-pointer">Install</button>
+      <button type="button" onclick="dismissPwaBanner()" class="w-6 h-6 rounded-full text-ink-muted hover:text-ink text-xs flex items-center justify-center shrink-0 cursor-pointer" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
+  <!-- iOS Add to Home Screen Instructions Banner -->
+  <div id="ios-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all">
+    <div class="flex items-start gap-3">
+      <img src="./images/mak-cake-logo.png" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 mt-0.5 shrink-0" />
+      <div class="flex-1 min-w-0 text-left">
+        <h4 class="font-extrabold text-xs text-ink">Install on your iPhone / iPad</h4>
+        <p class="text-[10px] text-ink-muted leading-relaxed mt-0.5">
+          Tap the <strong>Share</strong> button <svg class="inline w-3.5 h-3.5 -mt-0.5 text-berry" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> in Safari, then select <strong>"Add to Home Screen" ⊞</strong>.
+        </p>
+      </div>
+      <button type="button" onclick="dismissIosBanner()" class="w-6 h-6 rounded-full text-ink-muted hover:text-ink text-xs flex items-center justify-center shrink-0 cursor-pointer" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
 </body>
 </html>

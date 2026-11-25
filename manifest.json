@@ -1,0 +1,63 @@
+{
+  "name": "MAK CAKE — Addis Ababa Luxury Bakery",
+  "short_name": "MAK CAKE",
+  "description": "Artisanal Luxury Cakes in Addis Ababa. Order custom cakes, explore signature flavors, and track kitchen status.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#FFF2F5",
+  "theme_color": "#C91254",
+  "icons": [
+    {
+      "src": "./images/mak-cake-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./images/mak-cake-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./images/mak-cake-logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Order Luxury Cake",
+      "short_name": "Order Cake",
+      "description": "Browse signature cakes and place an order",
+      "url": "./index.html",
+      "icons": [
+        {
+          "src": "./images/mak-cake-logo.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Bakery Admin Portal",
+      "short_name": "Admin Portal",
+      "description": "Bole Kitchen live orders and management",
+      "url": "./admin.html",
+      "icons": [
+        {
+          "src": "./images/mak-cake-logo.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "categories": ["food", "shopping", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}

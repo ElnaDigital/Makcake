@@ -358,11 +358,7 @@ const FirebaseService = (function () {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-      await firebaseAuth.signInWithRedirect(provider);
-      return null;
-    }
+    // Direct popup attempt for all modern browsers
 
     try {
       const result = await firebaseAuth.signInWithPopup(provider);

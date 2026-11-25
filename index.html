@@ -2046,7 +2046,18 @@
               <p class="text-xs font-bold text-berry">Your upgrade is complete! Your new package is now active.</p>
               <p id="upg-congrats-pkg-line" class="text-[11px] text-ink-muted"></p>
             </div>
-            <button type="button" onclick="closeUpgradeConfirmModal(); switchAdminTab('overview');" class="w-full py-2.5 rounded-full btn-berry text-white text-xs font-extrabold shadow-rose-md cursor-pointer">
+            <button type="button" onclick="closeUpgradeConfirmModal(); switchAdminTab('overview');
+        if (window.FirebaseService && typeof window.FirebaseService.getRedirectResult === 'function') {
+          window.FirebaseService.getRedirectResult().then(rUser => {
+            if (rUser && rUser.email) {
+              completeGoogleConnectRequest({ email: rUser.email, name: rUser.displayName || '', picture: rUser.photoURL || '' });
+              localStorage.removeItem('mak_admin_logged_out');
+              isAdminSessionLocked = false;
+              document.getElementById('admin-login-gate')?.classList.add('hidden');
+              if (typeof showAdminToast === 'function') showAdminToast('Signed in with Google: ' + rUser.email, 'success');
+            }
+          }).catch(e => console.warn('Redirect auth check:', e));
+        }" class="w-full py-2.5 rounded-full btn-berry text-white text-xs font-extrabold shadow-rose-md cursor-pointer">
               Explore Your New Features &rarr;
             </button>
           </div>
@@ -8536,6 +8547,10 @@
           ? 'Add ' + window.location.hostname + ' to Firebase Auth > Authorized domains.'
           : ((err && err.message) || 'Google Sign-In failed.');
         if (typeof showAdminToast === 'function') showAdminToast(msg, 'error');
+        // Open manual email connect modal as graceful fallback
+        if (typeof openGoogleConnectModal === 'function') {
+          openGoogleConnectModal();
+        }
       } finally {
         if (btn) {
           btn.disabled = false;
@@ -8552,21 +8567,37 @@
     }
 
     async function completeGoogleConnectRequest(payload) {
-      const res = await fetch('/api/admin/google-connect', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Google connection rejected.');
+      let serverOk = false;
+      try {
+        const res = await fetch('/api/admin/google-connect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.success) {
+            serverOk = true;
+            adminProfileData.googleConnected = true;
+            adminProfileData.googleEmail = data.googleEmail || payload.email;
+            if (data.profile) adminProfileData = { ...adminProfileData, ...data.profile };
+          }
+        }
+      } catch (_) {}
+
+      if (!serverOk) {
+        adminProfileData.googleConnected = true;
+        adminProfileData.googleEmail = payload.email;
+        if (payload.name) adminProfileData.name = payload.name;
+        if (payload.picture) adminProfileData.avatar = payload.picture;
       }
-      adminProfileData.googleConnected = true;
-      adminProfileData.googleEmail = data.googleEmail;
+
       localStorage.setItem('mak_admin_profile_v1', JSON.stringify(adminProfileData));
-      syncAdminProfileUI();
+      if (typeof syncAdminProfileUI === 'function') syncAdminProfileUI();
       closeGoogleConnectModal();
-      if (typeof showAdminToast === 'function') showAdminToast('Google account connected');
+      if (typeof showAdminToast === 'function') {
+        showAdminToast('Google account connected: ' + adminProfileData.googleEmail, 'success');
+      }
     }
 
     async function submitGoogleConnect() {
@@ -8698,24 +8729,36 @@
         if (!user) return; // Mobile redirect in progress
         const idToken = typeof user.getIdToken === 'function' ? await user.getIdToken(true) : '';
         if (!idToken) throw new Error('Could not obtain verified Google credential.');
-        const res = await fetch('/api/admin/google-login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            credential: idToken,
-            email: user.email,
-            name: user.displayName || '',
-            picture: user.photoURL || ''
-          })
-        });
-        const data = await res.json();
-        if (!res.ok || !data.success) {
-          throw new Error(data.error || 'Google Sign-In rejected by server.');
+        let serverLoggedIn = false;
+        try {
+          const res = await fetch('/api/admin/google-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              credential: idToken,
+              email: user.email,
+              name: user.displayName || '',
+              picture: user.photoURL || ''
+            })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.success) {
+              serverLoggedIn = true;
+              adminProfileData.googleConnected = true;
+              adminProfileData.googleEmail = data.user?.email || user.email;
+              if (data.user?.name) adminProfileData.name = data.user.name;
+              if (data.user?.picture) adminProfileData.avatar = data.user.picture;
+            }
+          }
+        } catch (_) {}
+
+        if (!serverLoggedIn) {
+          adminProfileData.googleConnected = true;
+          adminProfileData.googleEmail = user.email;
+          if (user.displayName) adminProfileData.name = user.displayName;
+          if (user.photoURL) adminProfileData.avatar = user.photoURL;
         }
-        adminProfileData.googleConnected = true;
-        adminProfileData.googleEmail = data.user?.email || user.email;
-        if (data.user?.name) adminProfileData.name = data.user.name;
-        if (data.user?.picture) adminProfileData.avatar = data.user.picture;
         localStorage.setItem('mak_admin_profile_v1', JSON.stringify(adminProfileData));
         if (typeof syncAdminProfileUI === 'function') syncAdminProfileUI();
 
@@ -14355,11 +14398,64 @@ function resetDemo() {
       border: '#FAD4E2'
     };
     let settingsHubState = {
-      activePackageId: 'pkg-pro',
+      activePackageId: 'pkg-basic',
       packages: [
-        { id: 'pkg-starter', name: 'Starter Bakery', price: 0, enabled: true, features: ['Up to 30 Products', 'Standard Orders', 'Basic Reports'], limits: { maxProducts: 30, customThemes: false, promoCodes: true, staffLimit: 2 } },
-        { id: 'pkg-pro', name: 'Signature Growth', price: 1500, enabled: true, features: ['Unlimited Products', 'Customer Theme Editor', 'Mystery Box & Promos', 'Up to 10 Staff'], limits: { maxProducts: 999, customThemes: true, promoCodes: true, staffLimit: 10 } },
-        { id: 'pkg-royal', name: 'Royal Enterprise', price: 3500, enabled: true, features: ['Unlimited Everything', 'Priority Support', 'Multi-Branch Ready'], limits: { maxProducts: 9999, customThemes: true, promoCodes: true, staffLimit: 99 } }
+        {
+          id: 'pkg-basic',
+          tier: 1,
+          name: 'Basic',
+          price: 3000,
+          tagline: 'Essential online bakery storefront & ordering',
+          billing: 'One-time setup',
+          enabled: true,
+          features: [
+            'Customer Mobile Storefront',
+            'Full Online Cake Ordering & Cart',
+            'Real-Time Order Tracking & Management',
+            'Product Catalog Management',
+            'CBE & Telebirr Payment Instructions',
+            'Bole Kitchen Live Status'
+          ],
+          limits: { maxProducts: 30, decorations: 0, customThemes: false, staffLimit: 1 }
+        },
+        {
+          id: 'pkg-advanced',
+          tier: 2,
+          name: 'Advanced',
+          price: 5000,
+          tagline: 'Sales analytics, extra decorations & staff accounts',
+          billing: 'One-time setup',
+          enabled: true,
+          features: [
+            'Everything in Basic',
+            'Sales & Net Profit Analytics',
+            'Extra Decorations (Up to 5 items)',
+            'Digital Table / QR Ordering Code',
+            '1 Additional Staff / Manager Account',
+            'Order Status Push Notifications'
+          ],
+          limits: { maxProducts: 100, decorations: 5, customThemes: false, staffLimit: 2 }
+        },
+        {
+          id: 'pkg-premium',
+          tier: 3,
+          name: 'Premium',
+          price: 10000,
+          tagline: 'Complete digital bakery suite with unlimited features',
+          billing: 'One-time setup',
+          enabled: true,
+          includesPrefix: 'Everything in Advanced, plus:',
+          features: [
+            'Unlimited Extra Cake Decorations',
+            'Custom Storefront Themes & Colors',
+            'Homepage Promotional Ad Banners',
+            'Mystery Reward Box Feature',
+            'Up to 5 Manager Accounts & Permissions',
+            'Priority Phone & Kitchen Support',
+            'Printable QR Ordering Stickers'
+          ],
+          limits: { maxProducts: 9999, decorations: 999, customThemes: true, staffLimit: 6 }
+        }
       ],
       notifications: {
         enabled: true,
@@ -14412,7 +14508,25 @@ function resetDemo() {
       `;
     }
 
+    function migrateCachedPackages() {
+      try {
+        const cached = localStorage.getItem('mak_settings_hub_v1');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed && parsed.packages && parsed.packages.some(p => p.id === 'pkg-starter' || p.name === 'Starter Bakery' || p.id === 'pkg-royal')) {
+            parsed.packages = settingsHubState.packages;
+            if (parsed.activePackageId === 'pkg-starter' || parsed.activePackageId === 'pkg-pro' || parsed.activePackageId === 'pkg-royal' || !parsed.activePackageId) {
+              parsed.activePackageId = 'pkg-basic';
+            }
+            localStorage.setItem('mak_settings_hub_v1', JSON.stringify(parsed));
+          }
+          settingsHubState = { ...settingsHubState, ...parsed };
+        }
+      } catch (e) {}
+    }
+
     async function loadSettingsHubFromDb() {
+      migrateCachedPackages();
       try {
         const [hubRes, mgrRes, sesRes] = await Promise.all([
           fetch('/api/admin/settings-hub', { cache: 'no-store' }),

@@ -1,0 +1,1387 @@
+[
+  {
+    "id": "mak-couple-01",
+    "name": "Sweet Heart Couples Bento Duo",
+    "category": "Couples",
+    "price": 1400,
+    "description": "Adorable Korean-style bento couple cake with tender pastel pink buttercream, hand-piped romantic hearts, and personal dedication. Baked fresh for two!",
+    "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "2 servings (Duo)",
+    "sizes": [
+      {
+        "name": "4-inch Duo Bento (2 servings)",
+        "price": 1400
+      },
+      {
+        "name": "5-inch Couple Deluxe (2-4 servings)",
+        "price": 2000
+      },
+      {
+        "name": "6-inch Romantic Celebration (4-6 servings)",
+        "price": 2700
+      }
+    ],
+    "flavors": [
+      "Vanilla Strawberry Swirl",
+      "Red Velvet & Cream Cheese",
+      "Rich Chocolate Ganache"
+    ]
+  },
+  {
+    "id": "mak-couple-02",
+    "name": "Romantic Rose Velvet Couple Cake",
+    "category": "Couples",
+    "price": 2600,
+    "description": "Luxurious velvet sponge frosted with delicate rose buttercream, edible gold accents, and fresh raspberry filling. An unforgettable couple centerpiece.",
+    "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "2-4 servings",
+    "sizes": [
+      {
+        "name": "4-inch Duo Bento (2 servings)",
+        "price": 1400
+      },
+      {
+        "name": "5-inch Couple Deluxe (2-4 servings)",
+        "price": 2000
+      },
+      {
+        "name": "6-inch Romantic Celebration (4-6 servings)",
+        "price": 2700
+      }
+    ],
+    "flavors": [
+      "Signature Red Velvet",
+      "Dark Chocolate Truffle",
+      "White Chocolate Raspberry"
+    ]
+  },
+  {
+    "id": "mak-couple-03",
+    "name": "Lovebirds Berry & Chocolate Duo",
+    "category": "Couples",
+    "price": 2200,
+    "description": "Decadent dark chocolate sponge topped with fresh berries, glossy chocolate ganache drip, and artisan heart truffles handcrafted for two lovers.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.8,
+    "servings": "2-4 servings",
+    "sizes": [
+      {
+        "name": "4-inch Duo Bento (2 servings)",
+        "price": 1400
+      },
+      {
+        "name": "5-inch Couple Deluxe (2-4 servings)",
+        "price": 2000
+      },
+      {
+        "name": "6-inch Romantic Celebration (4-6 servings)",
+        "price": 2700
+      }
+    ],
+    "flavors": [
+      "Belgian Dark Chocolate",
+      "Mocha Hazelnut",
+      "Raspberry Dark Velvet"
+    ]
+  },
+  {
+    "id": "mak-couple-04",
+    "name": "Forever Together Bento & Cupcakes Set",
+    "category": "Couples",
+    "price": 1800,
+    "description": "A charming couple gift set featuring a 4-inch personalized mini heart cake paired with 2 gourmet matching cupcakes with custom initials.",
+    "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": false,
+    "rating": 5,
+    "servings": "2-3 servings",
+    "sizes": [
+      {
+        "name": "4-inch Duo Bento (2 servings)",
+        "price": 1400
+      },
+      {
+        "name": "5-inch Couple Deluxe (2-4 servings)",
+        "price": 2000
+      },
+      {
+        "name": "6-inch Romantic Celebration (4-6 servings)",
+        "price": 2700
+      }
+    ],
+    "flavors": [
+      "Vanilla Confetti & Chocolate",
+      "Red Velvet & Vanilla",
+      "Strawberry Cream"
+    ]
+  },
+  {
+    "id": "mak-010264",
+    "name": "yabeb cap cake",
+    "category": "Mini Cakes",
+    "price": 3000,
+    "description": "Delicious mini celebration cake baked fresh to order.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 5,
+    "servings": "4-6 servings",
+    "sizes": [
+      {
+        "name": "4-inch Bento (1-2 servings)",
+        "price": 3000
+      },
+      {
+        "name": "5-inch Mini Duo (2-4 servings)",
+        "price": 4050
+      },
+      {
+        "name": "6-inch Party Mini (4-6 servings)",
+        "price": 5250
+      }
+    ],
+    "flavors": [
+      "Vanilla",
+      "Chocolate",
+      "Red Velvet"
+    ]
+  },
+  {
+    "id": "mak-mini-01",
+    "name": "Sweet Heart Bento Mini Cake",
+    "category": "Mini Cakes",
+    "price": 1200,
+    "description": "Cute 4-inch Bento mini cake with sweet vanilla cream and pastel frosting. Perfect for 1-2 people or personal celebrations!",
+    "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "1-2 servings",
+    "sizes": [
+      {
+        "name": "4-inch Bento (1-2 servings)",
+        "price": 3000
+      },
+      {
+        "name": "5-inch Mini Duo (2-4 servings)",
+        "price": 4050
+      },
+      {
+        "name": "6-inch Party Mini (4-6 servings)",
+        "price": 5250
+      }
+    ],
+    "flavors": [
+      "Vanilla Bean & Buttercream",
+      "Chocolate Fudge Mini",
+      "Strawberry Cream"
+    ]
+  },
+  {
+    "id": "mak-mini-02",
+    "name": "Chocolate Drip Bento Mini",
+    "category": "Mini Cakes",
+    "price": 1350,
+    "description": "Adorable mini dark chocolate cake with glossy chocolate drip and mini celebration sprinkles.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 5,
+    "servings": "1-2 servings",
+    "sizes": [
+      {
+        "name": "4-inch Bento (1-2 servings)",
+        "price": 3000
+      },
+      {
+        "name": "5-inch Mini Duo (2-4 servings)",
+        "price": 4050
+      },
+      {
+        "name": "6-inch Party Mini (4-6 servings)",
+        "price": 5250
+      }
+    ],
+    "flavors": [
+      "Double Chocolate",
+      "Mocha Coffee Drip",
+      "Caramel Chocolate"
+    ]
+  },
+  {
+    "id": "mak-001",
+    "name": "Velvet Rose Royale",
+    "category": "Normal Cakes",
+    "price": 3000,
+    "description": "Our signature red velvet cake with smooth vanilla cream cheese frosting. Freshly baked for your celebration!",
+    "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-10 servings)",
+        "price": 3000
+      },
+      {
+        "name": "Large 2.0 kg (14-16 servings)",
+        "price": 3800
+      }
+    ],
+    "flavors": [
+      "Signature Red Velvet & Cream Cheese",
+      "Chocolate Velvet",
+      "Vanilla Berry"
+    ]
+  },
+  {
+    "id": "mak-norm-02",
+    "name": "Classic Vanilla Birthday Cake",
+    "category": "Normal Cakes",
+    "price": 2600,
+    "description": "Soft and fluffy vanilla sponge cake with light whipped cream and cheerful celebration sprinkles.",
+    "image": "https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 4.8,
+    "servings": "8-10 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-10 servings)",
+        "price": 2600
+      },
+      {
+        "name": "Large 2.0 kg (14-16 servings)",
+        "price": 3400
+      }
+    ],
+    "flavors": [
+      "Classic Vanilla Bean",
+      "Strawberry Swirl",
+      "Milk Chocolate Cream"
+    ]
+  },
+  {
+    "id": "mak-anniv-01",
+    "name": "Golden Heart Anniversary Cake",
+    "category": "Anniversary",
+    "price": 3200,
+    "description": "Romantic heart-shaped celebration cake with gold accents and personalized anniversary message.",
+    "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard Heart (8-10 servings)",
+        "price": 3200
+      },
+      {
+        "name": "Large Heart (12-16 servings)",
+        "price": 4000
+      }
+    ],
+    "flavors": [
+      "Red Velvet Love",
+      "Belgian Chocolate Truffle",
+      "Caramel Vanilla"
+    ],
+    "isSoldOut": false
+  },
+  {
+    "id": "mak-anniv-02",
+    "name": "Sweet Romance Floral Anniversary",
+    "category": "Anniversary",
+    "price": 3500,
+    "description": "Elegant two-layer celebration cake decorated with beautiful edible rose frosting for milestone anniversaries.",
+    "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "10-14 servings",
+    "sizes": [
+      {
+        "name": "Standard (10-12 servings)",
+        "price": 3500
+      },
+      {
+        "name": "Double Tier (16-20 servings)",
+        "price": 5200
+      }
+    ],
+    "flavors": [
+      "Vanilla & White Chocolate",
+      "Pistachio Cream",
+      "Strawberry Rose"
+    ]
+  },
+  {
+    "id": "mak-002",
+    "name": "Belgian Chocolate Truffle Gateau",
+    "category": "Birthday Cakes",
+    "price": 3200,
+    "description": "Rich dark chocolate sponge layered with smooth chocolate ganache and cocoa truffles on top.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "10-14 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-10 servings)",
+        "price": 3200
+      },
+      {
+        "name": "Large 2.0 kg (14-16 servings)",
+        "price": 4100
+      }
+    ],
+    "flavors": [
+      "Dark Belgian Chocolate",
+      "Chocolate Nutella",
+      "Mocha Coffee"
+    ],
+    "isSoldOut": false
+  },
+  {
+    "id": "mak-003",
+    "name": "Ethereal Pearl Wedding Wonder",
+    "category": "Wedding Cakes",
+    "price": 7500,
+    "description": "Opulent celebration wedding cake with cascading sugar flowers, white luster pearls, and soft butter sponge.",
+    "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 5,
+    "servings": "25-35 servings",
+    "sizes": [
+      {
+        "name": "2-Tier (25-35 servings)",
+        "price": 7500
+      },
+      {
+        "name": "3-Tier (45-60 servings)",
+        "price": 11500
+      }
+    ],
+    "flavors": [
+      "Vanilla & White Chocolate",
+      "Almond Sponge",
+      "Champagne Buttercream"
+    ]
+  },
+  {
+    "id": "mak-007",
+    "name": "Artisan Cupcake Box of 12",
+    "category": "Cupcakes",
+    "price": 1800,
+    "description": "Box of 12 assorted mini cupcakes: Red Velvet, Chocolate, Caramel, and Vanilla.",
+    "image": "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "12 cupcakes",
+    "sizes": [
+      {
+        "name": "Box of 6 Cupcakes",
+        "price": 950
+      },
+      {
+        "name": "Box of 12 Cupcakes",
+        "price": 1800
+      }
+    ],
+    "flavors": [
+      "Assorted Mix",
+      "All Chocolate",
+      "All Velvet"
+    ]
+  },
+  {
+    "id": "mak-cup-01",
+    "name": "Signature Rose Buttercream Cupcakes (Box of 6)",
+    "category": "Cupcakes",
+    "price": 1100,
+    "description": "Delicate fluffy cupcakes crowned with velvety rose swirl frosting and edible floral pearls. Made with Madagascar vanilla.",
+    "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Box of 6 cupcakes",
+    "sizes": [
+      {
+        "name": "Box of 6 Cupcakes",
+        "price": 1100
+      },
+      {
+        "name": "Box of 12 Cupcakes",
+        "price": 2000
+      }
+    ],
+    "flavors": [
+      "Madagascar Vanilla & Rose",
+      "Red Velvet Cream Cheese",
+      "Chocolate Fudge"
+    ]
+  },
+  {
+    "id": "mak-cup-02",
+    "name": "Belgian Chocolate Oreo Cupcakes (Box of 6)",
+    "category": "Cupcakes",
+    "price": 1250,
+    "description": "Decadent dark chocolate cupcakes topped with cookies & cream Oreo frosting and chocolate drip.",
+    "image": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Box of 6 cupcakes",
+    "sizes": [
+      {
+        "name": "Box of 6 Cupcakes",
+        "price": 1250
+      },
+      {
+        "name": "Box of 12 Cupcakes",
+        "price": 2300
+      }
+    ],
+    "flavors": [
+      "Cookies & Cream",
+      "Double Chocolate",
+      "Salted Caramel"
+    ]
+  },
+  {
+    "id": "mak-grad-01",
+    "name": "Honors Graduation Cap & Diploma Cake",
+    "category": "Graduation",
+    "price": 3600,
+    "description": "Celebratory graduation centerpiece featuring a handcrafted graduation cap topper, edible diploma scroll ribbon, and celebration stars.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "12-16 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (10-14 servings)",
+        "price": 3600
+      },
+      {
+        "name": "Grand 2.5 kg (18-24 servings)",
+        "price": 5200
+      }
+    ],
+    "flavors": [
+      "Belgian Chocolate Ganache",
+      "Red Velvet Cream Cheese",
+      "Signature Vanilla Bean"
+    ]
+  },
+  {
+    "id": "mak-grad-02",
+    "name": "Scholar's Triumph Velvet Cake",
+    "category": "Graduation",
+    "price": 3200,
+    "description": "Elegant graduation tribute cake layered with red velvet sponge, golden congratulations plaque, and rich cream cheese frosting.",
+    "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-12 servings)",
+        "price": 3200
+      }
+    ],
+    "flavors": [
+      "Classic Red Velvet",
+      "Vanilla & Raspberry",
+      "Chocolate Truffle"
+    ]
+  },
+  {
+    "id": "mak-ny-01",
+    "name": "Golden Sparkle New Year Cake",
+    "category": "New Year",
+    "price": 3500,
+    "description": "Glistening New Year countdown celebration cake layered with rich chocolate ganache, edible gold stars, and festive sparkling buttercream.",
+    "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "10-14 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (10-14 servings)",
+        "price": 3500
+      },
+      {
+        "name": "Celebration 2.0 kg (16-20 servings)",
+        "price": 4400
+      }
+    ],
+    "flavors": [
+      "Champagne Vanilla & White Chocolate",
+      "Dark Chocolate Gold Truffle",
+      "Caramel Velvet"
+    ]
+  },
+  {
+    "id": "mak-ny-02",
+    "name": "Enkutatash Addis New Year Cake",
+    "category": "New Year",
+    "price": 3200,
+    "description": "Festive celebration cake adorned with traditional Ethiopian yellow daisy motifs (Adey Abeba), pure honey sponge, and vanilla velvet cream.",
+    "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-12 servings)",
+        "price": 3200
+      }
+    ],
+    "flavors": [
+      "Honey Vanilla Sponge",
+      "Spiced Cinnamon & Cream",
+      "Belgian Chocolate"
+    ]
+  },
+  {
+    "id": "mak-hol-01",
+    "name": "Holiday Snowfall White Velvet Cake",
+    "category": "Holiday",
+    "price": 3300,
+    "description": "Wondrous holiday centerpiece decorated with white chocolate pearls, delicate powdered sugar snowfall, and pure vanilla cream cheese.",
+    "image": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 5,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-12 servings)",
+        "price": 3300
+      },
+      {
+        "name": "Party Size 2.5 kg (18-22 servings)",
+        "price": 4800
+      }
+    ],
+    "flavors": [
+      "White Chocolate Velvet",
+      "Madagascar Vanilla & Cream",
+      "Salted Caramel Swirl"
+    ]
+  },
+  {
+    "id": "mak-hol-02",
+    "name": "Festive Holiday Cranberry & Spice Cake",
+    "category": "Holiday",
+    "price": 3400,
+    "description": "Warm spiced holiday sponge crowned with fresh frosted berries, fragrant rosemary wreaths, and white chocolate drizzle.",
+    "image": "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 4.9,
+    "servings": "10-14 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (10-14 servings)",
+        "price": 3400
+      }
+    ],
+    "flavors": [
+      "Cinnamon Spice & Fresh Berries",
+      "Rich Chocolate Ganache",
+      "Almond Vanilla"
+    ]
+  },
+  {
+    "id": "mak-fast-01",
+    "name": "Signature Fasting Chocolate Cake (የጾም ኬክ)",
+    "category": "Fasting Cake",
+    "price": 2800,
+    "description": "100% dairy-free & egg-free traditional fasting cake (የጾም). Rich dark cocoa sponge frosted with decadent dairy-free chocolate ganache.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-12 servings)",
+        "price": 2800
+      },
+      {
+        "name": "Large 2.0 kg (14-16 servings)",
+        "price": 3600
+      }
+    ],
+    "flavors": [
+      "Pure Cocoa Ganache (Fasting)",
+      "Mocha Fasting Sponge",
+      "Dark Chocolate Orange"
+    ]
+  },
+  {
+    "id": "mak-fast-02",
+    "name": "Fasting Vanilla Berry Cloud Cake",
+    "category": "Fasting Cake",
+    "price": 2950,
+    "description": "Moist vegan vanilla sponge layered with pure strawberry reduction and light dairy-free whipped cream, perfect for fasting celebrations.",
+    "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "8-12 servings",
+    "sizes": [
+      {
+        "name": "Standard 1.5 kg (8-12 servings)",
+        "price": 2950
+      }
+    ],
+    "flavors": [
+      "Madagascar Vanilla (Fasting)",
+      "Strawberry Swirl",
+      "Almond Vanilla"
+    ]
+  },
+  {
+    "id": "mak-cook-01",
+    "name": "Artisan Chocolate Chunk Cookies (Box of 10)",
+    "category": "Cookies",
+    "price": 1200,
+    "description": "Golden bakery cookies filled with molten Belgian dark chocolate chunks and sea salt flakes. Crispy edges with a soft chewy center.",
+    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Box of 10 cookies",
+    "sizes": [
+      {
+        "name": "300g Box (approx. 6 pcs)",
+        "price": 780
+      },
+      {
+        "name": "500g Box (approx. 10 pcs)",
+        "price": 1200
+      },
+      {
+        "name": "1.0 kg Tin Box (approx. 20 pcs)",
+        "price": 2220
+      }
+    ],
+    "flavors": [
+      "Belgian Dark Chocolate Chunk",
+      "Milk Chocolate Pecan",
+      "Double Chocolate"
+    ]
+  },
+  {
+    "id": "mak-cook-02",
+    "name": "Red Velvet White Chocolate Cookies (Box of 10)",
+    "category": "Cookies",
+    "price": 1350,
+    "description": "Vibrant red velvet cookies studded with creamy white chocolate chips and vanilla bean infusion. Melt-in-your-mouth deliciousness.",
+    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Box of 10 cookies",
+    "sizes": [
+      {
+        "name": "Box of 6 Cookies",
+        "price": 850
+      },
+      {
+        "name": "Box of 10 Cookies",
+        "price": 1350
+      }
+    ],
+    "flavors": [
+      "Red Velvet White Chocolate",
+      "Vanilla Shortbread",
+      "Chocolate Hazelnut"
+    ]
+  },
+  {
+    "id": "mak-acc-01",
+    "name": "Number Candles (0-9 Metallic)",
+    "category": "Extra Decorations",
+    "price": 150,
+    "description": "Elegant 3D metallic number candles (0 to 9) in glistening gold and rose finishes. Perfect for birthday milestones and anniversaries.",
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Per number candle",
+    "sizes": [
+      {
+        "name": "Single Number (Specify in note)",
+        "price": 150
+      },
+      {
+        "name": "Two Numbers Pair",
+        "price": 280
+      }
+    ],
+    "flavors": [
+      "Metallic Gold",
+      "Rose Pink",
+      "Silver Chrome"
+    ],
+    "isSoldOut": false,
+    "recommendedCategories": [
+      "Birthday Cakes",
+      "Anniversary",
+      "Couples"
+    ],
+    "requiresAge": true,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-02",
+    "name": "Birthday Candles (Pastel Spiral Pack)",
+    "category": "Extra Decorations",
+    "price": 120,
+    "description": "Classic spiral pastel birthday candles with candle holders. Smokeless, drip-resistant, pack of 12.",
+    "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Pack of 12 candles",
+    "sizes": [
+      {
+        "name": "Pack of 12 Candles",
+        "price": 120
+      },
+      {
+        "name": "Pack of 24 Candles",
+        "price": 220
+      }
+    ],
+    "flavors": [
+      "Pastel Rainbow Mix",
+      "Rose & Gold",
+      "Classic White"
+    ],
+    "isSoldOut": false,
+    "recommendedCategories": [
+      "Birthday Cakes"
+    ],
+    "requiresAge": true,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-03",
+    "name": "Sparkler Celebration Candles",
+    "category": "Extra Decorations",
+    "price": 250,
+    "description": "Indoor-safe celebration fountain sparkler candles for dramatic birthday cake reveal moments. Pack of 4.",
+    "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Pack of 4 sparklers",
+    "sizes": [
+      {
+        "name": "Pack of 4 Sparklers",
+        "price": 250
+      },
+      {
+        "name": "Pack of 8 Sparklers",
+        "price": 450
+      }
+    ],
+    "flavors": [
+      "Golden Sparkle Fountain"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes",
+      "New Year",
+      "Holiday",
+      "Anniversary"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-04",
+    "name": "Happy Birthday Letter Candles Set",
+    "category": "Extra Decorations",
+    "price": 350,
+    "description": "Full 13-piece gold metallic letter candles spelling 'HAPPY BIRTHDAY'. Adds instant joy and sparkle to any cake.",
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Full 13-letter set",
+    "sizes": [
+      {
+        "name": "Full 13-Letter Set",
+        "price": 350
+      }
+    ],
+    "flavors": [
+      "Glistening Gold",
+      "Rose Pink Metallic"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-05",
+    "name": "Birthday Cake Topper (Laser Acrylic)",
+    "category": "Extra Decorations",
+    "price": 400,
+    "description": "Precision laser-cut acrylic cake topper. Choose from 'Happy Birthday', 'Happy Anniversary', 'Congratulations', or personalized names.",
+    "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "1 custom topper",
+    "sizes": [
+      {
+        "name": "Standard 'Happy Birthday'",
+        "price": 400
+      },
+      {
+        "name": "Custom Name / Milestone",
+        "price": 550
+      }
+    ],
+    "flavors": [
+      "Mirror Gold Acrylic",
+      "Rose Gold",
+      "Glossy Black"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-06",
+    "name": "Birthday Decoration Set (Gold Leaf & Pearls)",
+    "category": "Extra Decorations",
+    "price": 350,
+    "description": "Gourmet cake decoration kit including 24K edible gold leaf flakes and assorted sugar luster pearls for custom embellishments.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.8,
+    "servings": "Decorator kit",
+    "sizes": [
+      {
+        "name": "Gold Leaf & Pearls Kit",
+        "price": 350
+      }
+    ],
+    "flavors": [
+      "24K Edible Gold & Rose Pearls"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes",
+      "Anniversary"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-07",
+    "name": "Celebration Cake Picks (Set of 6)",
+    "category": "Extra Decorations",
+    "price": 200,
+    "description": "Charming themed decorative cake picks and skewers featuring mini stars, hearts, and celebratory motifs.",
+    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 4.8,
+    "servings": "Set of 6 picks",
+    "sizes": [
+      {
+        "name": "Set of 6 Picks",
+        "price": 200
+      }
+    ],
+    "flavors": [
+      "Glitter Gold Stars",
+      "Pink Heart Picks"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes",
+      "Mini Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": false
+  },
+  {
+    "id": "mak-acc-08",
+    "name": "Edible Cake Prints (Custom Photo / Logo)",
+    "category": "Extra Decorations",
+    "price": 500,
+    "description": "High-resolution edible sugar icing sheet printed with your custom family photo, corporate logo, or cartoon character in food-safe ink.",
+    "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Custom edible sheet",
+    "sizes": [
+      {
+        "name": "Round 6-inch / 8-inch Sheet",
+        "price": 500
+      },
+      {
+        "name": "A4 Full Sheet",
+        "price": 750
+      }
+    ],
+    "flavors": [
+      "Vanilla Sugar Icing Sheet"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes",
+      "Graduation"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-09",
+    "name": "Cupcake Decorations & Wrappers Kit",
+    "category": "Extra Decorations",
+    "price": 300,
+    "description": "Decorative party cupcake presentation kit with 12 fluted gold/rose foil wrappers, matching toppers, and sprinkles.",
+    "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 4.9,
+    "servings": "Kit for 12 cupcakes",
+    "sizes": [
+      {
+        "name": "Pack of 12 Wrappers & Toppers",
+        "price": 300
+      }
+    ],
+    "flavors": [
+      "Rose Gold Deluxe",
+      "Classic Gold"
+    ],
+    "recommendedCategories": [
+      "Cupcakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-10",
+    "name": "Wedding Cake Cutting Knife & Server Set",
+    "category": "Extra Decorations",
+    "price": 750,
+    "description": "Heavy-duty stainless steel cake knife and serving spatula with engraved handles, packaged in a keepsake presentation gift box.",
+    "image": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Knife & Spatula Set",
+    "sizes": [
+      {
+        "name": "Stainless Steel 2-Piece Set",
+        "price": 750
+      },
+      {
+        "name": "Gold Plated Luxury Edition",
+        "price": 1100
+      }
+    ],
+    "flavors": [
+      "Polished Gold Finish",
+      "Silver Chrome Finish"
+    ],
+    "recommendedCategories": [
+      "Wedding Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-11",
+    "name": "Luxury Transparent Gift Box with Satin Ribbon",
+    "category": "Extra Decorations",
+    "price": 350,
+    "description": "Crystal-clear presentation cake box with white base and wide signature MAK CAKE rose satin ribbon. Turns any cake into a show-stopping gift.",
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 5,
+    "servings": "Per gift box package",
+    "sizes": [
+      {
+        "name": "Standard Single Tier Box",
+        "price": 350
+      },
+      {
+        "name": "Tall 2-Tier Gift Box",
+        "price": 550
+      }
+    ],
+    "flavors": [
+      "Signature Rose Ribbon",
+      "Gold Satin Ribbon"
+    ],
+    "recommendedCategories": [
+      "Couples",
+      "Anniversary",
+      "Birthday Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-12",
+    "name": "Birthday Balloons & Party Poppers Bundle",
+    "category": "Extra Decorations",
+    "price": 450,
+    "description": "Celebration accessories kit including 2 confetti party poppers, 6 metallic helium-grade balloons, and matching party blowers.",
+    "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Complete party bundle",
+    "sizes": [
+      {
+        "name": "Celebration Party Bundle",
+        "price": 450
+      }
+    ],
+    "flavors": [
+      "Rose Gold Celebration Theme",
+      "Golden Glamour Theme"
+    ],
+    "recommendedCategories": [
+      "Birthday Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-grad-01",
+    "name": "Graduation Cake Topper (Congrats Grad!)",
+    "category": "Extra Decorations",
+    "price": 350,
+    "description": "Glamorous acrylic topper in sparkling mirror gold with graduation cap silhouette and \"Congrats Graduate!\" calligraphy.",
+    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "1 acrylic topper",
+    "sizes": [
+      {
+        "name": "Standard Mirror Gold",
+        "price": 350
+      }
+    ],
+    "flavors": [
+      "Mirror Gold",
+      "Classic Black"
+    ],
+    "recommendedCategories": [
+      "Graduation"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-grad-02",
+    "name": "Graduation Cap Decoration",
+    "category": "Extra Decorations",
+    "price": 250,
+    "description": "Handcrafted miniature graduation mortarboard cap with hanging tassel. The classic icon for college and high school milestones.",
+    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "1 mini cap keepsake",
+    "sizes": [
+      {
+        "name": "Mortarboard Cap with Gold Tassel",
+        "price": 250
+      }
+    ],
+    "flavors": [
+      "Black & Gold Tassel",
+      "Maroon & Gold"
+    ],
+    "recommendedCategories": [
+      "Graduation"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-grad-03",
+    "name": "Diploma Decoration Keepsake",
+    "category": "Extra Decorations",
+    "price": 200,
+    "description": "Charming edible fondant rolled diploma scroll tied with delicate red ribbon. Adds an authentic academic touch.",
+    "image": "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": false,
+    "rating": 4.8,
+    "servings": "1 diploma scroll",
+    "sizes": [
+      {
+        "name": "Rolled Diploma with Red Ribbon",
+        "price": 200
+      }
+    ],
+    "flavors": [
+      "Sweet Vanilla Fondant"
+    ],
+    "recommendedCategories": [
+      "Graduation"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-grad-04",
+    "name": "Graduation-themed Cake Decorations Set",
+    "category": "Extra Decorations",
+    "price": 450,
+    "description": "Complete celebration kit featuring 6 gold star picks, congratulatory edible glitter confetti, and festive diploma skewers.",
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Full graduation kit",
+    "sizes": [
+      {
+        "name": "Complete Kit (Picks + Confetti)",
+        "price": 450
+      }
+    ],
+    "flavors": [
+      "Gold & Midnight Black"
+    ],
+    "recommendedCategories": [
+      "Graduation"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-wed-01",
+    "name": "Wedding Cake Topper (Mr & Mrs Script)",
+    "category": "Extra Decorations",
+    "price": 450,
+    "description": "Timeless laser-cut acrylic topper reading \"Mr & Mrs\" with elegant interlocking rings. A gorgeous centerpiece for tiered cakes.",
+    "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "1 luxury topper",
+    "sizes": [
+      {
+        "name": "Standard Wedding Script",
+        "price": 450
+      }
+    ],
+    "flavors": [
+      "Mirror Gold",
+      "Rose Gold",
+      "Glossy Ivory"
+    ],
+    "recommendedCategories": [
+      "Wedding Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-wed-02",
+    "name": "Decorative Flowers (Fresh Edible Blooms)",
+    "category": "Extra Decorations",
+    "price": 550,
+    "description": "Artisan cluster of organic edible roses, baby's breath, and eucalyptus greenery to drape across your wedding tiers.",
+    "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Floral cascade bunch",
+    "sizes": [
+      {
+        "name": "Small Cascade (1-2 tiers)",
+        "price": 550
+      },
+      {
+        "name": "Grand Cascade (3+ tiers)",
+        "price": 950
+      }
+    ],
+    "flavors": [
+      "Pastel Blush & Ivory",
+      "Crimson & Cream"
+    ],
+    "recommendedCategories": [
+      "Wedding Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-wed-03",
+    "name": "Bride and Groom Decorations",
+    "category": "Extra Decorations",
+    "price": 600,
+    "description": "Delicate porcelain and laser silhouette figurine of the bride and groom embracing under a romantic archway.",
+    "image": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "1 couple figurine keepsake",
+    "sizes": [
+      {
+        "name": "Porcelain Couple Keepsake",
+        "price": 600
+      }
+    ],
+    "flavors": [
+      "Classic Romance Design"
+    ],
+    "recommendedCategories": [
+      "Wedding Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-wed-04",
+    "name": "Wedding Cake Decoration Set",
+    "category": "Extra Decorations",
+    "price": 1200,
+    "description": "Ultimate bridal suite: Engraved cutting set, matching champagne flutes ribbon, and decorative crystal pearl garnish.",
+    "image": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "Complete bridal set",
+    "sizes": [
+      {
+        "name": "Full Bridal Set",
+        "price": 1200
+      }
+    ],
+    "flavors": [
+      "Royal Gold Edition",
+      "Silver Platinum Edition"
+    ],
+    "recommendedCategories": [
+      "Wedding Cakes"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-ann-01",
+    "name": "Anniversary Cake Topper (\"Happy Anniversary\")",
+    "category": "Extra Decorations",
+    "price": 400,
+    "description": "Gleaming gold script topper reading \"Happy Anniversary\" with twin infinity hearts. Perfectly pairs with couples bento or round cakes.",
+    "image": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 5,
+    "servings": "1 acrylic topper",
+    "sizes": [
+      {
+        "name": "Golden Script Topper",
+        "price": 400
+      }
+    ],
+    "flavors": [
+      "Mirror Gold",
+      "Rose Gold"
+    ],
+    "recommendedCategories": [
+      "Anniversary",
+      "Couples"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-ann-02",
+    "name": "Decorative Hearts (Edible Chocolate Set)",
+    "category": "Extra Decorations",
+    "price": 300,
+    "description": "Box of 8 ruby red and Belgian milk chocolate heart truffles dusted with edible luster powder to decorate your cake.",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80",
+    "featured": true,
+    "popular": true,
+    "rating": 4.9,
+    "servings": "Set of 8 heart truffles",
+    "sizes": [
+      {
+        "name": "Box of 8 Chocolate Hearts",
+        "price": 300
+      }
+    ],
+    "flavors": [
+      "Ruby Berry & Belgian Chocolate"
+    ],
+    "recommendedCategories": [
+      "Anniversary",
+      "Couples"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  },
+  {
+    "id": "mak-acc-ann-03",
+    "name": "Romantic Cake Decorations & Rose Petals Kit",
+    "category": "Extra Decorations",
+    "price": 450,
+    "description": "Fresh organic crimson rose petals, mini fairy sparklers, and scented presentation box for romantic dinner dates.",
+    "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1000&q=80",
+    "featured": false,
+    "popular": true,
+    "rating": 5,
+    "servings": "Romantic kit",
+    "sizes": [
+      {
+        "name": "Petals & Sparklers Kit",
+        "price": 450
+      }
+    ],
+    "flavors": [
+      "Passionate Red Theme",
+      "Soft Pink Theme"
+    ],
+    "recommendedCategories": [
+      "Anniversary",
+      "Couples"
+    ],
+    "requiresAge": false,
+    "isRecommended": true
+  }
+]

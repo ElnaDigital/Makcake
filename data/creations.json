@@ -1,0 +1,72 @@
+[
+  {
+    "id": "creation-1795024415803-62",
+    "title": "ABEB CAKE",
+    "caption": "",
+    "imageUrl": "/uploads/creations/creation-1795024415801-dd749178.jpg",
+    "date": "2026-11-18",
+    "published": true,
+    "order": 7,
+    "createdAt": "2026-11-18T17:53:35.803Z"
+  },
+  {
+    "id": "creation-1731950001",
+    "title": "Pink Floral Heart Bento",
+    "caption": "Freshly finished this morning for a lovely 25th birthday surprise in Bole!",
+    "imageUrl": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-18",
+    "published": true,
+    "order": 1,
+    "createdAt": "2026-11-18T10:30:00.000Z"
+  },
+  {
+    "id": "creation-1731950002",
+    "title": "Velvet Strawberry Garden",
+    "caption": "Red velvet layered with fresh strawberries and Madagascar vanilla cream.",
+    "imageUrl": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-17",
+    "published": true,
+    "order": 2,
+    "createdAt": "2026-11-17T14:15:00.000Z"
+  },
+  {
+    "id": "creation-1731950003",
+    "title": "Double Belgian Chocolate Truffle",
+    "caption": "Dark chocolate ganache drip with handcrafted cocoa truffles for Dawit's graduation.",
+    "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-16",
+    "published": true,
+    "order": 3,
+    "createdAt": "2026-11-16T16:00:00.000Z"
+  },
+  {
+    "id": "creation-1731950004",
+    "title": "Golden Caramel Drip Wonder",
+    "caption": "Rich amber salted caramel drizzle with roasted hazelnuts and edible gold leaf.",
+    "imageUrl": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-15",
+    "published": true,
+    "order": 4,
+    "createdAt": "2026-11-15T11:20:00.000Z"
+  },
+  {
+    "id": "creation-1731950005",
+    "title": "Pastel Celebration Cupcake Royale",
+    "caption": "Custom dozen cupcakes baked for an intimate baby shower celebration in CMC.",
+    "imageUrl": "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-14",
+    "published": true,
+    "order": 5,
+    "createdAt": "2026-11-14T09:45:00.000Z"
+  },
+  {
+    "id": "creation-1731950006",
+    "title": "2-Tier Pearl Wedding Dream",
+    "caption": "Hand-piped lace details with white sugar roses for Helen & Yonas's wedding reception.",
+    "imageUrl": "https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=1000&q=80",
+    "date": "2026-11-12",
+    "published": true,
+    "order": 6,
+    "createdAt": "2026-11-12T15:30:00.000Z"
+  }
+]

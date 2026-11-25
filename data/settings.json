@@ -1,0 +1,124 @@
+{
+  "brand": {
+    "name": "MAK CAKE",
+    "tagline": "Luxury Artisanal Bakery Addis Ababa",
+    "description": "Handcrafted luxury cakes, romantic bento duos, and celebration confections freshly baked with premium Belgian chocolate and Ethiopian passion in Addis Ababa.",
+    "category": "Artisanal Bakery & Confectionery",
+    "logo": "/images/mak-cake-logo.png"
+  },
+  "contact": {
+    "primaryPhone": "+251 91 123 4567",
+    "secondaryPhone": "+251 92 234 5678",
+    "email": "hello@makcake.et",
+    "telegramUsername": "makcake_admin"
+  },
+  "social": {
+    "facebook": "https://facebook.com/makcakeaddis",
+    "instagram": "https://instagram.com/makcake_addis",
+    "tiktok": "https://tiktok.com/@makcake_addis",
+    "telegram": "https://t.me/makcake_addis",
+    "youtube": "",
+    "other": ""
+  },
+  "workingHours": {
+    "monday": {
+      "open": "08:00",
+      "close": "20:00",
+      "isOpen": true
+    },
+    "tuesday": {
+      "open": "08:00",
+      "close": "20:00",
+      "isOpen": true
+    },
+    "wednesday": {
+      "open": "08:00",
+      "close": "20:00",
+      "isOpen": true
+    },
+    "thursday": {
+      "open": "08:00",
+      "close": "20:00",
+      "isOpen": true
+    },
+    "friday": {
+      "open": "08:00",
+      "close": "20:30",
+      "isOpen": true
+    },
+    "saturday": {
+      "open": "08:00",
+      "close": "21:00",
+      "isOpen": true
+    },
+    "sunday": {
+      "open": "09:00",
+      "close": "19:00",
+      "isOpen": true
+    }
+  },
+  "location": {
+    "country": "Ethiopia",
+    "city": "Addis Ababa",
+    "area": "Bole Road, Next to Edna Mall",
+    "address": "Cameroon Street, Bole Sub-City, Addis Ababa, Ethiopia",
+    "googleMapsUrl": "https://maps.google.com/?q=Bole+Medhanialem+Addis+Ababa"
+  },
+  "payments": {
+    "cbe": {
+      "name": "Commercial Bank of Ethiopia (CBE)",
+      "accountHolder": "MAK Cake Artisanal Bakery",
+      "accountNumber": "1000123456789",
+      "enabled": true,
+      "logo": "/images/cbe-logo.png"
+    },
+    "telebirr": {
+      "name": "Telebirr",
+      "accountHolder": "MAK Cake Bakery",
+      "accountNumber": "0911234567",
+      "enabled": true,
+      "logo": "/images/telebirr-logo.png"
+    },
+    "customMethods": [
+      {
+        "id": "pay-boa-01",
+        "name": "Bank of Abyssinia (BOA)",
+        "accountHolder": "MAK Cake Artisanal Bakery",
+        "accountNumber": "12345678",
+        "enabled": false,
+        "type": "Bank Transfer",
+        "icon": "fa-building-columns",
+        "instructions": ""
+      },
+      {
+        "id": "pay-awash-01",
+        "name": "Awash Bank",
+        "accountHolder": "MAK Cake Artisanal Bakery",
+        "accountNumber": "01320876543200",
+        "enabled": false,
+        "type": "Bank Transfer",
+        "icon": "fa-building-columns",
+        "instructions": "Transfer via Awash Birr Pro or branch"
+      },
+      {
+        "id": "pay-1795179025235-ea1no",
+        "name": "Dashen Bank / Amole",
+        "accountHolder": "MAK Cake Artisanal Bakery",
+        "accountNumber": "5432109876",
+        "enabled": false,
+        "type": "Bank Transfer",
+        "icon": "fa-building-columns",
+        "instructions": ""
+      }
+    ]
+  },
+  "telegram": {
+    "enabled": true,
+    "botToken": "",
+    "chatId": "1815884202",
+    "botUsername": "MakCakeBot"
+  },
+  "adminAuth": {
+    "ownerEmail": ""
+  }
+}

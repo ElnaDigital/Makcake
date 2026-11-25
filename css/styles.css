@@ -1,0 +1,922 @@
+/* MAK CAKE Custom Luxury Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-gold: #c94968;
+  --primary-gold-dark: #b03855;
+  --primary-gold-light: #fcedf1;
+  --deep-chocolate: #231612;
+  --warm-cream: #faf7f2;
+  --card-bg: #ffffff;
+  --accent-rose: #c94968;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--warm-cream);
+  color: var(--deep-chocolate);
+  overflow-x: hidden;
+}
+
+.font-serif-luxury {
+  font-family: 'Cinzel', serif;
+}
+
+/* Signature Brand Logo Typography & Balanced Alignment */
+.brand-logo-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.brand-logo-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .brand-logo-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  .brand-logo-subtitle {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-script-rose {
+  font-family: 'Dancing Script', 'Alex Brush', cursive;
+  color: #c94968;
+}
+
+.btn-rose {
+  background-color: #c94968;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(201, 73, 104, 0.28);
+  transition: all 0.3s ease;
+}
+.btn-rose:hover {
+  background-color: #b03855;
+  box-shadow: 0 6px 20px rgba(201, 73, 104, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-rose-outline {
+  border: 1.5px solid #c94968;
+  color: #c94968;
+  background-color: transparent;
+  transition: all 0.25s ease;
+}
+.btn-rose-outline:hover {
+  background-color: #c94968;
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ede6;
+}
+::-webkit-scrollbar-thumb {
+  background: #c94968;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b03855;
+}
+
+/* Hide scrollbar for clean horizontal swiping on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism Navigation */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 73, 104, 0.2);
+}
+
+/* Card Hover Effects */
+.cake-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cake-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(35, 22, 18, 0.12), 0 10px 15px -5px rgba(201, 73, 104, 0.15);
+}
+.cake-card:active {
+  transform: scale(0.98);
+}
+
+/* Product Detail Modal Text & Image Transition Animations */
+@keyframes detailTextSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes detailTextSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-24px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes detailTextFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.anim-detail-next {
+  animation: detailTextSlideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-detail-prev {
+  animation: detailTextSlideInLeft 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-detail-open {
+  animation: detailTextFadeUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-delay-1 { animation-delay: 0.03s; }
+.anim-delay-2 { animation-delay: 0.07s; }
+.anim-delay-3 { animation-delay: 0.11s; }
+.anim-delay-4 { animation-delay: 0.15s; }
+
+@keyframes detailImgSwapNext {
+  0% { opacity: 0.25; transform: scale(1.05) translate3d(12px, 0, 0); }
+  100% { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+}
+
+@keyframes detailImgSwapPrev {
+  0% { opacity: 0.25; transform: scale(1.05) translate3d(-12px, 0, 0); }
+  100% { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+}
+
+@keyframes detailImgFadeIn {
+  0% { opacity: 0.3; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.anim-detail-img-next {
+  animation: detailImgSwapNext 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-detail-img-prev {
+  animation: detailImgSwapPrev 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-detail-img-open {
+  animation: detailImgFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cake-card .card-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cake-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+/* Accent Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #db5c7d 0%, #c94968 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(201, 73, 104, 0.3);
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #c94968 0%, #b03855 100%);
+  box-shadow: 0 6px 20px rgba(201, 73, 104, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-gold-outline {
+  border: 1.5px solid #c94968;
+  color: #c94968;
+  transition: all 0.25s ease;
+}
+.btn-gold-outline:hover {
+  background-color: #c94968;
+  color: #ffffff;
+}
+
+/* Badges */
+.badge-gold {
+  background-color: rgba(201, 73, 104, 0.12);
+  color: #b03855;
+  border: 1px solid rgba(201, 73, 104, 0.25);
+}
+
+/* Modal Overlay Animation */
+.modal-overlay {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.modal-content {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Subtle Shimmer for Highlighting */
+.gold-shimmer {
+  background: linear-gradient(90deg, #b03855 0%, #fcedf1 50%, #b03855 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Category Filter Active */
+.category-pill.active {
+  background-color: #231612;
+  color: #ffffff;
+  border-color: #231612;
+}
+
+/* Category Filter Active - Favorites */
+.category-pill[data-category="Favorites"].active {
+  background: linear-gradient(135deg, #db5c7d 0%, #c94968 100%) !important;
+  color: #ffffff !important;
+  border-color: #c94968 !important;
+}
+.category-pill[data-category="Favorites"].active i {
+  color: #ffffff !important;
+}
+.category-pill[data-category="Favorites"].active .fav-text {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+.category-pill[data-category="Favorites"].active #favFilterCounterBadge {
+  background-color: #ffffff !important;
+  color: #c94968 !important;
+}
+
+/* Category Filter Active - Couples */
+.category-pill[data-category="Couples"].active {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+  color: #ffffff !important;
+  border-color: #be123c !important;
+}
+.category-pill[data-category="Couples"].active i {
+  color: #ffffff !important;
+}
+
+/* Heart Pop Bounce Animation */
+@keyframes heartPop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.heart-pop {
+  animation: heartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Flying Love Heart Arc & Landing Celebrations */
+.flying-fav-heart {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  font-size: 1.45rem;
+  color: #c94968;
+  filter: drop-shadow(0 4px 12px rgba(201, 73, 104, 0.6));
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fav-sparkle-particle {
+  position: fixed;
+  z-index: 99998;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: all 0.45s ease-out;
+}
+
+@keyframes targetLandingPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.22); }
+  75% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.fav-landing-pulse {
+  animation: targetLandingPulse 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Flying Order Basket Arc & Landing Celebration */
+.flying-order-basket {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  font-size: 1.55rem;
+  color: #c94968;
+  filter: drop-shadow(0 6px 16px rgba(201, 73, 104, 0.55));
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 2px solid #c94968;
+  box-shadow: 0 8px 24px rgba(201, 73, 104, 0.35);
+}
+
+@keyframes basketTargetPulse {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.38); filter: drop-shadow(0 0 14px rgba(201, 73, 104, 0.85)); }
+  70% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+.basket-landing-pulse {
+  animation: basketTargetPulse 0.52s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.basket-sparkle-particle {
+  position: fixed;
+  z-index: 99998;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Success Checkmark Ripple Rings */
+@keyframes checkmarkPulseRing {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  50% { opacity: 0.45; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+.checkmark-ripple {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 9999px;
+  border: 2px solid #10b981;
+  animation: checkmarkPulseRing 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events: none;
+}
+.checkmark-ripple-2 {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 9999px;
+  border: 2px solid #34d399;
+  animation: checkmarkPulseRing 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0.6s;
+  pointer-events: none;
+}
+
+/* Order Celebration Confetti Particles */
+.order-confetti-piece {
+  position: fixed;
+  z-index: 999999;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Confirmed Card Soft Shimmer */
+@keyframes confirmShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.confirm-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.confirm-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: confirmShimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Print styles for receipt */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #orderReceiptModal, #orderReceiptModal * {
+    visibility: visible;
+  }
+  #orderReceiptModal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* ============================================================ */
+/* NEW STREAMLINED CUSTOMER ORDERING WIZARD & MY ORDERS STYLES */
+/* ============================================================ */
+
+/* Step Panel Slide & Fade Animation */
+@keyframes orderStepIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.order-step-panel {
+  animation: orderStepIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Animated Title for Order Steps */
+@keyframes orderTextFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.order-step-title {
+  animation: orderTextFadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Category Message Suggestion Chip */
+.suggestion-chip {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.suggestion-chip:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  background-color: #fdf2f4;
+  border-color: #c94968;
+  color: #c94968;
+  box-shadow: 0 2px 6px -1px rgba(201, 73, 104, 0.15);
+}
+.suggestion-chip:active {
+  transform: scale(0.97);
+}
+.suggestion-chip.active {
+  background: linear-gradient(135deg, #c94968 0%, #b33956 100%) !important;
+  color: #ffffff !important;
+  border-color: #c94968 !important;
+  box-shadow: 0 4px 10px -2px rgba(201, 73, 104, 0.3);
+}
+
+/* Quick Date & Time Choice Buttons */
+.quick-date-btn, .quick-time-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.quick-date-btn:hover, .quick-time-btn:hover {
+  border-color: #c94968;
+  color: #c94968;
+  background-color: #fff8f9;
+}
+.quick-date-btn.active, .quick-time-btn.active {
+  background: #231612 !important;
+  color: #ffffff !important;
+  border-color: #231612 !important;
+  box-shadow: 0 4px 12px -2px rgba(35, 22, 18, 0.25);
+}
+
+select.quick-date-btn {
+  text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select.quick-date-btn option {
+  background: #ffffff;
+  color: #231612;
+  font-weight: 600;
+  padding: 8px 12px;
+}
+
+.time-focus-hint {
+  animation: timeHintPulse 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 0 2px rgba(201, 73, 104, 0.25);
+}
+@keyframes timeHintPulse {
+  0% { transform: scale(0.99); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* Stepper Indicator */
+.stepper-circle {
+  transition: all 0.3s ease;
+}
+.stepper-circle.active {
+  background: #c94968;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(201, 73, 104, 0.2);
+}
+.stepper-circle.completed {
+  background: #10b981;
+  color: #ffffff;
+}
+
+/* Quantity Stepper Buttons */
+.qty-btn {
+  transition: all 0.15s ease;
+}
+.qty-btn:active {
+  transform: scale(0.9);
+}
+
+/* ============================================================ */
+/* CELEBRATION MODAL ANIMATIONS & COLORED FADE SHADOWS */
+/* ============================================================ */
+
+/* Animated Checkmark Pop & Bounce */
+@keyframes checkmarkCelebrationPop {
+  0% {
+    transform: scale(0.2) rotate(-15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15) rotate(3deg);
+  }
+  75% {
+    transform: scale(0.95) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+.anim-check-pop {
+  animation: checkmarkCelebrationPop 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Celebration Sparks Burst Animation */
+@keyframes sparksPop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.anim-spark {
+  animation: sparksPop 0.6s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Staggered Text In Entrance Animation */
+@keyframes textFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.anim-text-in {
+  animation: textFadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Colored Fade Shadow for Main Subjects Box (Cake, Delivery & Total Price) */
+.subject-box-shadow {
+  box-shadow: 0 14px 34px -8px rgba(201, 73, 104, 0.22), 0 8px 20px -4px rgba(34, 197, 94, 0.14), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.subject-box-shadow:hover {
+  box-shadow: 0 18px 40px -8px rgba(201, 73, 104, 0.28), 0 10px 24px -4px rgba(34, 197, 94, 0.18), 0 4px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Click Choice Glow Animation for selected options (no transform scale, clean round background & text glow) */
+@keyframes choiceGlowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 73, 104, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 14px 3px rgba(201, 73, 104, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 8px 1px rgba(201, 73, 104, 0.28), 0 2px 6px rgba(201, 73, 104, 0.12);
+  }
+}
+
+.choice-glow-active {
+  box-shadow: 0 0 10px 2px rgba(201, 73, 104, 0.28), 0 2px 6px rgba(201, 73, 104, 0.12) !important;
+  border-color: #c94968 !important;
+  background-color: #fff1f2 !important;
+  color: #c94968 !important;
+  text-shadow: 0 0 6px rgba(201, 73, 104, 0.25);
+  animation: choiceGlowPulse 0.35s ease-out both;
+}
+
+/* Horizontal Chip Base Transitions (Smooth color & shadow only, no scaling) */
+.order-size-chip, .order-flavor-chip, .weekday-chip {
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 7-Day List (Monday to Sunday) Active Style */
+.weekday-chip.active-weekday {
+  background: linear-gradient(135deg, #c94968 0%, #b03855 100%) !important;
+  color: #ffffff !important;
+  border-color: #b03855 !important;
+  box-shadow: 0 4px 12px rgba(201, 73, 104, 0.35) !important;
+}
+
+.weekday-chip.active-weekday span {
+  color: #ffffff !important;
+}
+
+/* ============================================================ */
+/* SMOOTH EASE-IN / FADE-AND-SLIDE PAYMENT REVEAL ANIMATION */
+/* ============================================================ */
+@keyframes paymentDetailsFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-slide {
+  animation: paymentDetailsFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ============================================================ */
+/* ADMIN MOBILE SIDEBAR DRAWER & BACKDROP TRANSITIONS */
+/* ============================================================ */
+#adminSidebar {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+#adminMobileBackdrop {
+  transition: opacity 0.28s ease;
+  will-change: opacity;
+}
+
+/* ============================================================ */
+/* ADMIN: ORDER CONFIRMED SUCCESS CHECKMARK ANIMATION           */
+/* ============================================================ */
+@keyframes adminCheckDraw {
+  0%   { stroke-dashoffset: 60; opacity: 0; }
+  30%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes adminCheckCirclePop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes adminSuccessRipple {
+  0%   { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.admin-success-ripple {
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 9999px;
+  border: 2px solid #22c55e;
+  animation: adminSuccessRipple 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events: none;
+}
+.admin-success-ripple-2 {
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 9999px;
+  border: 2px solid #4ade80;
+  animation: adminSuccessRipple 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0.65s;
+  pointer-events: none;
+}
+.admin-check-circle {
+  animation: adminCheckCirclePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+.admin-check-draw {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: adminCheckDraw 0.55s ease-out 0.3s both;
+}
+@keyframes adminPopupSpring {
+  0%   { transform: scale(0.7); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes adminSuccessFadeUp {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.admin-success-fade-up {
+  animation: adminSuccessFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.admin-success-fade-up-2 { animation: adminSuccessFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both; }
+.admin-success-fade-up-3 { animation: adminSuccessFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both; }
+
+/* ============================================================ */
+/* PAYMENT UNDER REVIEW: WAITING LOOP ANIMATIONS */
+/* ============================================================ */
+@keyframes waitingPulseRing {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+
+.waiting-ripple {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 9999px;
+  border: 2px solid #f59e0b;
+  animation: waitingPulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.waiting-ripple-2 {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 9999px;
+  border: 2px solid #fbbf24;
+  animation: waitingPulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0.75s;
+  pointer-events: none;
+}
+
+@keyframes waitingSpinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.anim-waiting-spin {
+  animation: waitingSpinRing 2.5s linear infinite;
+}
+
+@keyframes waitingHourglassFlip {
+  0%, 15% { transform: rotate(0deg); }
+  45%, 55% { transform: rotate(180deg); }
+  85%, 100% { transform: rotate(360deg); }
+}
+
+.anim-waiting-flip {
+  animation: waitingHourglassFlip 3.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   ADMIN SIDEBAR CATEGORIES ACCORDION & STAGGER ANIMATION
+   ============================================================ */
+.admin-cat-submenu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              margin 0.3s ease,
+              padding 0.3s ease;
+}
+
+.admin-cat-submenu.is-open {
+  max-height: 600px;
+  opacity: 1;
+  overflow-y: auto;
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Category item initial state when collapsed */
+.admin-cat-submenu .cat-submenu-item {
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.25s ease,
+              transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1),
+              background-color 0.15s ease,
+              color 0.15s ease;
+}
+
+/* Staggered cascading one-by-one reveal when open */
+.admin-cat-submenu.is-open .cat-submenu-item {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: calc(var(--item-idx, 0) * 40ms);
+}
+
+/* Guaranteed Refresh Spinner Animation */
+@keyframes spinAnimation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fa-spin {
+  display: inline-block;
+  animation: spinAnimation 0.75s linear infinite !important;
+}
+
+.admin-cat-submenu:not(.is-open) .cat-submenu-item {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition-delay: 0s;
+  transition-duration: 0.15s;
+}
+
+/* ============================================================
+   RESPONSIVE ORDERS & TABLE CONTAINERS (DETERMINISTIC DISPLAY)
+   Prevents CSS specificity conflicts between .hidden and md:block
+   ============================================================ */
+@media (min-width: 768px) {
+  .responsive-table-view {
+    display: block !important;
+  }
+  .responsive-cards-view {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-table-view {
+    display: none !important;
+  }
+  .responsive-cards-view {
+    display: block !important;
+  }
+}
+
+

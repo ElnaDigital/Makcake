@@ -6,13 +6,13 @@
   
   <!-- Progressive Web App (PWA) Manifest & Meta -->
   <link rel="manifest" href="./manifest.json" />
-  <meta name="theme-color" content="#C91254" />
+  <meta name="theme-color" content="#FFF2F5" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="application-name" content="MAK CAKE" />
   
   <!-- Apple iOS Safari Standalone PWA Meta & Touch Icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="MAK CAKE" />
   <link rel="apple-touch-icon" href="./images/mak-cake-logo.png" />
   <link rel="icon" type="image/png" href="./images/mak-cake-logo.png" />
@@ -643,7 +643,125 @@
       display: none !important;
     }
 
-  </style>
+  
+    /* =========================================================================
+       SUPER-SLEEK COMPACT MOBILE APP SIZING & 60FPS HARDWARE-ACCELERATED SCROLL
+       ========================================================================= */
+    #customer-scroll-area,
+    #admin-scroll-area,
+    .overflow-y-auto {
+      -webkit-overflow-scrolling: touch !important;
+      overscroll-behavior-y: contain !important;
+      transform: translateZ(0) !important;
+      will-change: scroll-position !important;
+    }
+
+    @media (max-width: 640px) {
+      body.standalone-app {
+        font-size: 13px !important;
+      }
+      body.standalone-app .phone-frame {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding-top: max(4px, env(safe-area-inset-top, 0px)) !important;
+      }
+      /* Compact Header */
+      body.standalone-app .app-header,
+      body.standalone-app #panel-customer > .phone-frame > .flex:first-child,
+      body.standalone-app #panel-admin > .phone-frame > .flex:first-child {
+        padding-top: max(6px, env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 6px !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+      /* Compact Hero Carousel */
+      #hero-carousel-card {
+        height: 136px !important;
+        border-radius: 18px !important;
+      }
+      #hero-slide-script {
+        font-size: 26px !important;
+        line-height: 1.0 !important;
+      }
+      #hero-slide-top {
+        font-size: 11px !important;
+      }
+      #hero-slide-sub {
+        font-size: 9.5px !important;
+        margin-top: 1px !important;
+      }
+      /* Compact Category Strip */
+      #home-category-strip button {
+        width: 66px !important;
+        height: 66px !important;
+        border-radius: 15px !important;
+        padding: 4px !important;
+      }
+      #home-category-strip button > div:first-child {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 8px !important;
+      }
+      #home-category-strip button svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      #home-category-strip .cat-name-txt {
+        font-size: 9px !important;
+      }
+      #home-category-strip .cat-cnt-txt {
+        font-size: 8px !important;
+      }
+      /* Compact Product Cards */
+      #home-popular-grid {
+        gap: 8px !important;
+      }
+      .cake-card-animate {
+        border-radius: 16px !important;
+      }
+      .cake-card-animate .relative.h-\[112px\],
+      .cake-card-animate .relative.h-28 {
+        height: 98px !important;
+      }
+      .cake-title-txt {
+        font-size: 11px !important;
+      }
+      .cake-desc-clamp {
+        font-size: 9px !important;
+        min-height: 22px !important;
+        margin-top: 1px !important;
+      }
+      .cake-order-btn {
+        padding: 4px 10px !important;
+        font-size: 10px !important;
+        border-radius: 9999px !important;
+      }
+      .cake-price-txt {
+        font-size: 11px !important;
+      }
+      /* Compact Bottom Nav */
+      nav[aria-label="Customer Navigation"],
+      nav[aria-label="Admin Navigation"] {
+        height: 52px !important;
+        padding-top: 2px !important;
+        padding-bottom: max(4px, env(safe-area-inset-bottom, 0px)) !important;
+      }
+      nav[aria-label="Customer Navigation"] svg,
+      nav[aria-label="Admin Navigation"] svg {
+        width: 19px !important;
+        height: 19px !important;
+      }
+      nav[aria-label="Customer Navigation"] span,
+      nav[aria-label="Admin Navigation"] span {
+        font-size: 9.5px !important;
+      }
+    }
+  
+</style>
   <!-- Early SVG Fallback definition -->
   <script>
     window.SVG_CAKE_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
@@ -655,12 +773,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
-<body class="workspace-bg min-h-screen font-sans text-ink antialiased selection:bg-blush-300 flex flex-col">
+<body class="standalone-app standalone-admin workspace-bg min-h-screen font-sans text-ink antialiased selection:bg-blush-300 flex flex-col">
 
   <!-- ===================================================================== -->
   <!-- CLEAN MINIMAL WORKSPACE TOP SWITCHER                                  -->
   <!-- ===================================================================== -->
-  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-blush-300/70">
+  <header style="display: none !important;" class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-blush-300/70">
     <div class="max-w-[1200px] mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
       <!-- Compact Brand Badge -->
       <div class="flex items-center gap-2.5">
@@ -715,7 +833,7 @@
     <!-- =================================================================== -->
     <!-- PHONE 1: CUSTOMER MOBILE APP (Exact Reference Screenshot Design)    -->
     <!-- =================================================================== -->
-    <section id="panel-customer" class="w-full max-w-[390px] flex flex-col items-center shrink-0">
+    <section id="panel-customer" class="hidden w-full max-w-[390px] flex flex-col items-center shrink-0">
       <div class="phone-frame relative w-full max-w-[390px] h-[844px] max-h-[86vh] min-h-[660px] app-canvas rounded-[44px] border-[10px] border-[#1B1518] shadow-phone flex flex-col overflow-hidden">
 
         <!-- iOS 9:41 Status Bar -->
@@ -15664,6 +15782,8 @@ function resetDemo() {
     }
 
     function initGlobalRubberBanding() {
+      // Disabled in favor of native momentum scrolling (buttery smooth 60/120fps)
+      return;
       const custContainer = document.getElementById('customer-scroll-area');
       const custTrack = document.getElementById('cust-rubber-track');
       const ind = document.getElementById('cust-pull-refresh-indicator');
@@ -16048,7 +16168,170 @@ function resetDemo() {
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="./js/firebase-config.js?v=14.0"></script>
-  <script src="./js/firebase-service.js?v=14.0"></script>
+  <script src="./js/firebase-service.js?v=14.0">
+    // =========================================================================
+    // SPA PHONE HARDWARE / SYSTEM BACK BUTTON NAVIGATION MANAGER
+    // =========================================================================
+    (function initPhoneBackNavigation() {
+      try {
+        history.replaceState({ makRoot: true }, '');
+      } catch (_) {}
+
+      // Intercept modal open functions to push history state
+      const wrapWithHistory = (fnName) => {
+        if (typeof window[fnName] === 'function') {
+          const orig = window[fnName];
+          window[fnName] = function(...args) {
+            try {
+              history.pushState({ makModal: fnName }, '');
+            } catch (_) {}
+            return orig.apply(this, args);
+          };
+        }
+      };
+
+      [
+        'openOrderSheet',
+        'openTrackerSheet',
+        'openNotificationsSheet',
+        'openContactSheet',
+        'openDecorationDetailModal',
+        'openDecorationOrderChoice',
+        'openCakePickerModal',
+        'openCreationModal',
+        'openAdminSidebar',
+        'openAddCakeSheet',
+        'openAddDecorationSheet',
+        'openAdminReceiptModal',
+        'openUpgradeConfirmModal',
+        'openGoogleConnectFlow',
+        'openAdminProfileModal',
+        'openQuickUploadModal'
+      ].forEach(wrapWithHistory);
+
+      // Intercept tab changes
+      if (typeof window.switchCustomerTab === 'function') {
+        const origCustTab = window.switchCustomerTab;
+        window.switchCustomerTab = function(tab) {
+          if (tab !== 'home' && customerTab === 'home') {
+            try { history.pushState({ makTab: tab }, ''); } catch (_) {}
+          }
+          return origCustTab.apply(this, arguments);
+        };
+      }
+
+      if (typeof window.switchAdminTab === 'function') {
+        const origAdminTab = window.switchAdminTab;
+        window.switchAdminTab = function(tab) {
+          if (tab !== 'overview' && adminTab === 'overview') {
+            try { history.pushState({ makTab: tab }, ''); } catch (_) {}
+          }
+          return origAdminTab.apply(this, arguments);
+        };
+      }
+
+      // Handle Phone Physical/System Back Button
+      window.addEventListener('popstate', (e) => {
+        // 1. Close open customer modals / sheets
+        const wizard = document.getElementById('order-wizard-page');
+        if (wizard && !wizard.classList.contains('hidden')) {
+          closeOrderSheet();
+          return;
+        }
+
+        const tracker = document.getElementById('tracker-sheet');
+        if (tracker && !tracker.classList.contains('hidden')) {
+          closeTrackerSheet();
+          return;
+        }
+
+        const notif = document.getElementById('notif-sheet');
+        if (notif && !notif.classList.contains('hidden')) {
+          closeNotificationsSheet();
+          return;
+        }
+
+        const contact = document.getElementById('contact-sheet');
+        if (contact && !contact.classList.contains('hidden')) {
+          closeContactSheet();
+          return;
+        }
+
+        const decModal = document.getElementById('decoration-detail-modal');
+        if (decModal && !decModal.classList.contains('hidden')) {
+          closeDecorationDetailModal();
+          return;
+        }
+
+        const decChoice = document.getElementById('dec-choice-modal');
+        if (decChoice && !decChoice.classList.contains('hidden')) {
+          closeDecorationOrderChoice();
+          return;
+        }
+
+        const cakePicker = document.getElementById('cake-picker-modal');
+        if (cakePicker && !cakePicker.classList.contains('hidden')) {
+          closeCakePickerModal();
+          return;
+        }
+
+        const creation = document.getElementById('creation-lightbox-modal');
+        if (creation && !creation.classList.contains('hidden')) {
+          closeCreationModal();
+          return;
+        }
+
+        // 2. Close open admin modals / sheets
+        const sidebar = document.getElementById('admin-sidebar-drawer');
+        if (sidebar && !sidebar.classList.contains('hidden')) {
+          closeAdminSidebar();
+          return;
+        }
+
+        const addCake = document.getElementById('add-cake-sheet');
+        if (addCake && !addCake.classList.contains('hidden')) {
+          closeAddCakeSheet();
+          return;
+        }
+
+        const addDec = document.getElementById('admin-dec-sheet');
+        if (addDec && !addDec.classList.contains('hidden')) {
+          closeAddDecorationSheet();
+          return;
+        }
+
+        const receipt = document.getElementById('admin-receipt-modal');
+        if (receipt && !receipt.classList.contains('hidden')) {
+          closeAdminReceiptModal();
+          return;
+        }
+
+        const upg = document.getElementById('upg-confirm-modal');
+        if (upg && !upg.classList.contains('hidden')) {
+          closeUpgradeConfirmModal();
+          return;
+        }
+
+        const gModal = document.getElementById('profile-google-oauth-modal');
+        if (gModal && !gModal.classList.contains('hidden')) {
+          closeGoogleConnectModal();
+          return;
+        }
+
+        // 3. If no modal is open, return to main tab
+        if (customerTab && customerTab !== 'home') {
+          switchCustomerTab('home');
+          return;
+        }
+
+        if (adminTab && adminTab !== 'overview') {
+          switchAdminTab('overview');
+          return;
+        }
+      });
+    })();
+  
+</script>
 
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">

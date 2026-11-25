@@ -1,6 +1,6 @@
 /**
  * MAK CAKE — Progressive Web App (PWA) Service Worker
- * Version: mak-cake-pwa-v1.0
+ * Version: mak-cake-pwa-v1.2
  * 
  * Features:
  * 1. Network-first strategy for HTML pages: Guarantees GitHub updates appear immediately.
@@ -10,7 +10,7 @@
  * 5. Web Push Notifications for live order status & Bole Kitchen updates.
  */
 
-const CACHE_NAME = 'mak-cake-pwa-v1.0';
+const CACHE_NAME = 'mak-cake-pwa-v1.2';
 const APP_SHELL = [
   './',
   './index.html',

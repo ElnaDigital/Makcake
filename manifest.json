@@ -8,7 +8,7 @@
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#FFF2F5",
-  "theme_color": "#C91254",
+  "theme_color": "#FFF2F5",
   "icons": [
     {
       "src": "./images/mak-cake-logo.png",

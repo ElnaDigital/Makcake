@@ -16,6 +16,9 @@
   <meta name="apple-mobile-web-app-title" content="MAK CAKE" />
   <link rel="apple-touch-icon" href="./images/mak-cake-logo.png" />
   <link rel="icon" type="image/png" href="./images/mak-cake-logo.png" />
+  
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=420&q=75" fetchpriority="high" />
   <title>MAK CAKE — Addis Ababa Luxury Bakery &amp; Mobile Admin App</title>
 
   <!-- Tailwind CSS -->
@@ -997,8 +1000,9 @@
               <!-- Right-side cake photo with smooth blend -->
               <img
                 id="hero-slide-img"
-                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
+                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=420&q=75"
                 alt="Featured Mak Cake"
+                fetchpriority="high"
                 class="absolute right-0 top-0 h-full w-[58%] object-cover object-center hero-cake-mask transition-opacity duration-500 ease-in-out pointer-events-none"
                 onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;"
               />
@@ -3553,7 +3557,7 @@
         script: 'Sweeter',
         sub: 'Premium cakes for every occasion',
         cta: 'Explore Cakes',
-        img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85'
+        img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=420&q=75'
       },
       {
         top: 'Handcrafted in Bole',

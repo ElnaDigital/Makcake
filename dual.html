@@ -14,59 +14,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="MAK CAKE" />
-  <link rel="apple-touch-icon" href="./images/mak-cake-logo.png" />
+  <link rel="apple-touch-icon" href="./images/mak-cake-logo.webp" />
   <link rel="icon" type="image/webp" href="./images/mak-cake-logo.webp" />
   <title>MAK CAKE — Addis Ababa Luxury Bakery &amp; Mobile Admin App</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="./css/styles.css" />
 
   <!-- Google Fonts: Plus Jakarta Sans, Playfair Display & Great Vibes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            blush: {
-              50: '#FFF7FA',
-              100: '#FDF0F4',
-              200: '#FCE8EF',
-              300: '#FAD4E2',
-              400: '#F48FB1',
-            },
-            berry: {
-              DEFAULT: '#E11D62',
-              light: '#EC246B',
-              dark: '#C91254',
-              soft: '#FDE4ED',
-            },
-            ink: {
-              DEFAULT: '#1D1116',
-              muted: '#6E5D64',
-              light: '#9E8C93',
-            },
-            stargold: '#F5B82E',
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-            script: ['Great Vibes', 'cursive'],
-          },
-          boxShadow: {
-            rose: '0 6px 20px rgba(225, 29, 98, 0.08)',
-            'rose-sm': '0 4px 12px rgba(225, 29, 98, 0.09)',
-            'rose-md': '0 10px 26px rgba(225, 29, 98, 0.14)',
-            phone: '0 28px 65px -12px rgba(29, 17, 22, 0.28), 0 0 0 1px rgba(225, 29, 98, 0.08)',
-          }
-        }
-      }
-    };
-  </script>
 
   <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -772,9 +730,6 @@
     );
     var SVG_CAKE_FALLBACK = window.SVG_CAKE_FALLBACK;
   </script>
-  <!-- Leaflet Map (Interactive Shop Location) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body class="workspace-bg min-h-screen font-sans text-ink antialiased selection:bg-blush-300 flex flex-col">
 
@@ -997,7 +952,7 @@
             <div id="hero-carousel-card" class="relative rounded-[22px] hero-bg shadow-rose overflow-hidden h-[162px] border border-white/80 shrink-0 select-none">
               <!-- Right-side cake photo with smooth blend -->
               <img
-                id="hero-slide-img"
+                id="hero-slide-img" width="420" height="162" loading="eager" decoding="async"
                 src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
                 alt="Featured Mak Cake"
                 class="absolute right-0 top-0 h-full w-[58%] object-cover object-center hero-cake-mask transition-opacity duration-500 ease-in-out pointer-events-none"
@@ -4966,7 +4921,7 @@
       return `
         <article id="cake-card-${c.id}" data-cake-id="${c.id}" class="cake-card-animate bg-white rounded-[20px] shadow-rose border border-white overflow-hidden flex flex-col h-full" style="animation-delay: ${delay}ms">
           <div class="relative h-[112px] w-full bg-blush-100 overflow-hidden shrink-0 cursor-pointer" onclick="openOrderSheet(${c.id})">
-            <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover ${!c.inStock ? 'grayscale opacity-60' : ''}" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+            <img loading="lazy" decoding="async" width="200" height="112" src="${c.img}" alt="${c.name}" class="w-full h-full object-cover ${!c.inStock ? 'grayscale opacity-60' : ''}" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
             <button onclick="toggleFavorite(${c.id}, event)" data-fav-btn="${c.id}" aria-label="Favorite ${c.name}" class="fav-action-btn absolute top-2 right-2 w-[26px] h-[26px] rounded-full bg-white/95 shadow-sm flex items-center justify-center active:scale-90 transition-transform cursor-pointer">
               <svg class="fav-heart-icon w-3.5 h-3.5 ${isFav ? 'text-berry fill-berry' : 'text-ink'}" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -5048,7 +5003,7 @@
               <div onclick="handleDecCardClick('${d.id}', event)" class="cake-card-animate transition-all rounded-[22px] p-2.5 flex flex-col justify-between h-[218px] ${!isAvailable ? 'bg-blush-50/70 border border-blush-200 opacity-75 grayscale-[0.25] cursor-not-allowed' : qty > 0 ? 'bg-rose-50/45 border-2 border-berry ring-2 ring-berry/35 shadow-rose-sm cursor-pointer' : 'bg-white border border-white shadow-rose cursor-pointer'}" style="animation-delay: ${i * 20}ms">
                 <!-- Small category label inside image + status / zoom button -->
                 <div class="relative h-28 rounded-[16px] overflow-hidden bg-blush-100 shrink-0 group">
-                  <img src="${d.img || SVG_CAKE_FALLBACK}" alt="${d.name}" class="w-full h-full object-cover transition-transform group-hover:scale-105" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+                  <img loading="lazy" decoding="async" width="180" height="120" src="${d.img || SVG_CAKE_FALLBACK}" alt="${d.name}" class="w-full h-full object-cover transition-transform group-hover:scale-105" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
                   <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur text-berry text-[8.5px] font-black shadow-2xs truncate max-w-[70%]">${d.category}</span>
                   
                   ${!isAvailable ? `
@@ -5389,7 +5344,7 @@
 
       listEl.innerHTML = state.cart.map(item => `
         <div class="bg-white rounded-[18px] p-3 shadow-rose-sm border border-white flex items-center gap-3">
-          <img src="${item.img}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover shrink-0" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+          <img loading="lazy" decoding="async" width="56" height="56" src="${item.img}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover shrink-0" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
           <div class="min-w-0 flex-1">
             <div class="text-xs font-extrabold text-ink truncate">${item.name}</div>
             <div class="text-[10.5px] text-ink-muted truncate">${item.size} • ${item.flavor}</div>
@@ -6097,7 +6052,7 @@
       if (sheet.step === 1 && isSingle) {
         body.innerHTML = `
           <div class="bg-white rounded-[20px] p-3 shadow-rose-sm border border-white flex items-center gap-3">
-            <img src="${sheet.cake.img}" alt="${sheet.cake.name}" class="w-16 h-16 rounded-2xl object-cover shrink-0" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+            <img loading="lazy" decoding="async" width="64" height="64" src="${sheet.cake.img}" alt="${sheet.cake.name}" class="w-16 h-16 rounded-2xl object-cover shrink-0" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
             <div class="min-w-0 flex-1">
               <div class="text-sm font-extrabold text-ink truncate">${sheet.cake.name}</div>
               <div class="text-[11px] text-ink-muted line-clamp-2 mt-0.5">${sheet.cake.desc}</div>
@@ -6816,6 +6771,12 @@
         unitPrice: totals.base + totals.addSum
       });
       saveState();
+      // Disabled by default until Firestore security rules restrict public reads on `orders`
+      if (window.MAK_ENABLE_FIRESTORE_ORDER_SYNC === true && window.FirebaseService && typeof window.FirebaseService.saveOrder === 'function') {
+        window.FirebaseService.saveOrder({ ...newOrder, id: String(newOrder.id) }).catch(err => {
+          console.warn('Background Firestore order sync notice:', err);
+        });
+      }
       syncAll();
       closeOrderSheet();
       showCustomerToast(`Added ${sheet.cake.name} to Cart`);
@@ -8743,6 +8704,13 @@
     }
 
     async function openGoogleConnectFlow() {
+      if (!window.FirebaseService && !window.__firebaseServiceReady) {
+        await new Promise(resolve => {
+          const onReady = () => { window.removeEventListener('firebase-service-ready', onReady); resolve(); };
+          window.addEventListener('firebase-service-ready', onReady);
+          setTimeout(resolve, 2000);
+        });
+      }
       const btn = document.getElementById('profile-google-connect-btn');
       const origHtml = btn ? btn.innerHTML : '';
 
@@ -8915,6 +8883,14 @@
       const lbl = document.getElementById('admin-google-signin-label');
       const err = document.getElementById('admin-login-gate-err');
       if (err) { err.classList.add('hidden'); err.textContent = ''; }
+      if (!window.FirebaseService && !window.__firebaseServiceReady) {
+        if (lbl) lbl.textContent = 'Connecting...';
+        await new Promise(resolve => {
+          const onReady = () => { window.removeEventListener('firebase-service-ready', onReady); resolve(); };
+          window.addEventListener('firebase-service-ready', onReady);
+          setTimeout(resolve, 2000);
+        });
+      }
       if (!window.FirebaseService || !window.FirebaseService.isAvailable || !window.FirebaseService.isAvailable()) {
         if (err) {
           err.textContent = 'Google OAuth service is unavailable offline. Please check your internet connection.';
@@ -9359,7 +9335,7 @@
             <!-- Item Details Row: Proportional fixed aspect-ratio image thumbnail -->
             <div class="bg-blush-50 rounded-2xl p-2.5 flex items-center gap-2.5">
               <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-blush-100 border border-blush-200 shadow-2xs flex items-center justify-center">
-                <img src="${o.cakeImg || SVG_CAKE_FALLBACK}" alt="${o.cakeName}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+                <img loading="lazy" decoding="async" width="48" height="48" src="${o.cakeImg || SVG_CAKE_FALLBACK}" alt="${o.cakeName}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
               </div>
               <div class="min-w-0 flex-1 text-[11px]">
                 <div class="font-bold text-ink truncate">${o.cakeName}</div>
@@ -9678,7 +9654,7 @@
 
             <!-- Clickable Cake Thumbnail with Camera Overlay -->
             <div onclick="triggerCakePhotoUpload(${c.id})" class="relative group cursor-pointer w-14 h-14 rounded-xl overflow-hidden bg-blush-100 border border-blush-200 shrink-0 shadow-2xs flex items-center justify-center ${!isAvail ? 'grayscale opacity-60' : ''}">
-              <img src="${c.img || SVG_CAKE_FALLBACK}" alt="${c.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+              <img loading="lazy" decoding="async" width="200" height="112" src="${c.img || SVG_CAKE_FALLBACK}" alt="${c.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
               <div class="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-[8px] font-extrabold">
                 Change
               </div>
@@ -10010,7 +9986,7 @@
         <div onclick="openCreationModal('${c.id}')" class="cake-card-animate bg-white rounded-[22px] p-2.5 shadow-rose border border-white flex flex-col justify-between cursor-pointer active:scale-[0.98] hover:shadow-rose-lg transition-all group" style="animation-delay: ${i * 35}ms">
           <!-- Large High-Visual Hero Cake Photo -->
           <div class="relative h-40 rounded-[18px] overflow-hidden bg-blush-100 shadow-2xs">
-            <img src="${c.img || SVG_CAKE_FALLBACK}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
+            <img loading="lazy" decoding="async" width="180" height="180" src="${c.img || SVG_CAKE_FALLBACK}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src=SVG_CAKE_FALLBACK;" />
             
             <!-- Sleek Glass Timestamp Pill (e.g. Today, 1 day ago, 2 days ago) -->
             <div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-black/55 backdrop-blur-md text-white text-[9.5px] font-bold shadow-xs flex items-center gap-1">
@@ -13215,6 +13191,53 @@ function resetDemo() {
       if (!mapEl) return;
       const lat = shopMgmtState.location.lat || 9.0054;
       const lng = shopMgmtState.location.lng || 38.7885;
+
+      const doRender = () => {
+        if (typeof L !== 'undefined') {
+          if (smLeafletMap) {
+            smLeafletMap.remove();
+            smLeafletMap = null;
+          }
+          smLeafletMap = L.map(mapEl, { zoomControl: true }).setView([lat, lng], 15);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+          }).addTo(smLeafletMap);
+          smLeafletMarker = L.marker([lat, lng], { draggable: true }).addTo(smLeafletMap);
+          smLeafletMarker.on('dragend', () => {
+            const pos = smLeafletMarker.getLatLng();
+            updateShopLocationPin(pos.lat, pos.lng, false);
+          });
+          smLeafletMap.on('click', (e) => {
+            updateShopLocationPin(e.latlng.lat, e.latlng.lng, true);
+          });
+          setTimeout(() => { if (smLeafletMap) smLeafletMap.invalidateSize(); }, 200);
+        } else {
+          mapEl.innerHTML = `<div onclick="updateShopLocationPin(9.0054 + (Math.random()-0.5)*0.01, 38.7885 + (Math.random()-0.5)*0.01, false)" class="w-full h-full bg-blush-50 flex flex-col items-center justify-center text-center p-3 cursor-pointer"><div class="text-berry font-extrabold text-xs">📍 Interactive Pin Pad (Offline Mode)</div><div class="text-[10px] text-ink-muted mt-1">Lat: ${lat}, Lng: ${lng} • Tap to adjust coordinates</div></div>`;
+        }
+      };
+
+      if (typeof L === 'undefined') {
+        if (!document.getElementById('leaflet-css')) {
+          const lCss = document.createElement('link');
+          lCss.id = 'leaflet-css';
+          lCss.rel = 'stylesheet';
+          lCss.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+          document.head.appendChild(lCss);
+        }
+        if (!document.getElementById('leaflet-js')) {
+          const lJs = document.createElement('script');
+          lJs.id = 'leaflet-js';
+          lJs.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+          lJs.onload = doRender;
+          lJs.onerror = doRender;
+          document.head.appendChild(lJs);
+        } else {
+          doRender();
+        }
+      } else {
+        doRender();
+      }
+      return;
       if (typeof L !== 'undefined') {
         if (smLeafletMap) {
           smLeafletMap.remove();
@@ -16225,11 +16248,11 @@ function resetDemo() {
     // ==========================================================
 </script>
   <!-- Real Firebase Google OAuth SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="./js/firebase-config.js?v=14.0"></script>
-  <script src="./js/firebase-service.js?v=14.0"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script defer src="./js/firebase-config.js?v=14.0"></script>
+  <script defer src="./js/firebase-service.js?v=14.0"></script>
   <script>
     // =========================================================================
     // SPA PHONE HARDWARE / SYSTEM BACK BUTTON NAVIGATION MANAGER

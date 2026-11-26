@@ -426,3 +426,9 @@ const FirebaseService = (function () {
 
 // Attach to window
 window.FirebaseService = FirebaseService;
+if (typeof window !== 'undefined') {
+  window.__firebaseServiceReady = true;
+  try {
+    window.dispatchEvent(new CustomEvent('firebase-service-ready', { detail: FirebaseService }));
+  } catch (_) {}
+}

@@ -132,8 +132,8 @@ const FirebaseService = (function () {
     if ('Notification' in window && Notification.permission === 'granted') {
       try {
         const notif = new Notification(title, {
-          icon: '/images/mak-cake-logo.png',
-          badge: '/images/mak-cake-logo.png',
+          icon: './images/mak-cake-logo.webp',
+          badge: './images/mak-cake-logo.webp',
           vibrate: [200, 100, 200],
           ...options
         });

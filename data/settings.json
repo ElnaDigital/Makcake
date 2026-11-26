@@ -4,7 +4,7 @@
     "tagline": "Luxury Artisanal Bakery Addis Ababa",
     "description": "Handcrafted luxury cakes, romantic bento duos, and celebration confections freshly baked with premium Belgian chocolate and Ethiopian passion in Addis Ababa.",
     "category": "Artisanal Bakery & Confectionery",
-    "logo": "/images/mak-cake-logo.webp"
+    "logo": "./images/mak-cake-logo.webp"
   },
   "contact": {
     "primaryPhone": "+251 91 123 4567",
@@ -70,14 +70,14 @@
       "accountHolder": "MAK Cake Artisanal Bakery",
       "accountNumber": "1000123456789",
       "enabled": true,
-      "logo": "/images/cbe-logo.webp"
+      "logo": "./images/cbe-logo.webp"
     },
     "telebirr": {
       "name": "Telebirr",
       "accountHolder": "MAK Cake Bakery",
       "accountNumber": "0911234567",
       "enabled": true,
-      "logo": "/images/telebirr-logo.webp"
+      "logo": "./images/telebirr-logo.webp"
     },
     "customMethods": [
       {

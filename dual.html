@@ -1576,7 +1576,7 @@
               <div id="success-status-pill-container" class="flex justify-center">
                 <!-- Rendered dynamically -->
               </div>
-              <h3 id="success-order-id" class="text-2xl font-extrabold text-ink tracking-tight pt-0.5">#ORD-10047</h3>
+              <h3 id="success-order-id" class="text-2xl font-extrabold text-ink tracking-tight pt-0.5">&mdash;</h3>
               <p id="success-order-sub" class="text-xs text-ink-muted max-w-[280px] mx-auto leading-relaxed">
                 Thank you! Your payment verification is in progress at MAK CAKE Bole Kitchen.
               </p>
@@ -1597,11 +1597,11 @@
           <!-- Bottom Actions: Call Us, Track Live, Back to Home -->
           <div class="space-y-2 pt-2 shrink-0 w-full">
             <!-- Call Us Button with Call Us Icon -->
-            <a href="tel:+251911234567" class="w-full py-2.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-extrabold text-xs shadow-rose-xs active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+            <a id="success-call-link" href="tel:+251911234567" class="w-full py-2.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-extrabold text-xs shadow-rose-xs active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
               <svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
-              <span>Call Us: +251 911 234 567</span>
+              <span id="success-call-label">Call Us</span>
             </a>
 
             <!-- Track Order Live -->
@@ -1780,18 +1780,18 @@
             <button onclick="closeContactSheet()" class="w-7 h-7 rounded-full bg-blush-100 text-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
           <div class="grid grid-cols-2 gap-2.5">
-            <a href="tel:+251911234567" onclick="showCustomerToast('Calling +251 91 123 4567...')" class="py-3 rounded-2xl btn-berry text-white font-bold text-xs text-center shadow-rose-sm flex items-center justify-center gap-1.5">
+            <a id="contact-call-link" href="tel:+251911234567" class="py-3 rounded-2xl btn-berry text-white font-bold text-xs text-center shadow-rose-sm flex items-center justify-center gap-1.5">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span>Call Bakery</span>
             </a>
-            <button onclick="copyText('+251911234567', 'Phone Number', 'customer', this)" class="py-3 rounded-2xl bg-blush-100 border border-blush-300 text-berry font-bold text-xs inline-flex items-center justify-center gap-1.5 transition-all">
+            <button id="contact-copy-phone-btn" type="button" class="py-3 rounded-2xl bg-blush-100 border border-blush-300 text-berry font-bold text-xs inline-flex items-center justify-center gap-1.5 transition-all">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy Phone</span>
             </button>
           </div>
           <div class="bg-blush-100 rounded-2xl p-3 text-[11px] text-ink-muted space-y-1">
-            <div><strong class="text-ink">Telebirr:</strong> 0911 23 45 67 (Makda Tesfaye)</div>
-            <div><strong class="text-ink">CBE:</strong> 1000 1234 56789 (MAK CAKE Bakery)</div>
+            <div id="contact-telebirr-line"></div>
+            <div id="contact-cbe-line"></div>
           </div>
         </div>
 
@@ -3503,6 +3503,84 @@
     // =========================================================================
     // 1. HERO CAROUSEL SLIDES (4 Slides)
     // =========================================================================
+    // =========================================================================
+    // CENTRALIZED SHOP CONTACT & PAYMENT CONFIGURATION
+    // TODO: Replace these placeholder values with your real business phone,
+    //       Telebirr number, and CBE account number (or edit public/data/settings.json).
+    // =========================================================================
+    const SHOP_SETTINGS_CONFIG = {
+      phoneDisplay: '+251 911 234 567',      // TODO: Enter your real shop phone (display)
+      phoneTel: '+251911234567',             // TODO: Enter your real shop phone (tel: link, no spaces)
+      phoneLocal: '0911 23 45 67',           // TODO: Enter your real local phone format
+      telebirrNumber: '0911234567',          // TODO: Enter your real Telebirr number (no spaces)
+      telebirrDisplay: '0911 23 45 67',      // TODO: Enter your real Telebirr display number
+      telebirrHolder: 'MAK Cake Bakery',     // TODO: Enter your real Telebirr account holder
+      cbeAccount: '1000123456789',           // TODO: Enter your real CBE account number (no spaces)
+      cbeAccountDisplay: '1000 1234 56789',  // TODO: Enter your real CBE display format
+      cbeHolder: 'MAK Cake Artisanal Bakery' // TODO: Enter your real CBE account holder
+    };
+
+    function applyShopSettingsConfigToDom() {
+      const phoneDisp = SHOP_SETTINGS_CONFIG.phoneDisplay;
+      const phoneTel = SHOP_SETTINGS_CONFIG.phoneTel;
+
+      const sucCall = document.getElementById('success-call-link');
+      const sucCallLbl = document.getElementById('success-call-label');
+      if (sucCall) sucCall.href = 'tel:' + phoneTel;
+      if (sucCallLbl) sucCallLbl.textContent = 'Call Us: ' + phoneDisp;
+
+      const cCall = document.getElementById('contact-call-link');
+      if (cCall) {
+        cCall.href = 'tel:' + phoneTel;
+        cCall.onclick = () => showCustomerToast('Calling ' + phoneDisp + '...');
+      }
+      const cCopy = document.getElementById('contact-copy-phone-btn');
+      if (cCopy) {
+        cCopy.onclick = function() { copyText(phoneTel, 'Phone Number', 'customer', this); };
+      }
+      const cTb = document.getElementById('contact-telebirr-line');
+      if (cTb) cTb.innerHTML = '<strong class="text-ink">Telebirr:</strong> ' + SHOP_SETTINGS_CONFIG.telebirrDisplay + ' (' + SHOP_SETTINGS_CONFIG.telebirrHolder + ')';
+      const cCbe = document.getElementById('contact-cbe-line');
+      if (cCbe) cCbe.innerHTML = '<strong class="text-ink">CBE:</strong> ' + SHOP_SETTINGS_CONFIG.cbeAccountDisplay + ' (' + SHOP_SETTINGS_CONFIG.cbeHolder + ')';
+    }
+
+    async function loadShopSettingsFromJson() {
+      try {
+        const res = await fetch('./data/settings.json', { cache: 'no-cache' });
+        if (!res.ok) return;
+        const cfg = await res.json();
+        if (cfg.contact && cfg.contact.primaryPhone) {
+          SHOP_SETTINGS_CONFIG.phoneDisplay = cfg.contact.primaryPhone;
+          SHOP_SETTINGS_CONFIG.phoneTel = cfg.contact.primaryPhone.replace(/\s+/g, '');
+          SHOP_SETTINGS_CONFIG.phoneLocal = cfg.contact.primaryPhone;
+        }
+        if (cfg.payments && cfg.payments.telebirr && cfg.payments.telebirr.accountNumber) {
+          SHOP_SETTINGS_CONFIG.telebirrNumber = String(cfg.payments.telebirr.accountNumber).replace(/\s+/g, '');
+          SHOP_SETTINGS_CONFIG.telebirrDisplay = String(cfg.payments.telebirr.accountNumber);
+          if (cfg.payments.telebirr.accountHolder) SHOP_SETTINGS_CONFIG.telebirrHolder = cfg.payments.telebirr.accountHolder;
+        }
+        if (cfg.payments && cfg.payments.cbe && cfg.payments.cbe.accountNumber) {
+          SHOP_SETTINGS_CONFIG.cbeAccount = String(cfg.payments.cbe.accountNumber).replace(/\s+/g, '');
+          SHOP_SETTINGS_CONFIG.cbeAccountDisplay = String(cfg.payments.cbe.accountNumber);
+          if (cfg.payments.cbe.accountHolder) SHOP_SETTINGS_CONFIG.cbeHolder = cfg.payments.cbe.accountHolder;
+        }
+        if (typeof state !== 'undefined' && state.shop) {
+          state.shop.businessPhone = SHOP_SETTINGS_CONFIG.phoneLocal;
+          if (state.shop.paymentMethods) {
+            if (state.shop.paymentMethods.telebirr) {
+              state.shop.paymentMethods.telebirr.accountNumber = SHOP_SETTINGS_CONFIG.telebirrDisplay;
+              state.shop.paymentMethods.telebirr.accountName = SHOP_SETTINGS_CONFIG.telebirrHolder;
+            }
+            if (state.shop.paymentMethods.cbe) {
+              state.shop.paymentMethods.cbe.accountNumber = SHOP_SETTINGS_CONFIG.cbeAccountDisplay;
+              state.shop.paymentMethods.cbe.accountName = SHOP_SETTINGS_CONFIG.cbeHolder;
+            }
+          }
+        }
+        applyShopSettingsConfigToDom();
+      } catch (_) {}
+    }
+
     const HERO_SLIDES = [
       {
         top: 'Make Every Moment',
@@ -4677,10 +4755,37 @@
       renderHero();
     }
 
+    let heroSlidesInitialized = false;
+    function ensureHeroSlideImages() {
+      if (heroSlidesInitialized) return;
+      const container = document.getElementById('hero-slides-images');
+      if (!container) return;
+      HERO_SLIDES.forEach((slide, idx) => {
+        if (idx === 0) return; // Slide 0 already rendered eagerly as #hero-slide-img
+        const imgEl = document.createElement('img');
+        imgEl.setAttribute('data-slide-idx', String(idx));
+        imgEl.width = 420;
+        imgEl.height = 162;
+        imgEl.loading = 'lazy';
+        imgEl.decoding = 'async';
+        imgEl.alt = slide.script || 'MAK CAKE';
+        imgEl.src = slide.img;
+        imgEl.className = 'hero-slide-layer absolute right-0 top-0 h-full w-[58%] object-cover object-center hero-cake-mask transition-opacity duration-500 ease-in-out opacity-0 pointer-events-none';
+        imgEl.onerror = function() { this.onerror = null; this.src = SVG_CAKE_FALLBACK; };
+        container.appendChild(imgEl);
+      });
+      heroSlidesInitialized = true;
+    }
+
     function renderHero() {
+      ensureHeroSlideImages();
       const s = HERO_SLIDES[heroIndex] || HERO_SLIDES[0];
-      const img = document.getElementById('hero-slide-img');
-      if (img && img.src !== s.img) img.src = s.img;
+      const layers = document.querySelectorAll('#hero-slides-images .hero-slide-layer');
+      layers.forEach((el) => {
+        const isActive = Number(el.getAttribute('data-slide-idx')) === heroIndex;
+        el.classList.toggle('opacity-100', isActive);
+        el.classList.toggle('opacity-0', !isActive);
+      });
       const topEl = document.getElementById('hero-slide-top');
       if (topEl) topEl.textContent = s.top;
       const scriptEl = document.getElementById('hero-slide-script');
@@ -6530,11 +6635,11 @@
                     ${getBrandLogo('telebirr', 'w-10 h-10')}
                     <div class="min-w-0">
                       <div class="text-[10px] font-black uppercase text-[#0071CE] tracking-wider">Telebirr Account</div>
-                      <div class="text-sm font-black text-ink mt-0.5 tracking-tight">${(state.shop.paymentMethods?.telebirr?.accountNumber) || '0911 23 45 67'}</div>
-                      <div class="text-[10px] text-ink-muted truncate">Name: ${(state.shop.paymentMethods?.telebirr?.accountName) || 'Makda Tesfaye (MAK CAKE)'}</div>
+                      <div class="text-sm font-black text-ink mt-0.5 tracking-tight">${(state.shop.paymentMethods?.telebirr?.accountNumber) || SHOP_SETTINGS_CONFIG.telebirrDisplay}</div>
+                      <div class="text-[10px] text-ink-muted truncate">Name: ${(state.shop.paymentMethods?.telebirr?.accountName) || SHOP_SETTINGS_CONFIG.telebirrHolder}</div>
                     </div>
                   </div>
-                  <button onclick="copyText('0911234567', 'Telebirr', 'customer', this)" class="px-3.5 py-1.5 rounded-full bg-white border border-blush-200 hover:border-berry/40 text-berry font-extrabold text-[11px] shadow-xs shrink-0 inline-flex items-center gap-1.5 transition-all active:scale-95">
+                  <button onclick="copyText('${((state.shop.paymentMethods?.telebirr?.accountNumber) || SHOP_SETTINGS_CONFIG.telebirrNumber).replace(/\\s+/g, '')}', 'Telebirr', 'customer', this)" class="px-3.5 py-1.5 rounded-full bg-white border border-blush-200 hover:border-berry/40 text-berry font-extrabold text-[11px] shadow-xs shrink-0 inline-flex items-center gap-1.5 transition-all active:scale-95">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                     <span>Copy</span>
                   </button>
@@ -6546,11 +6651,11 @@
                     ${getBrandLogo('cbe', 'w-10 h-10')}
                     <div class="min-w-0">
                       <div class="text-[10px] font-black uppercase text-[#501C65] tracking-wider">Commercial Bank of Ethiopia</div>
-                      <div class="text-sm font-black text-ink mt-0.5 tracking-tight">${(state.shop.paymentMethods?.cbe?.accountNumber) || '1000 1234 56789'}</div>
-                      <div class="text-[10px] text-ink-muted truncate">Account: ${(state.shop.paymentMethods?.cbe?.accountName) || 'MAK CAKE Bakery'}</div>
+                      <div class="text-sm font-black text-ink mt-0.5 tracking-tight">${(state.shop.paymentMethods?.cbe?.accountNumber) || SHOP_SETTINGS_CONFIG.cbeAccountDisplay}</div>
+                      <div class="text-[10px] text-ink-muted truncate">Account: ${(state.shop.paymentMethods?.cbe?.accountName) || SHOP_SETTINGS_CONFIG.cbeHolder}</div>
                     </div>
                   </div>
-                  <button onclick="copyText('1000123456789', 'CBE', 'customer', this)" class="px-3.5 py-1.5 rounded-full bg-white border border-blush-200 hover:border-berry/40 text-berry font-extrabold text-[11px] shadow-xs shrink-0 inline-flex items-center gap-1.5 transition-all active:scale-95">
+                  <button onclick="copyText('${((state.shop.paymentMethods?.cbe?.accountNumber) || SHOP_SETTINGS_CONFIG.cbeAccount).replace(/\\s+/g, '')}', 'CBE', 'customer', this)" class="px-3.5 py-1.5 rounded-full bg-white border border-blush-200 hover:border-berry/40 text-berry font-extrabold text-[11px] shadow-xs shrink-0 inline-flex items-center gap-1.5 transition-all active:scale-95">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                     <span>Copy</span>
                   </button>
@@ -7218,12 +7323,15 @@
           const reg = await navigator.serviceWorker.ready;
           swRegistration = reg;
 
-          // PushManager subscription & backend registration (if supported)
-          if ('PushManager' in window && reg.pushManager) {
+          // PushManager subscription & backend registration (only if MAK_PUSH_BACKEND_URL is configured; default OFF)
+          const pushBackendUrl = (typeof window.MAK_PUSH_BACKEND_URL === 'string' && window.MAK_PUSH_BACKEND_URL.trim())
+            ? window.MAK_PUSH_BACKEND_URL.trim().replace(/\/$/, '')
+            : '';
+          if (pushBackendUrl && 'PushManager' in window && reg.pushManager) {
             let sub = await reg.pushManager.getSubscription();
             if (!sub) {
               try {
-                const keyRes = await fetch('/api/push/vapid-key').then(r => r.json()).catch(() => null);
+                const keyRes = await fetch(pushBackendUrl + '/api/push/vapid-key').then(r => r.json()).catch(() => null);
                 if (keyRes && keyRes.publicKey) {
                   const appServerKey = urlBase64ToUint8Array(keyRes.publicKey);
                   sub = await reg.pushManager.subscribe({
@@ -7236,7 +7344,7 @@
               }
             }
             if (sub) {
-              fetch('/api/push/subscribe', {
+              fetch(pushBackendUrl + '/api/push/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -7362,7 +7470,8 @@
       }
 
       // Notify backend push API
-      fetch('/api/push/send-status', {
+      const pushBackendUrl = (typeof window.MAK_PUSH_BACKEND_URL === 'string' && window.MAK_PUSH_BACKEND_URL.trim()) ? window.MAK_PUSH_BACKEND_URL.trim().replace(/\/$/, '') : '';
+      if (pushBackendUrl) fetch(pushBackendUrl + '/api/push/send-status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderId: order.id, status: normStatus })
@@ -11542,7 +11651,7 @@
   // 1. Business Profile
   businessName: 'MAK CAKE',
   businessLogo: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=120&q=80',
-  businessPhone: '0911 23 45 67',
+  businessPhone: SHOP_SETTINGS_CONFIG.phoneLocal,
   businessAddress: 'Bole Medhanialem, near Edna Mall, Addis Ababa',
   businessDesc: 'Addis Ababa Premier Halal Luxury Cake Bakery & Dessert Boutique',
   businessLocation: 'Bole Medhanialem, Addis Ababa',
@@ -11554,8 +11663,8 @@
   deliveryInstructions: 'Same-day delivery chilled in insulated carrier boxes with real-time driver tracking.',
   // 3. Payment Methods
   paymentMethods: {
-    telebirr: { enabled: true, name: 'Telebirr', accountName: 'MAK CAKE Bakery', accountNumber: '0911 23 45 67', instructions: 'Transfer via Telebirr app and upload screenshot receipt below.' },
-    cbe: { enabled: true, name: 'CBE Transfer', accountName: 'MAK CAKE Addis', accountNumber: '1000 1234 56789', instructions: 'Transfer to Commercial Bank of Ethiopia and upload slip screenshot.' },
+    telebirr: { enabled: true, name: 'Telebirr', accountName: SHOP_SETTINGS_CONFIG.telebirrHolder, accountNumber: SHOP_SETTINGS_CONFIG.telebirrDisplay, instructions: 'Transfer via Telebirr app and upload screenshot receipt below.' },
+    cbe: { enabled: true, name: 'CBE Transfer', accountName: SHOP_SETTINGS_CONFIG.cbeHolder, accountNumber: SHOP_SETTINGS_CONFIG.cbeAccountDisplay, instructions: 'Transfer to Commercial Bank of Ethiopia and upload slip screenshot.' },
     cod: { enabled: true, name: 'Pay on Delivery', accountName: 'Cash on Arrival', accountNumber: 'Bole Courier', instructions: 'Pay courier in cash or Telebirr upon receiving your fresh cake.' }
   },
   // 4. Order Preferences
@@ -12909,8 +13018,8 @@ function resetDemo() {
         deliveryInstructions: 'Same-day delivery chilled in insulated carrier boxes with real-time driver tracking.'
       },
       payments: {
-        cbe: { name: 'Commercial Bank of Ethiopia (CBE)', enabled: true, accountHolder: 'MAK Cake Artisanal Bakery', accountNumber: '1000123456789', instructions: 'Transfer to CBE and upload receipt.' },
-        telebirr: { name: 'Telebirr', enabled: true, accountHolder: 'MAK Cake Bakery', accountNumber: '0911234567', instructions: 'Transfer via Telebirr app and upload screenshot.' },
+        cbe: { name: 'Commercial Bank of Ethiopia (CBE)', enabled: true, accountHolder: SHOP_SETTINGS_CONFIG.cbeHolder, accountNumber: SHOP_SETTINGS_CONFIG.cbeAccount, instructions: 'Transfer to CBE and upload receipt.' },
+        telebirr: { name: 'Telebirr', enabled: true, accountHolder: SHOP_SETTINGS_CONFIG.telebirrHolder, accountNumber: SHOP_SETTINGS_CONFIG.telebirrNumber, instructions: 'Transfer via Telebirr app and upload screenshot.' },
         cod: { name: 'Pay on Delivery', enabled: true, accountHolder: 'Cash on Arrival', accountNumber: 'Bole Courier', instructions: 'Pay courier in cash or Telebirr upon delivery.' },
         verification: {
           requireReceipt: true,
@@ -15601,8 +15710,8 @@ function resetDemo() {
       const accEl = document.getElementById('upg-modal-accounts');
       if (accEl) {
         const pay = settingsHubState.payments || shopMgmtState?.payments || {};
-        const cbeNum = pay.cbe?.accountNumber || '1000123456789';
-        const tbNum = pay.telebirr?.accountNumber || '0911234567';
+        const cbeNum = pay.cbe?.accountNumber || SHOP_SETTINGS_CONFIG.cbeAccount;
+        const tbNum = pay.telebirr?.accountNumber || SHOP_SETTINGS_CONFIG.telebirrNumber;
         accEl.innerHTML = `
           <div class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white border border-blush-200/80">
             <div class="min-w-0">
@@ -16220,6 +16329,8 @@ function resetDemo() {
           document.body.classList.add('standalone-app', 'standalone-customer');
           document.title = 'MAK CAKE — Artisanal Luxury Cakes Addis Ababa';
         }
+        applyShopSettingsConfigToDom();
+        loadShopSettingsFromJson();
         setWorkspaceMode(initialMode);
         syncAll();
         switchAdminTab('overview');

@@ -18,13 +18,13 @@ const APP_SHELL = [
   './dual.html',
   './manifest.json',
   './css/styles.css',
-  './images/mak-cake-logo.png',
+  './images/mak-cake-logo.webp',
   './images/mak-cake-logo.jpg',
   './images/mak-cake-logo.webp',
   './images/hero-banner.jpg',
   './images/hero-cake-only.jpg',
-  './images/cbe-logo.png',
-  './images/telebirr-logo.png',
+  './images/cbe-logo.webp',
+  './images/telebirr-logo.webp',
   './js/firebase-config.js',
   './js/firebase-service.js'
 ];
@@ -133,8 +133,8 @@ self.addEventListener('push', (event) => {
 
   const options = {
     body: payload.body,
-    icon: payload.icon || './images/mak-cake-logo.png',
-    badge: payload.badge || './images/mak-cake-logo.png',
+    icon: payload.icon || './images/mak-cake-logo.webp',
+    badge: payload.badge || './images/mak-cake-logo.webp',
     tag: payload.orderId ? `mak-order-${payload.orderId}` : 'mak-cake-general',
     renotify: true,
     vibrate: [200, 100, 200],

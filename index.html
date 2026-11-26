@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="MAK CAKE" />
   <link rel="apple-touch-icon" href="./images/mak-cake-logo.png" />
-  <link rel="icon" type="image/png" href="./images/mak-cake-logo.png" />
+  <link rel="icon" type="image/webp" href="./images/mak-cake-logo.webp" />
   
   <!-- Preload Critical LCP Hero Image -->
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=420&q=75" fetchpriority="high" />
@@ -1958,7 +1958,7 @@
               <div class="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-berry/25 bg-blush-100 shrink-0 flex items-center justify-center">
                 <img
                   id="drawer-admin-avatar"
-                  src="./images/mak-cake-logo.png"
+                  src="./images/mak-cake-logo.webp"
                   alt="MAK CAKE Admin Profile"
                   class="w-full h-full object-cover"
                   onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
@@ -2090,11 +2090,11 @@
               <label class="block text-[10.5px] font-bold text-ink-muted mb-1.5">Select Payment Method</label>
               <div class="grid grid-cols-2 gap-2">
                 <button type="button" id="upg-method-cbe" onclick="selectUpgradePayMethod('CBE')" class="p-2.5 rounded-2xl border-2 border-berry bg-blush-50 text-left flex items-center gap-2 transition-all cursor-pointer">
-                  <img src="./images/cbe-logo.png" alt="CBE" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shrink-0" />
+                  <img src="./images/cbe-logo.webp" alt="CBE" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shrink-0" />
                   <span class="text-[11px] font-extrabold text-ink">CBE</span>
                 </button>
                 <button type="button" id="upg-method-tb" onclick="selectUpgradePayMethod('Telebirr')" class="p-2.5 rounded-2xl border border-blush-200 bg-white text-left flex items-center gap-2 transition-all cursor-pointer">
-                  <img src="./images/telebirr-logo.png" alt="Telebirr" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shrink-0" />
+                  <img src="./images/telebirr-logo.webp" alt="Telebirr" class="w-6 h-6 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shrink-0" />
                   <span class="text-[11px] font-extrabold text-ink">Telebirr</span>
                 </button>
               </div>
@@ -2690,7 +2690,7 @@
             <div class="bg-white rounded-[22px] p-4 shadow-rose-sm border border-blush-200/70 space-y-3.5">
               <div class="flex items-center gap-3.5">
                 <div class="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-berry/25 bg-blush-100 shrink-0 flex items-center justify-center shadow-rose-sm">
-                  <img id="profile-avatar-preview" src="./images/mak-cake-logo.png" alt="Admin Avatar" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+                  <img id="profile-avatar-preview" src="./images/mak-cake-logo.webp" alt="Admin Avatar" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
                   <svg class="hidden w-7 h-7 text-berry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
                 <div class="flex-1 min-w-0">
@@ -3483,8 +3483,8 @@
     
     // Official Ethiopian Payment Provider Logos (Telebirr & Commercial Bank of Ethiopia)
     const BRAND_LOGOS = {
-      telebirr: 'https://i.ibb.co/HfY7YdSZ/photo-2026-11-24-08-02-15.jpg',
-      cbe: 'https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A'
+      telebirr: './images/telebirr-logo.webp',
+      cbe: './images/cbe-logo.webp'
     };
 
     function getBrandLogo(brand, size = 'w-5 h-5') {
@@ -8517,7 +8517,7 @@
       email: 'owner@makcake.et',
       phone: '0911 23 45 67',
       role: 'Owner',
-      avatar: './images/mak-cake-logo.png',
+      avatar: './images/mak-cake-logo.webp',
       shopName: 'MAK CAKE • Bole Kitchen',
       googleConnected: false,
       googleEmail: '',
@@ -8551,7 +8551,7 @@
       const inPhone = document.getElementById('profile-input-phone');
 
       if (pAvatar) {
-        pAvatar.src = pendingProfileAvatarData || p.avatar || './images/mak-cake-logo.png';
+        pAvatar.src = pendingProfileAvatarData || p.avatar || './images/mak-cake-logo.webp';
         pAvatar.style.display = '';
       }
       if (pDispName) pDispName.textContent = p.name || 'MAK CAKE Owner';
@@ -12904,7 +12904,7 @@ function resetDemo() {
     let shopMgmtState = {
       business: {
         name: 'MAK CAKE',
-        logo: './images/mak-cake-logo.png',
+        logo: './images/mak-cake-logo.webp',
         description: 'Handcrafted luxury cakes, romantic bento duos, and celebration confections freshly baked in Addis Ababa.',
         phone: '0911 23 45 67',
         email: 'hello@makcake.et',
@@ -13291,7 +13291,7 @@ function resetDemo() {
           <div class="bg-white rounded-[22px] p-4 shadow-rose-sm border border-blush-200/70 space-y-3">
             <h3 class="text-xs font-extrabold text-ink">1. Business Information</h3>
             <div class="flex items-center gap-3 p-2.5 rounded-2xl bg-blush-50/70 border border-blush-200/70">
-              <img id="sm-biz-logo-preview" src="${smPendingLogoData || b.logo || './images/mak-cake-logo.png'}" alt="Shop Logo" class="w-12 h-12 rounded-xl object-cover bg-white border border-blush-200 shrink-0" />
+              <img id="sm-biz-logo-preview" src="${smPendingLogoData || b.logo || './images/mak-cake-logo.webp'}" alt="Shop Logo" class="w-12 h-12 rounded-xl object-cover bg-white border border-blush-200 shrink-0" />
               <div class="flex-1 min-w-0">
                 <div class="text-[11px] font-bold text-ink">Shop Logo</div>
                 <input type="file" id="sm-biz-logo-file" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleShopLogoUpload(this)" />
@@ -13520,7 +13520,7 @@ function resetDemo() {
             <div class="flex items-center justify-between pb-2.5 border-b border-stone-100">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-white border border-purple-200 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-2xs">
-                  <img src="./images/cbe-logo.png" alt="CBE" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';" />
+                  <img src="./images/cbe-logo.webp" alt="CBE" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';" />
                 </div>
                 <div>
                   <h4 class="font-extrabold text-xs text-ink">Commercial Bank of Ethiopia</h4>
@@ -13553,7 +13553,7 @@ function resetDemo() {
             <div class="flex items-center justify-between pb-2.5 border-b border-stone-100">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-white border border-sky-200 p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-2xs">
-                  <img src="./images/telebirr-logo.png" alt="Telebirr" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';" />
+                  <img src="./images/telebirr-logo.webp" alt="Telebirr" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';" />
                 </div>
                 <div>
                   <h4 class="font-extrabold text-xs text-ink">Telebirr Mobile Money</h4>
@@ -16406,7 +16406,7 @@ function resetDemo() {
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">
-      <img src="./images/mak-cake-logo.png" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 shrink-0" />
+      <img src="./images/mak-cake-logo.webp" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 shrink-0" />
       <div class="flex-1 min-w-0 text-left">
         <h4 class="font-extrabold text-xs text-ink truncate">Install MAK CAKE App</h4>
         <p class="text-[10px] text-ink-muted leading-tight truncate">Install on home screen for 1-tap ordering & offline access</p>
@@ -16419,7 +16419,7 @@ function resetDemo() {
   <!-- iOS Add to Home Screen Instructions Banner -->
   <div id="ios-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all">
     <div class="flex items-start gap-3">
-      <img src="./images/mak-cake-logo.png" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 mt-0.5 shrink-0" />
+      <img src="./images/mak-cake-logo.webp" alt="MAK CAKE" class="w-10 h-10 rounded-xl object-contain shadow-2xs border border-blush-100 mt-0.5 shrink-0" />
       <div class="flex-1 min-w-0 text-left">
         <h4 class="font-extrabold text-xs text-ink">Install on your iPhone / iPad</h4>
         <p class="text-[10px] text-ink-muted leading-relaxed mt-0.5">

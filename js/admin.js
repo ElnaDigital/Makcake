@@ -55,7 +55,7 @@ async function checkAdminSession() {
     name: 'Blen Tesfaye (Owner)',
     email: 'owner@makcake.com',
     role: 'Owner',
-    avatar: '/images/mak-cake-logo.png'
+    avatar: '/images/mak-cake-logo.webp'
   };
 
   const savedSession = localStorage.getItem('mak_cake_admin_session');
@@ -2985,7 +2985,7 @@ async function loadBusinessSettings() {
 
 function updateAdminBranding(settings) {
   const brandName = settings.brand?.name || 'MAK CAKE';
-  const logoUrl = settings.brand?.logo || '/images/mak-cake-logo.png';
+  const logoUrl = settings.brand?.logo || '/images/mak-cake-logo.webp';
 
   // Update header and sidebar
   const navBrandName = document.getElementById('navBrandName');
@@ -3018,7 +3018,7 @@ function populateSettingsForm(settings) {
   if (descEl) descEl.value = settings.brand?.description || '';
   
   const logoPreview = document.getElementById('formLogoPreview');
-  if (logoPreview) logoPreview.src = settings.brand?.logo || '/images/mak-cake-logo.png';
+  if (logoPreview) logoPreview.src = settings.brand?.logo || '/images/mak-cake-logo.webp';
 
   // Contact
   const pPhoneEl = document.getElementById('setContactPhonePrimary');
@@ -3395,7 +3395,7 @@ function removeBusinessLogo() {
   stagedLogoBase64 = null;
   stagedRemoveLogo = true;
   const preview = document.getElementById('formLogoPreview');
-  if (preview) preview.src = '/images/mak-cake-logo.png';
+  if (preview) preview.src = '/images/mak-cake-logo.webp';
   showAdminToast('Logo reset to default preview. Click SAVE CHANGES to publish.', 'success');
 }
 
@@ -3438,7 +3438,7 @@ async function saveSettingsForm() {
       category: document.getElementById('setBrandCategory')?.value.trim() || 'Artisanal Bakery & Confectionery',
       tagline: document.getElementById('setBrandTagline')?.value.trim() || '',
       description: document.getElementById('setBrandDescription')?.value.trim() || '',
-      logo: currentSettings?.brand?.logo || '/images/mak-cake-logo.png'
+      logo: currentSettings?.brand?.logo || '/images/mak-cake-logo.webp'
     },
     contact: {
       primaryPhone: primaryPhone,
@@ -3468,14 +3468,14 @@ async function saveSettingsForm() {
         accountHolder: document.getElementById('setPayCbeHolder')?.value.trim() || '',
         accountNumber: document.getElementById('setPayCbeNumber')?.value.trim() || '',
         enabled: Boolean(document.getElementById('setPayCbeEnabled')?.checked),
-        logo: currentSettings?.payments?.cbe?.logo || '/images/cbe-logo.png'
+        logo: currentSettings?.payments?.cbe?.logo || '/images/cbe-logo.webp'
       },
       telebirr: {
         name: 'Telebirr',
         accountHolder: document.getElementById('setPayTelebirrHolder')?.value.trim() || '',
         accountNumber: document.getElementById('setPayTelebirrNumber')?.value.trim() || '',
         enabled: Boolean(document.getElementById('setPayTelebirrEnabled')?.checked),
-        logo: currentSettings?.payments?.telebirr?.logo || '/images/telebirr-logo.png'
+        logo: currentSettings?.payments?.telebirr?.logo || '/images/telebirr-logo.webp'
       }
     },
     alerts: {
@@ -3555,14 +3555,14 @@ async function savePaymentSettingsDirect() {
       accountHolder: document.getElementById('directPayCbeHolder')?.value.trim() || '',
       accountNumber: document.getElementById('directPayCbeNumber')?.value.trim() || '',
       enabled: Boolean(document.getElementById('directPayCbeEnabled')?.checked),
-      logo: currentSettings?.payments?.cbe?.logo || '/images/cbe-logo.png'
+      logo: currentSettings?.payments?.cbe?.logo || '/images/cbe-logo.webp'
     },
     telebirr: {
       name: 'Telebirr',
       accountHolder: document.getElementById('directPayTelebirrHolder')?.value.trim() || '',
       accountNumber: document.getElementById('directPayTelebirrNumber')?.value.trim() || '',
       enabled: Boolean(document.getElementById('directPayTelebirrEnabled')?.checked),
-      logo: currentSettings?.payments?.telebirr?.logo || '/images/telebirr-logo.png'
+      logo: currentSettings?.payments?.telebirr?.logo || '/images/telebirr-logo.webp'
     },
     customMethods: currentSettings?.payments?.customMethods || []
   };

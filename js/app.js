@@ -2528,7 +2528,7 @@ function getPaymentAccountsHtml() {
     paymentHtml += `
       <div class="flex items-center justify-between p-2 rounded-lg bg-sky-50 border border-sky-200">
         <div class="flex items-center gap-2.5">
-          <img src="/images/telebirr-logo.png" alt="Telebirr" class="w-7 h-7 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shadow-2xs shrink-0" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';">
+          <img src="/images/telebirr-logo.webp" alt="Telebirr" class="w-7 h-7 rounded-lg object-contain bg-white p-0.5 border border-sky-200 shadow-2xs shrink-0" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png';">
           <div>
             <span class="font-bold text-chocolate block leading-tight">${escapeHtml(telebirr.name || 'Telebirr')}</span>
             <span class="text-[10px] text-stone-500">${escapeHtml(telebirr.accountHolder || '')}</span>
@@ -2549,7 +2549,7 @@ function getPaymentAccountsHtml() {
     paymentHtml += `
       <div class="flex items-center justify-between p-2 rounded-lg bg-purple-50 border border-purple-200">
         <div class="flex items-center gap-2.5">
-          <img src="/images/cbe-logo.png" alt="CBE" class="w-7 h-7 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shadow-2xs shrink-0" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';">
+          <img src="/images/cbe-logo.webp" alt="CBE" class="w-7 h-7 rounded-lg object-contain bg-white p-0.5 border border-purple-200 shadow-2xs shrink-0" onerror="this.onerror=null; this.src='https://play-lh.googleusercontent.com/OnO5ce1wjlp7B5Sx9aX29cr85C5aJdqoKwJ9YPEjPbaACr0daPOZQ1b-L8w9plUMR1p0NVkRkDAbS0_8eSn46A';">
           <div>
             <span class="font-bold text-chocolate block leading-tight">${escapeHtml(cbe.name || 'Commercial Bank of Ethiopia')}</span>
             <span class="text-[10px] text-stone-500">${escapeHtml(cbe.accountHolder || '')}</span>
@@ -4786,7 +4786,7 @@ function applyDynamicBusinessSettings(settings) {
   if (!settings) return;
 
   const brandName = settings.brand?.name || 'MAK CAKE';
-  const logoUrl = settings.brand?.logo || '/images/mak-cake-logo.png';
+  const logoUrl = settings.brand?.logo || '/images/mak-cake-logo.webp';
   const primaryPhone = settings.contact?.primaryPhone || '+251 91 123 4567';
   const secondaryPhone = settings.contact?.secondaryPhone || '+251 92 234 5678';
   const email = settings.contact?.email || 'hello@makcake.et';

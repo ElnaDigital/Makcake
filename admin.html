@@ -320,8 +320,8 @@
     }
     /* Dynamic bottom spacer when keyboard is active in any form */
     .keyboard-active-container {
-      padding-bottom: 260px !important;
-      transition: padding-bottom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      padding-bottom: 80px !important;
+      transition: padding-bottom 0.15s ease-out;
     }
     /* Focus glow for active input */
     input:focus, textarea:focus, select:focus {
@@ -649,11 +649,14 @@
        ========================================================================= */
     #customer-scroll-area,
     #admin-scroll-area,
-    .overflow-y-auto {
+    #order-sheet-body,
+    .overflow-y-auto,
+    .phone-scroll {
       -webkit-overflow-scrolling: touch !important;
       overscroll-behavior-y: contain !important;
       transform: translateZ(0) !important;
       will-change: scroll-position !important;
+      touch-action: pan-y !important;
     }
 
     @media (max-width: 640px) {
@@ -1813,7 +1816,7 @@
 
         <!-- CALL CONTACT SHEET -->
         <div id="contact-backdrop" onclick="closeContactSheet()" class="hidden absolute inset-0 bg-ink/45 backdrop-blur-[2px] z-40"></div>
-        <div id="contact-sheet" class="absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-7 shadow-2xl translate-y-full transition-transform duration-300 space-y-3.5">
+        <div id="contact-sheet" class="hidden absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-7 shadow-2xl translate-y-full transition-transform duration-300 space-y-3.5">
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm font-extrabold text-ink">Contact MAK CAKE Bole</h3>
@@ -4324,38 +4327,33 @@
     // SCROLL-TRIGGERED 3D TILT-IN & TINT-IN OBSERVER FOR SCROLL DOWN
     let scrollListenersBound = false;
 
-    function checkVisibleCards(containerId = 'customer-scroll-area') {
-      const scroller = document.getElementById(containerId);
-      if (!scroller) return;
-      const scrollerRect = scroller.getBoundingClientRect();
-      const cards = scroller.querySelectorAll('.cake-card-animate:not(.is-scroll-animated)');
-      cards.forEach(card => {
-        const r = card.getBoundingClientRect();
-        // Trigger animation when card is entering the viewport as you scroll down
-        if (r.top < scrollerRect.bottom + 60 && r.bottom > scrollerRect.top - 20) {
-          card.classList.add('is-scroll-animated');
-        }
-      });
+    function checkVisibleCards() {
+      if (window._observeCakeCards) window._observeCakeCards();
     }
 
     function initScrollTiltObserver() {
-      const custScroller = document.getElementById('customer-scroll-area');
-      const adminScroller = document.getElementById('admin-scroll-area');
+      if (window._tiltObserverInit) return;
+      window._tiltObserverInit = true;
 
-      // Bind scroll listeners for smooth 60fps card tilt-in entrance as customer scrolls down
-      if (!scrollListenersBound) {
-        if (custScroller) {
-          custScroller.addEventListener('scroll', () => checkVisibleCards('customer-scroll-area'), { passive: true });
-        }
-        if (adminScroller) {
-          adminScroller.addEventListener('scroll', () => checkVisibleCards('admin-scroll-area'), { passive: true });
-        }
-        scrollListenersBound = true;
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-scroll-animated');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { root: null, rootMargin: '60px', threshold: 0.05 });
+
+        window._observeCakeCards = function() {
+          document.querySelectorAll('.cake-card-animate:not(.is-scroll-animated)').forEach(card => {
+            observer.observe(card);
+          });
+        };
+        window._observeCakeCards();
+      } else {
+        document.querySelectorAll('.cake-card-animate').forEach(c => c.classList.add('is-scroll-animated'));
       }
-
-      // Check cards visible right now
-      checkVisibleCards('customer-scroll-area');
-      checkVisibleCards('admin-scroll-area');
     }
 
     function syncAll() {
@@ -5692,6 +5690,9 @@
     }
 
     function openOrderSheet(cakeOrId) {
+      closeContactSheet();
+      closeNotificationsSheet();
+      closeTrackerSheet();
       let cake = null;
       if (typeof cakeOrId === 'object' && cakeOrId !== null) {
         cake = cakeOrId;
@@ -5731,6 +5732,9 @@
     }
 
     function openCheckoutFromCart() {
+      closeContactSheet();
+      closeNotificationsSheet();
+      closeTrackerSheet();
       if (!state.cart.length) return;
       sheet = {
         step: 4,
@@ -5769,6 +5773,7 @@
       const minStep = (sheet.mode === 'cart' || sheet.mode === 'decorations_only') ? 4 : 1;
       sheet.step = Math.max(minStep, Math.min(6, step));
       sheet.errors = {};
+      try { history.pushState({ makStep: sheet.step }, ''); } catch (_) {}
       renderOrderSheet();
       const body = document.getElementById('order-sheet-body');
       if (body) body.scrollTop = 0;
@@ -7739,13 +7744,32 @@
     }
 
     function openContactSheet() {
-      document.getElementById('contact-backdrop').classList.remove('hidden');
-      requestAnimationFrame(() => document.getElementById('contact-sheet').classList.remove('translate-y-full'));
+      const notifSheet = document.getElementById('notif-sheet');
+      if (notifSheet) notifSheet.classList.add('hidden');
+      const trackerSheet = document.getElementById('tracker-sheet');
+      if (trackerSheet) trackerSheet.classList.add('hidden');
+      const wizard = document.getElementById('order-wizard-page');
+      if (wizard && !wizard.classList.contains('hidden')) return;
+
+      const backdrop = document.getElementById('contact-backdrop');
+      const sheet = document.getElementById('contact-sheet');
+      if (backdrop) backdrop.classList.remove('hidden');
+      if (sheet) {
+        sheet.classList.remove('hidden');
+        requestAnimationFrame(() => sheet.classList.remove('translate-y-full'));
+      }
     }
 
     function closeContactSheet() {
-      document.getElementById('contact-sheet').classList.add('translate-y-full');
-      setTimeout(() => document.getElementById('contact-backdrop').classList.add('hidden'), 260);
+      const sheet = document.getElementById('contact-sheet');
+      const backdrop = document.getElementById('contact-backdrop');
+      if (sheet) sheet.classList.add('translate-y-full');
+      setTimeout(() => {
+        if (backdrop) backdrop.classList.add('hidden');
+        if (sheet && sheet.classList.contains('translate-y-full')) {
+          sheet.classList.add('hidden');
+        }
+      }, 260);
     }
 
     // =========================================================================
@@ -7756,11 +7780,14 @@
 
     function findClosestScrollContainer(el) {
       if (!el) return null;
+      if (el.closest('#order-wizard-page')) {
+        return document.getElementById('order-sheet-body');
+      }
       return el.closest(
-        '#customer-scroll-area, #admin-scroll-area, #order-wizard-page, ' +
+        '#customer-scroll-area, #admin-scroll-area, #order-sheet-body, ' +
         '#quick-upload-sheet > div, #add-cake-sheet > div, #add-dec-sheet > div, ' +
         '#admin-add-creation-modal > div, .phone-scroll, .overflow-y-auto'
-      ) || el.closest('#quick-upload-sheet, #add-cake-sheet, #add-dec-sheet, #customer-scroll-area, #admin-scroll-area');
+      );
     }
 
     function initUniversalKeyboardHandling() {
@@ -16168,7 +16195,8 @@ function resetDemo() {
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="./js/firebase-config.js?v=14.0"></script>
-  <script src="./js/firebase-service.js?v=14.0">
+  <script src="./js/firebase-service.js?v=14.0"></script>
+  <script>
     // =========================================================================
     // SPA PHONE HARDWARE / SYSTEM BACK BUTTON NAVIGATION MANAGER
     // =========================================================================
@@ -16233,15 +16261,9 @@ function resetDemo() {
       // Handle Phone Physical/System Back Button
       window.addEventListener('popstate', (e) => {
         // 1. Close open customer modals / sheets
-        const wizard = document.getElementById('order-wizard-page');
-        if (wizard && !wizard.classList.contains('hidden')) {
-          closeOrderSheet();
-          return;
-        }
-
-        const tracker = document.getElementById('tracker-sheet');
-        if (tracker && !tracker.classList.contains('hidden')) {
-          closeTrackerSheet();
+        const contact = document.getElementById('contact-sheet');
+        if (contact && !contact.classList.contains('hidden') && !contact.classList.contains('translate-y-full')) {
+          closeContactSheet();
           return;
         }
 
@@ -16251,9 +16273,20 @@ function resetDemo() {
           return;
         }
 
-        const contact = document.getElementById('contact-sheet');
-        if (contact && !contact.classList.contains('hidden')) {
-          closeContactSheet();
+        const tracker = document.getElementById('tracker-sheet');
+        if (tracker && !tracker.classList.contains('hidden')) {
+          closeTrackerSheet();
+          return;
+        }
+
+        const wizard = document.getElementById('order-wizard-page');
+        if (wizard && !wizard.classList.contains('hidden')) {
+          const minStep = (sheet && (sheet.mode === 'cart' || sheet.mode === 'decorations_only')) ? 4 : 1;
+          if (sheet && sheet.step > minStep) {
+            wizardBack();
+          } else {
+            closeOrderSheet();
+          }
           return;
         }
 

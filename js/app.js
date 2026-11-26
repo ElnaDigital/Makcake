@@ -1188,7 +1188,7 @@ const ACCESSORY_CATALOG = [
     name: 'Birthday Cake Topper (Laser Acrylic)',
     subtitle: 'Precision laser-cut mirror gold acrylic topper',
     price: 400,
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=300&h=300&q=80',
+    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=300&h=300&q=80',
     recommendedCategories: ['Birthday Cakes'],
     requiresAge: false,
     isRecommended: true,

@@ -4356,25 +4356,59 @@
       }
     }
 
+    let loadedCustomerTabs = new Set(['home']);
+
+    function invalidateCustomerTabCache(tab) {
+      if (tab) {
+        loadedCustomerTabs.delete(tab);
+      } else {
+        loadedCustomerTabs.clear();
+        loadedCustomerTabs.add('home');
+      }
+    }
+
     function syncAll() {
+      // 1. Visible Homepage content - always loaded normally on initial view
       renderHero();
       renderHomeCategories();
       renderHomePopular();
-      renderCategoriesTab();
-      renderMenuTab();
-      renderFavoritesTab();
-      renderCartTab();
-      updateCustomerBadges();
-      renderAdminOverview();
-      if (typeof renderAdminNotifications === 'function') renderAdminNotifications();
-      renderAdminOrders();
-      renderAdminMenu();
-      renderAdminDecorations();
-      renderAdminCreations();
       renderRecentCreations();
+      updateCustomerBadges();
+
+      // 2. Only re-render non-home customer tabs if currently active and already loaded
+      if (customerTab === 'menu') {
+        renderMenuTab();
+        loadedCustomerTabs.add('menu');
+      } else if (customerTab === 'categories') {
+        renderCategoriesTab();
+        loadedCustomerTabs.add('categories');
+      } else if (customerTab === 'favorites') {
+        renderFavoritesTab();
+        loadedCustomerTabs.add('favorites');
+      } else if (customerTab === 'cart') {
+        renderCartTab();
+        loadedCustomerTabs.add('cart');
+      } else {
+        // Invalidate background tab caches when state updates while on home
+        loadedCustomerTabs.delete('favorites');
+        loadedCustomerTabs.delete('cart');
+      }
+
+      // 3. Only render Admin sections if Admin panel is actually visible/active
+      const adminPanel = document.getElementById('panel-admin');
+      const isAdminActive = adminPanel && !adminPanel.classList.contains('hidden') && adminPanel.offsetParent !== null;
+      if (isAdminActive || workspaceMode === 'admin' || workspaceMode === 'dual') {
+        renderAdminOverview();
+        if (typeof renderAdminNotifications === 'function') renderAdminNotifications();
+        renderAdminOrders();
+        renderAdminMenu();
+        renderAdminDecorations();
+        renderAdminCreations();
+        renderAdminAnalytics();
+        renderAdminShop();
+      }
+
       initScrollTiltObserver();
-      renderAdminAnalytics();
-      renderAdminShop();
       ensureShopState();
       const brandNameEl = document.getElementById('cust-brand-name');
       if (brandNameEl) brandNameEl.textContent = state.shop.businessName || 'MAK CAKE';
@@ -4609,20 +4643,23 @@
       const scroller = document.getElementById('customer-scroll-area');
       if (scroller) scroller.scrollTop = 0;
 
-      // Always re-render the active tab immediately so contents and cards are 100% visible
-      if (tab === 'home') {
-        renderHero();
-        renderHomeCategories();
-        renderHomePopular();
-        renderRecentCreations();
-      } else if (tab === 'menu') {
-        renderMenuTab();
-      } else if (tab === 'categories') {
-        renderCategoriesTab();
-      } else if (tab === 'favorites') {
-        renderFavoritesTab();
-      } else if (tab === 'cart') {
-        renderCartTab();
+      // Render tab content on-demand when opening tab for the first time; preserve cache on return
+      if (!loadedCustomerTabs.has(tab)) {
+        if (tab === 'home') {
+          renderHero();
+          renderHomeCategories();
+          renderHomePopular();
+          renderRecentCreations();
+        } else if (tab === 'menu') {
+          renderMenuTab();
+        } else if (tab === 'categories') {
+          renderCategoriesTab();
+        } else if (tab === 'favorites') {
+          renderFavoritesTab();
+        } else if (tab === 'cart') {
+          renderCartTab();
+        }
+        loadedCustomerTabs.add(tab);
       }
 
       setTimeout(() => initScrollTiltObserver(), 40);
@@ -4872,6 +4909,7 @@
       }
       saveState();
       updateCustomerBadges();
+      invalidateCustomerTabCache('favorites');
 
       // Animate ONLY the clicked / targeted favorite button — do NOT re-render other cards or items!
       const triggerEl = ev ? (ev.currentTarget || (ev.target && ev.target.closest('button'))) : null;
@@ -5314,6 +5352,7 @@
 
     function clearCart() {
       state.cart = [];
+      invalidateCustomerTabCache('cart');
       saveState();
       syncAll();
       showCustomerToast('Cart cleared');

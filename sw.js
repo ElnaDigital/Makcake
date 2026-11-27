@@ -1,37 +1,49 @@
 /**
  * MAK CAKE — Progressive Web App (PWA) Service Worker
- * Version: mak-cake-pwa-v2.1
+ * Version: mak-cake-pwa-v3.0
  * 
  * Features:
  * 1. Network-first strategy for HTML pages: Guarantees GitHub updates appear immediately.
  * 2. Stale-while-revalidate for static assets (images, CSS, JS): Superfast instant loading.
- * 3. Offline resilience: Core app shell works smoothly without internet.
- * 4. Zero state loss: LocalStorage and Firestore caches are never cleared.
- * 5. Web Push Notifications for live order status & Bole Kitchen updates.
+ * 3. Separate customer & admin caches: Customer visitors never pre-cache or download admin.js/admin.html.
+ * 4. Offline resilience: Core app shell works smoothly without internet.
+ * 5. Zero state loss: LocalStorage and Firestore caches are never cleared.
+ * 6. Web Push Notifications for live order status & Bole Kitchen updates.
  */
 
-const CACHE_NAME = 'mak-cake-pwa-v2.1';
+const CACHE_NAME = 'mak-cake-pwa-v3.0';
+const ADMIN_CACHE_NAME = 'mak-cake-admin-v3.0';
+const VALID_CACHES = [CACHE_NAME, ADMIN_CACHE_NAME];
+
+// Customer-only & shared app shell (admin.html, dual.html, and js/admin.js are intentionally excluded)
 const APP_SHELL = [
   './',
   './index.html',
-  './admin.html',
-  './dual.html',
   './manifest.json',
-  './css/styles.css',
+  './css/styles.css?v=2',
+  './css/app.css?v=2',
   './images/mak-cake-logo.webp',
   './images/hero-banner.jpg',
   './images/hero-cake-only.jpg',
   './images/cbe-logo.webp',
   './images/telebirr-logo.webp',
-  './js/firebase-config.js',
-  './js/firebase-service.js'
+  './js/firebase-config.js?v=14.0',
+  './js/firebase-service.js?v=14.0',
+  './js/shared.js?v=6',
+  './js/app.js?v=4'
 ];
 
-// Pre-cache core app shell on install
+function isAdminAsset(url) {
+  return url.pathname.endsWith('/admin.html') ||
+         url.pathname.endsWith('/dual.html') ||
+         url.pathname.includes('/js/admin.js');
+}
+
+// Pre-cache core customer app shell on install
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[MAK CAKE SW] Pre-caching core app shell...');
+      console.log('[MAK CAKE SW] Pre-caching customer app shell (v3.0)...');
       return cache.addAll(APP_SHELL.map(url => new Request(url, { cache: 'reload' }))).catch(err => {
         console.warn('[MAK CAKE SW] Pre-cache partial notice:', err);
       });
@@ -45,7 +57,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
+          if (!VALID_CACHES.includes(name)) {
             console.log('[MAK CAKE SW] Removing outdated cache:', name);
             return caches.delete(name);
           }
@@ -55,19 +67,22 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Strategy depending on request type
+// Fetch: Strategy depending on request type & customer/admin separation
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // Bypass non-GET requests and Firestore / Firebase auth calls
+  // Bypass non-GET, non-HTTP(S), and Firestore / Firebase auth / API calls
   if (req.method !== 'GET') return;
+  if (!url.protocol.startsWith('http')) return;
   if (url.origin.includes('firestore.googleapis.com') ||
       url.origin.includes('identitytoolkit.googleapis.com') ||
       url.origin.includes('securetoken.googleapis.com') ||
       url.pathname.includes('/api/')) {
     return;
   }
+
+  const targetCache = isAdminAsset(url) ? ADMIN_CACHE_NAME : CACHE_NAME;
 
   // 1. HTML Navigation Requests (Pages): Network-First with Cache Fallback
   // Guarantees new updates pushed to GitHub appear instantly on page reload.
@@ -77,7 +92,7 @@ self.addEventListener('fetch', (event) => {
         .then((networkRes) => {
           if (networkRes && networkRes.status === 200) {
             const clone = networkRes.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+            caches.open(targetCache).then((cache) => cache.put(req, clone));
           }
           return networkRes;
         })
@@ -85,7 +100,6 @@ self.addEventListener('fetch', (event) => {
           // If offline or network unavailable, serve cached HTML
           return caches.match(req).then((cachedRes) => {
             if (cachedRes) return cachedRes;
-            // Fallback to index.html or admin.html
             const fallbackPath = url.pathname.includes('admin') ? './admin.html' : './index.html';
             return caches.match(fallbackPath);
           });
@@ -100,7 +114,7 @@ self.addEventListener('fetch', (event) => {
       const fetchPromise = fetch(req).then((networkRes) => {
         if (networkRes && networkRes.status === 200) {
           const clone = networkRes.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          caches.open(targetCache).then((cache) => cache.put(req, clone));
         }
         return networkRes;
       }).catch(() => {

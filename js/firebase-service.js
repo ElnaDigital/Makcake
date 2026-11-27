@@ -161,23 +161,35 @@ const FirebaseService = (function () {
       throw new Error('Firebase Firestore is not initialized');
     }
 
-    const orderId = orderData.id || ('ORD-' + Math.floor(10000 + Math.random() * 90000));
-    
+    const docRef = orderData.firestoreDocId
+      ? firestoreDb.collection('orders').doc(String(orderData.firestoreDocId))
+      : firestoreDb.collection('orders').doc();
+    const docId = docRef.id;
+    const orderNumber = orderData.id || ('ORD-' + Math.floor(10000 + Math.random() * 90000));
+
     // Deep clone and strip all undefined values (which Firestore rejects)
     const sanitized = JSON.parse(JSON.stringify(orderData, (key, value) => {
       return value === undefined ? null : value;
     }));
 
+    // Guard against Firestore 1 MB document limit on base64 receipt images
+    if (typeof sanitized.receiptImg === 'string' && sanitized.receiptImg.length > 750000) {
+      console.warn('Receipt image exceeds safe Firestore document limit; omitting image from cloud copy.');
+      sanitized.receiptImg = '';
+      sanitized.receiptOmitted = true;
+    }
+
     const cleanOrder = {
       ...sanitized,
-      id: orderId,
+      id: orderNumber,
+      firestoreDocId: docId,
       createdAt: sanitized.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       source: 'web_firestore'
     };
 
-    await firestoreDb.collection('orders').doc(orderId).set(cleanOrder);
-    return { success: true, order: cleanOrder, orderId };
+    await docRef.set(cleanOrder);
+    return { success: true, order: cleanOrder, orderId: orderNumber, firestoreDocId: docId };
   }
 
   /**
@@ -187,16 +199,19 @@ const FirebaseService = (function () {
     if (!isFirebaseAvailable()) return [];
     const snap = await firestoreDb.collection('orders').orderBy('createdAt', 'desc').get();
     const orders = [];
-    snap.forEach(doc => orders.push(doc.data()));
+    snap.forEach(doc => {
+      const data = doc.data();
+      orders.push({ ...data, firestoreDocId: data.firestoreDocId || doc.id });
+    });
     return orders;
   }
 
   /**
    * Update an order's status or details in Firestore
    */
-  async function updateOrder(orderId, updates) {
-    if (!isFirebaseAvailable()) return false;
-    await firestoreDb.collection('orders').doc(orderId).update({
+  async function updateOrder(docId, updates) {
+    if (!isFirebaseAvailable() || !docId) return false;
+    await firestoreDb.collection('orders').doc(String(docId)).update({
       ...updates,
       updatedAt: new Date().toISOString()
     });
@@ -227,19 +242,24 @@ const FirebaseService = (function () {
         if (!initialOrdersLoaded) {
           initialOrdersLoaded = true;
           const allOrders = [];
-          snapshot.forEach(doc => allOrders.push(doc.data()));
+          snapshot.forEach(doc => {
+            const d = doc.data();
+            allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+          });
           if (callbacks.onInitialLoad) callbacks.onInitialLoad(allOrders);
           return;
         }
 
         // Handle real-time updates after initial load
         changes.forEach(change => {
-          const order = change.doc.data();
+          const raw = change.doc.data();
+          const order = { ...raw, firestoreDocId: raw.firestoreDocId || change.doc.id };
           if (change.type === 'added') {
             // Play luxury audio chime & desktop notification
             playBakeryChime();
+            const displayTotal = order.total ?? order.totalAmount ?? 0;
             showBrowserNotification(`🎂 New Order #${order.id}!`, {
-              body: `${order.customerName || 'Customer'} ordered ${order.cakeName || 'Custom Cake'} (${order.totalAmount || 0} ETB)`
+              body: `${order.customerName || 'Customer'} ordered ${order.cakeName || 'Custom Cake'} (${displayTotal} ETB)`
             });
             if (callbacks.onNewOrder) callbacks.onNewOrder(order);
           } else if (change.type === 'modified') {
@@ -251,7 +271,10 @@ const FirebaseService = (function () {
 
         if (callbacks.onSnapshot) {
           const allOrders = [];
-          snapshot.forEach(doc => allOrders.push(doc.data()));
+          snapshot.forEach(doc => {
+            const d = doc.data();
+            allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+          });
           callbacks.onSnapshot(allOrders);
         }
       }, (err) => {
@@ -260,9 +283,15 @@ const FirebaseService = (function () {
         } else {
           console.error('Firestore orders subscription error:', err);
         }
+        if (callbacks.onError) callbacks.onError(err);
       });
 
-    return orderUnsubscribe;
+    return () => {
+      if (orderUnsubscribe) {
+        orderUnsubscribe();
+        orderUnsubscribe = null;
+      }
+    };
   }
 
   // -------------------------------------------------------------

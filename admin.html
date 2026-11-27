@@ -754,6 +754,9 @@
               <!-- Cakes Category Filter Pills -->
               <div id="admin-cake-cat-pills" class="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5"></div>
 
+              <!-- Homepage Popular Cakes (Max 4) Summary -->
+              <div id="admin-popular-summary" class="bg-amber-50/80 border border-amber-200 rounded-2xl p-2.5 text-[10.5px] text-amber-900"></div>
+
               <div id="admin-menu-list" class="space-y-2.5"></div>
             </div>
 
@@ -1417,11 +1420,14 @@
               <div class="flex items-center gap-3">
                 <img id="cake-form-img-preview" src="" alt="Cake Preview" class="w-14 h-14 rounded-xl object-cover bg-blush-100 border border-blush-200 shadow-2xs shrink-0" onerror="this.onerror=null; if(window.SVG_CAKE_FALLBACK) this.src=window.SVG_CAKE_FALLBACK;" />
                 <div class="min-w-0 flex-1 space-y-1">
-                  <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-blush-100 text-berry border border-blush-300 text-[11px] font-bold shadow-2xs transition-all active:scale-95">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                    <span>Upload / Replace Photo</span>
-                    <input type="file" accept="image/*" class="hidden" onchange="handleCakeFormPhotoUpload(this)" />
-                  </label>
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-blush-100 text-berry border border-blush-300 text-[11px] font-bold shadow-2xs transition-all active:scale-95">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                      <span>Upload / Replace Photo</span>
+                      <input id="cake-form-photo-input" type="file" accept="image/*" class="hidden" onchange="handleCakeFormPhotoUpload(this)" />
+                    </label>
+                    <button type="button" onclick="clearCakeFormPhoto()" class="px-2.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-[10px] font-bold cursor-pointer">Remove</button>
+                  </div>
                   <div id="cake-form-img-status" class="text-[10px] text-ink-muted truncate">Preset or original photo</div>
                 </div>
               </div>
@@ -1468,6 +1474,15 @@
               <label class="block text-[11px] font-bold text-ink mb-1">Product Details / Description</label>
               <textarea id="cake-form-desc" rows="2" placeholder="Handcrafted fresh daily with premium ingredients in Bole Medhanialem." class="w-full px-3.5 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink text-xs focus:outline-none focus:ring-2 focus:ring-berry/30"></textarea>
             </div>
+
+            <!-- Homepage Popular Cakes Toggle (Max 4) -->
+            <label class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/70 border border-amber-200 cursor-pointer">
+              <div>
+                <div class="text-xs font-extrabold text-amber-900">★ Show in Homepage Popular Cakes</div>
+                <div class="text-[10px] text-amber-700">Max 4 cakes can be featured on the homepage</div>
+              </div>
+              <input type="checkbox" id="cake-form-popular" class="w-4 h-4 accent-berry cursor-pointer" />
+            </label>
 
             <!-- Save & Delete Action Buttons -->
             <div class="flex items-center gap-2 pt-1">
@@ -1751,8 +1766,8 @@
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.3"></script>
-  <script defer src="./js/shared.js?v=21"></script>
-  <script defer src="./js/admin.js?v=27"></script>
+  <script defer src="./js/shared.js?v=22"></script>
+  <script defer src="./js/admin.js?v=28"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

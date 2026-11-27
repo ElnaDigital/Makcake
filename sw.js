@@ -11,8 +11,8 @@
  * 6. Web Push Notifications for live order status & Bole Kitchen updates.
  */
 
-const CACHE_NAME = 'mak-cake-pwa-v3.32';
-const ADMIN_CACHE_NAME = 'mak-cake-admin-v3.32';
+const CACHE_NAME = 'mak-cake-pwa-v3.34';
+const ADMIN_CACHE_NAME = 'mak-cake-admin-v3.34';
 const VALID_CACHES = [CACHE_NAME, ADMIN_CACHE_NAME];
 
 // Customer-only & shared app shell (admin.html, dual.html, and js/admin.js are intentionally excluded)
@@ -29,8 +29,8 @@ const APP_SHELL = [
   './images/telebirr-logo.webp',
   './js/firebase-config.js?v=14.1',
   './js/firebase-service.js?v=19.3',
-  './js/shared.js?v=21',
-  './js/app.js?v=13'
+  './js/shared.js?v=22',
+  './js/app.js?v=14'
 ];
 
 function isAdminAsset(url) {

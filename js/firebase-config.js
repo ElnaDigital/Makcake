@@ -5,7 +5,7 @@
  */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBIW6EULB7hhbWoCyWJdcPaPhne2cB3Wkk",
+  apiKey: "AIzaSyBIW6EULB7hhbWoCyWJdcPApHne2cB3Wkk",
   authDomain: "mak-cake-app.firebaseapp.com",
   projectId: "mak-cake-app",
   storageBucket: "mak-cake-app.firebasestorage.app",

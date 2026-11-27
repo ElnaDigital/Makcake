@@ -189,6 +189,18 @@ const FirebaseService = (function () {
     };
 
     await docRef.set(cleanOrder);
+    // Write minimal zero-PII status projection for live customer tracking
+    try {
+      await firestoreDb.collection('order_status').doc(docId).set({
+        id: orderNumber,
+        firestoreDocId: docId,
+        status: cleanOrder.status || 'Payment Pending',
+        paymentStatus: cleanOrder.paymentStatus || 'Unpaid',
+        updatedAt: cleanOrder.updatedAt
+      });
+    } catch (statusErr) {
+      console.warn('Order status projection write notice:', statusErr.message || statusErr);
+    }
     return { success: true, order: cleanOrder, orderId: orderNumber, firestoreDocId: docId };
   }
 
@@ -211,11 +223,30 @@ const FirebaseService = (function () {
    */
   async function updateOrder(docId, updates) {
     if (!isFirebaseAvailable() || !docId) return false;
+    const nowIso = new Date().toISOString();
     await firestoreDb.collection('orders').doc(String(docId)).update({
       ...updates,
-      updatedAt: new Date().toISOString()
+      updatedAt: nowIso
     });
+    // Mirror status/paymentStatus to zero-PII order_status projection for live customer tracking
+    const statusPatch = { firestoreDocId: String(docId), updatedAt: nowIso };
+    if (updates.status !== undefined) statusPatch.status = updates.status;
+    if (updates.paymentStatus !== undefined) statusPatch.paymentStatus = updates.paymentStatus;
+    if (updates.status !== undefined || updates.paymentStatus !== undefined) {
+      firestoreDb.collection('order_status').doc(String(docId)).set(statusPatch, { merge: true }).catch((err) => {
+        console.warn('Order status projection update notice:', err.message || err);
+      });
+    }
     return true;
+  }
+
+  function subscribeToOrderStatus(docId, onUpdate) {
+    if (!isFirebaseAvailable() || !docId || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('order_status').doc(String(docId)).onSnapshot((doc) => {
+      if (doc.exists) onUpdate(doc.data());
+    }, (err) => {
+      console.warn('Order status listener notice:', err.message || err);
+    });
   }
 
   /**
@@ -525,6 +556,7 @@ const FirebaseService = (function () {
     getOrders,
     updateOrder,
     subscribeToOrders,
+    subscribeToOrderStatus,
     getProducts,
     saveProduct,
     deleteProduct,

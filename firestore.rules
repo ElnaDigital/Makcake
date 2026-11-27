@@ -47,11 +47,31 @@ service cloud.firestore {
         && d.createdAt is string && d.createdAt.size() > 0 && d.createdAt.size() <= 64;
     }
 
+    function isValidOrderStatusCreate(orderId) {
+      let s = request.resource.data;
+      return !exists(/databases/$(database)/documents/order_status/$(orderId))
+        && s.keys().hasAll(['id', 'firestoreDocId', 'status', 'paymentStatus', 'updatedAt'])
+        && s.keys().hasOnly(['id', 'firestoreDocId', 'status', 'paymentStatus', 'updatedAt'])
+        && s.firestoreDocId == orderId
+        && (s.id is int || s.id is string)
+        && s.status == 'Payment Pending'
+        && s.paymentStatus == 'Unpaid'
+        && s.updatedAt is string && s.updatedAt.size() > 0 && s.updatedAt.size() <= 64;
+    }
+
     // Orders: Customers may create valid new orders without signing in;
     // only verified authorized admin(s) may read, list, update, or delete.
     match /orders/{orderId} {
       allow create: if isValidOrderCreate(orderId);
       allow read, update, delete: if isAuthorizedAdmin();
+    }
+
+    // Public order status projection (zero PII; unguessable 20-char docId, no listing)
+    match /order_status/{orderId} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if isValidOrderStatusCreate(orderId);
+      allow update, delete: if isAuthorizedAdmin();
     }
 
     // Catalog, recent creations, decorations & public shop settings:

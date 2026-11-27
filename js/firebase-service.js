@@ -378,8 +378,16 @@ const FirebaseService = (function () {
   }
 
   // -------------------------------------------------------------
-  // 8. GOOGLE AUTHENTICATION FOR OWNER (POPUP + REDIRECT FALLBACK)
+  // 8. ADMIN AUTHENTICATION (EMAIL/PASSWORD + GOOGLE LEGACY)
   // -------------------------------------------------------------
+  async function signInWithEmailPassword(email, password) {
+    if (!isFirebaseAvailable() || !firebaseAuth) {
+      throw new Error('Firebase Auth is not available');
+    }
+    const result = await firebaseAuth.signInWithEmailAndPassword(email, password);
+    return result.user;
+  }
+
   async function signInWithGoogle() {
     if (!isFirebaseAvailable() || !firebaseAuth) {
       throw new Error('Firebase Auth is not available');
@@ -445,6 +453,7 @@ const FirebaseService = (function () {
     getSettings,
     saveSettings,
     seedFirestoreFromLocal,
+    signInWithEmailPassword,
     signInWithGoogle,
     getRedirectResult,
     signOut,

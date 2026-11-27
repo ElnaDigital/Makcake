@@ -179,10 +179,15 @@ const FirebaseService = (function () {
       sanitized.receiptOmitted = true;
     }
 
+    const activeOwnerEmail = (typeof DEFAULT_OWNER_EMAIL === 'string' && DEFAULT_OWNER_EMAIL)
+      ? DEFAULT_OWNER_EMAIL.toLowerCase()
+      : 'natnaelagizew27@gmail.com';
     const cleanOrder = {
       ...sanitized,
       id: orderNumber,
       firestoreDocId: docId,
+      businessId: (sanitized.businessId ? String(sanitized.businessId).toLowerCase() : activeOwnerEmail),
+      isDemo: Boolean(sanitized.isDemo),
       createdAt: sanitized.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       source: 'web_firestore'
@@ -204,8 +209,20 @@ const FirebaseService = (function () {
     return { success: true, order: cleanOrder, orderId: orderNumber, firestoreDocId: docId };
   }
 
+  function _belongsToCurrentBusinessAccount(orderData) {
+    const cur = getCurrentUser();
+    if (!cur || !cur.email) return false;
+    const curEmail = cur.email.toLowerCase();
+    const orderBiz = orderData && orderData.businessId ? String(orderData.businessId).toLowerCase() : '';
+    const primaryOwner = (typeof DEFAULT_OWNER_EMAIL === 'string' && DEFAULT_OWNER_EMAIL)
+      ? DEFAULT_OWNER_EMAIL.toLowerCase()
+      : 'natnaelagizew27@gmail.com';
+    if (!orderBiz) return curEmail === primaryOwner;
+    return orderBiz === curEmail;
+  }
+
   /**
-   * Fetch all orders from Firestore (sorted descending by creation time)
+   * Fetch all orders from Firestore for the authenticated business account
    */
   async function getOrders() {
     if (!isFirebaseAvailable()) return [];
@@ -213,9 +230,31 @@ const FirebaseService = (function () {
     const orders = [];
     snap.forEach(doc => {
       const data = doc.data();
-      orders.push({ ...data, firestoreDocId: data.firestoreDocId || doc.id });
+      if (_belongsToCurrentBusinessAccount(data)) {
+        orders.push({ ...data, firestoreDocId: data.firestoreDocId || doc.id });
+      }
     });
     return orders;
+  }
+
+  /**
+   * Development-only: delete ONLY records explicitly marked isDemo === true
+   * for the authenticated business account. Never deletes real customer orders.
+   */
+  async function deleteDemoOrders() {
+    if (!isFirebaseAvailable()) return { deleted: 0 };
+    const cur = getCurrentUser();
+    if (!cur || !cur.email) throw new Error('Admin authentication required');
+    const snap = await firestoreDb.collection('orders').where('isDemo', '==', true).get();
+    let deleted = 0;
+    for (const doc of snap.docs) {
+      const d = doc.data();
+      if (!_belongsToCurrentBusinessAccount(d)) continue;
+      await doc.ref.delete();
+      try { await firestoreDb.collection('order_status').doc(doc.id).delete(); } catch (_) {}
+      deleted += 1;
+    }
+    return { deleted };
   }
 
   /**
@@ -275,7 +314,9 @@ const FirebaseService = (function () {
           const allOrders = [];
           snapshot.forEach(doc => {
             const d = doc.data();
-            allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+            if (_belongsToCurrentBusinessAccount(d)) {
+              allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+            }
           });
           if (callbacks.onInitialLoad) callbacks.onInitialLoad(allOrders);
           return;
@@ -284,6 +325,7 @@ const FirebaseService = (function () {
         // Handle real-time updates after initial load
         changes.forEach(change => {
           const raw = change.doc.data();
+          if (!_belongsToCurrentBusinessAccount(raw)) return;
           const order = { ...raw, firestoreDocId: raw.firestoreDocId || change.doc.id };
           if (change.type === 'added') {
             // Play luxury audio chime & desktop notification
@@ -304,7 +346,9 @@ const FirebaseService = (function () {
           const allOrders = [];
           snapshot.forEach(doc => {
             const d = doc.data();
-            allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+            if (_belongsToCurrentBusinessAccount(d)) {
+              allOrders.push({ ...d, firestoreDocId: d.firestoreDocId || doc.id });
+            }
           });
           callbacks.onSnapshot(allOrders);
         }
@@ -562,6 +606,7 @@ const FirebaseService = (function () {
     saveOrder,
     getOrders,
     updateOrder,
+    deleteDemoOrders,
     subscribeToOrders,
     subscribeToOrderStatus,
     getProducts,

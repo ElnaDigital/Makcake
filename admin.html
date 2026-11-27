@@ -869,13 +869,24 @@
                 <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Enabled</span>
               </div>
 
-              <!-- Reset Demo Data -->
+              <!-- Export Backup -->
               <div class="flex items-center justify-between p-2.5 rounded-xl bg-blush-50 border border-blush-200/80">
                 <div>
-                  <div class="text-xs font-bold text-ink">Reset Demo Data</div>
-                  <div class="text-[10px] text-ink-muted">Restore default local catalog &amp; clear local cache</div>
+                  <div class="text-xs font-bold text-ink">Export Orders Backup</div>
+                  <div class="text-[10px] text-ink-muted">Download JSON backup of all orders &amp; settings</div>
                 </div>
-                <button type="button" onclick="if (confirm('Reset local demo data to defaults?')) { resetDemo(); }" class="px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-rose-300 text-rose-600 hover:bg-rose-50 cursor-pointer">
+                <button type="button" onclick="exportOrdersBackupJson()" class="px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-blush-300 text-berry hover:bg-blush-100 cursor-pointer">
+                  Export JSON
+                </button>
+              </div>
+
+              <!-- Dev-Only Demo Reset Data -->
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-blush-50 border border-blush-200/80">
+                <div>
+                  <div class="text-xs font-bold text-ink">Dev Demo Reset</div>
+                  <div class="text-[10px] text-ink-muted">Deletes only demo-marked records (real orders stay safe)</div>
+                </div>
+                <button type="button" onclick="runDevDemoReset()" class="px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-rose-300 text-rose-600 hover:bg-rose-50 cursor-pointer">
                   Reset Demo
                 </button>
               </div>
@@ -1703,9 +1714,9 @@
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script defer src="./js/firebase-config.js?v=14.1"></script>
-  <script defer src="./js/firebase-service.js?v=19.0"></script>
+  <script defer src="./js/firebase-service.js?v=19.1"></script>
   <script defer src="./js/shared.js?v=16"></script>
-  <script defer src="./js/admin.js?v=15"></script>
+  <script defer src="./js/admin.js?v=16"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

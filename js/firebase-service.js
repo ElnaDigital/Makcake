@@ -500,6 +500,46 @@ const FirebaseService = (function () {
     }, (err) => console.warn('Categories sync notice:', err.message || err));
   }
 
+  async function getCreations() {
+    if (!isFirebaseAvailable()) return null;
+    try {
+      const snap = await firestoreDb.collection('creations').orderBy('createdAt', 'desc').get();
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      return list;
+    } catch (e) {
+      console.warn('getCreations failed:', e);
+      return null;
+    }
+  }
+
+  async function getDecorations() {
+    if (!isFirebaseAvailable()) return null;
+    try {
+      const snap = await firestoreDb.collection('decorations').get();
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      return list;
+    } catch (e) {
+      console.warn('getDecorations failed:', e);
+      return null;
+    }
+  }
+
+  async function getCategories() {
+    if (!isFirebaseAvailable()) return null;
+    try {
+      const snap = await firestoreDb.collection('categories').get();
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      list.sort((a, b) => (Number(a.sortOrder ?? 999) - Number(b.sortOrder ?? 999)));
+      return list;
+    } catch (e) {
+      console.warn('getCategories failed:', e);
+      return null;
+    }
+  }
+
   // -------------------------------------------------------------
   // 6. BUSINESS SETTINGS SYNC
   // -------------------------------------------------------------
@@ -741,12 +781,15 @@ const FirebaseService = (function () {
     saveProduct,
     deleteProduct,
     subscribeToProducts,
+    getCreations,
     saveCreation,
     deleteCreation,
     subscribeToCreations,
+    getDecorations,
     saveDecoration,
     deleteDecoration,
     subscribeToDecorations,
+    getCategories,
     saveCategory,
     deleteCategory,
     subscribeToCategories,

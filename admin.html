@@ -1494,10 +1494,10 @@
 
             <!-- Save & Delete Action Buttons -->
             <div class="flex items-center gap-2 pt-1">
-              <button onclick="saveAdminCakeForm()" class="flex-1 py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform cursor-pointer">
+              <button type="button" id="cake-form-save-btn" onclick="saveAdminCakeForm()" class="flex-1 py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform cursor-pointer">
                 Save Cake
               </button>
-              <button id="cake-form-delete-btn" onclick="deleteAdminCakeFromModal()" class="px-4 py-3 rounded-full bg-rose-50 text-berry hover:bg-rose-100 font-bold text-xs transition-colors hidden cursor-pointer">
+              <button type="button" id="cake-form-delete-btn" onclick="deleteAdminCakeFromModal()" class="px-4 py-3 rounded-full bg-rose-50 text-berry hover:bg-rose-100 font-bold text-xs transition-colors hidden cursor-pointer">
                 Delete
               </button>
             </div>
@@ -1509,10 +1509,10 @@
           <div class="bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl space-y-3.5 max-h-[90%] overflow-y-auto no-scrollbar animate-scaleIn">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-sm font-extrabold text-ink">+ Capture &amp; Upload Real Cake</h3>
+                <h3 id="creation-modal-title" class="text-sm font-extrabold text-ink">+ Capture &amp; Upload Real Cake</h3>
                 <p class="text-[10.5px] text-ink-muted">Showcase your fresh bake on storefront Home</p>
               </div>
-              <button onclick="closeAddCreationSheet()" class="w-7 h-7 rounded-full bg-blush-100 text-ink flex items-center justify-center active:scale-90 transition-transform">
+              <button type="button" onclick="closeAddCreationSheet()" class="w-7 h-7 rounded-full bg-blush-100 text-ink flex items-center justify-center active:scale-90 transition-transform">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </button>
             </div>
@@ -1581,7 +1581,7 @@
                 <input type="number" id="new-cr-price" min="100" step="50" placeholder="e.g. 2800" class="w-full px-3.5 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-bold text-xs focus:outline-none focus:ring-2 focus:ring-berry/30" />
               </div>
 
-              <button onclick="saveNewCreation()" class="w-full py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform">
+              <button type="button" id="creation-save-btn" onclick="saveNewCreation()" class="w-full py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform cursor-pointer">
                 Publish to Customer Storefront
               </button>
             </div>
@@ -1671,13 +1671,13 @@
           </div>
 
           <div class="pt-2 border-t border-blush-100 flex items-center gap-2">
-            <button onclick="saveAdminDecorationForm()" class="flex-1 py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform">
+            <button type="button" id="admin-dec-save-btn" onclick="saveAdminDecorationForm()" class="flex-1 py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform cursor-pointer">
               Save Changes
             </button>
             <button type="button" id="admin-dec-form-delete-btn" onclick="deleteCurrentAdminDecoration()" class="hidden px-3.5 py-3 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-extrabold text-xs transition-colors">
               Delete
             </button>
-            <button onclick="closeAdminDecModal()" class="px-4 py-3 rounded-full bg-blush-100 hover:bg-blush-200 text-ink font-bold text-xs transition-colors">
+            <button type="button" onclick="closeAdminDecModal()" class="px-4 py-3 rounded-full bg-blush-100 hover:bg-blush-200 text-ink font-bold text-xs transition-colors cursor-pointer">
               Cancel
             </button>
           </div>
@@ -1775,7 +1775,7 @@
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.4"></script>
   <script defer src="./js/shared.js?v=23"></script>
-  <script defer src="./js/admin.js?v=30"></script>
+  <script defer src="./js/admin.js?v=31"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

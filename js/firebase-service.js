@@ -540,6 +540,100 @@ const FirebaseService = (function () {
   // -------------------------------------------------------------
   // 8. ADMIN AUTHENTICATION (EMAIL/PASSWORD + GOOGLE LEGACY)
   // -------------------------------------------------------------
+  async function reauthenticateWithPassword(password) {
+    if (!isFirebaseAvailable() || !firebaseAuth || !firebaseAuth.currentUser) {
+      throw new Error('Admin session expired. Please sign in again.');
+    }
+    const user = firebaseAuth.currentUser;
+    if (!user.email) {
+      throw new Error('No email associated with this admin account.');
+    }
+    const cred = firebase.auth.EmailAuthProvider.credential(user.email, String(password || ''));
+    await user.reauthenticateWithCredential(cred);
+    return user;
+  }
+
+  /**
+   * Permanently delete all orders and paired order_status docs for the
+   * authenticated business account using batched writes (max 400 ops/batch).
+   * Preserves products, decorations, creations, settings, and auth credentials.
+   * Writes an immutable audit log entry (never stores passwords).
+   */
+  async function deleteAllOrdersForAccount() {
+    if (!isFirebaseAvailable()) {
+      throw new Error('Firebase Firestore is not initialized');
+    }
+    const cur = getCurrentUser();
+    if (!cur || !cur.email) {
+      throw new Error('Authorized admin sign-in required');
+    }
+
+    let deletedOrdersCount = 0;
+    let deletedStatusCount = 0;
+
+    try {
+      while (true) {
+        const snap = await firestoreDb.collection('orders').limit(200).get();
+        if (snap.empty) break;
+
+        const batch = firestoreDb.batch();
+        let ops = 0;
+        let matchedInPage = 0;
+
+        snap.forEach((doc) => {
+          const data = doc.data();
+          if (!_belongsToCurrentBusinessAccount(data)) return;
+          matchedInPage += 1;
+          batch.delete(doc.ref);
+          ops += 1;
+          deletedOrdersCount += 1;
+
+          const statusRef = firestoreDb.collection('order_status').doc(doc.id);
+          batch.delete(statusRef);
+          ops += 1;
+          deletedStatusCount += 1;
+        });
+
+        if (ops === 0 || matchedInPage === 0) break;
+        await batch.commit();
+
+        // If fewer than 200 docs returned, we reached the end
+        if (snap.size < 200) break;
+      }
+
+      // Write audit log (best effort; never stores password)
+      try {
+        await firestoreDb.collection('audit_logs').add({
+          action: 'DELETE_ALL_ORDERS',
+          accountEmail: cur.email.toLowerCase(),
+          accountUid: cur.uid || '',
+          deletedOrdersCount,
+          deletedStatusCount,
+          status: 'success',
+          timestamp: new Date().toISOString()
+        });
+      } catch (auditErr) {
+        console.warn('Audit log write notice:', auditErr && auditErr.message ? auditErr.message : auditErr);
+      }
+
+      return { success: true, deletedOrdersCount, deletedStatusCount };
+    } catch (err) {
+      try {
+        await firestoreDb.collection('audit_logs').add({
+          action: 'DELETE_ALL_ORDERS',
+          accountEmail: cur.email.toLowerCase(),
+          accountUid: cur.uid || '',
+          deletedOrdersCount,
+          deletedStatusCount,
+          status: 'error',
+          errorMessage: err && err.message ? String(err.message).slice(0, 200) : 'Unknown error',
+          timestamp: new Date().toISOString()
+        });
+      } catch (_) {}
+      throw err;
+    }
+  }
+
   async function signInWithEmailPassword(email, password) {
     if (!isFirebaseAvailable() || !firebaseAuth) {
       throw new Error('Firebase Auth is not available');
@@ -607,6 +701,8 @@ const FirebaseService = (function () {
     getOrders,
     updateOrder,
     deleteDemoOrders,
+    deleteAllOrdersForAccount,
+    reauthenticateWithPassword,
     subscribeToOrders,
     subscribeToOrderStatus,
     getProducts,

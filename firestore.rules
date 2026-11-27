@@ -108,6 +108,11 @@ service cloud.firestore {
       allow write: if isAuthorizedAdmin() && isAdvancedOrHigher();
     }
 
+    match /categories/{catId} {
+      allow read: if true;
+      allow write: if isAuthorizedAdmin();
+    }
+
     // Subscription package doc: readable by app, NEVER writable by any client
     // (update manually in Firebase Console after confirming payment)
     match /settings/subscription {

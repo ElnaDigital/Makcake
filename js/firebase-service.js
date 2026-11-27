@@ -469,6 +469,38 @@ const FirebaseService = (function () {
   }
 
   // -------------------------------------------------------------
+  // 5c. CENTRAL DYNAMIC CATEGORIES SYNC
+  // -------------------------------------------------------------
+  async function saveCategory(category) {
+    if (!isFirebaseAvailable()) return false;
+    const docId = String(category.id);
+    const clean = JSON.parse(JSON.stringify(category, (k, v) => (v === undefined ? null : v)));
+    if (typeof clean.img === 'string' && clean.img.length > 750000) {
+      throw new Error('Category image exceeds 750KB safe Firestore limit.');
+    }
+    clean.createdAt = clean.createdAt || new Date().toISOString();
+    clean.updatedAt = new Date().toISOString();
+    await firestoreDb.collection('categories').doc(docId).set(clean, { merge: true });
+    return true;
+  }
+
+  async function deleteCategory(catId) {
+    if (!isFirebaseAvailable()) return false;
+    await firestoreDb.collection('categories').doc(String(catId)).delete();
+    return true;
+  }
+
+  function subscribeToCategories(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('categories').onSnapshot((snap) => {
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      list.sort((a, b) => (Number(a.sortOrder ?? 999) - Number(b.sortOrder ?? 999)));
+      onUpdate(list);
+    }, (err) => console.warn('Categories sync notice:', err.message || err));
+  }
+
+  // -------------------------------------------------------------
   // 6. BUSINESS SETTINGS SYNC
   // -------------------------------------------------------------
   async function getSettings() {
@@ -715,6 +747,9 @@ const FirebaseService = (function () {
     saveDecoration,
     deleteDecoration,
     subscribeToDecorations,
+    saveCategory,
+    deleteCategory,
+    subscribeToCategories,
     getSettings,
     saveSettings,
     subscribeToSettings,

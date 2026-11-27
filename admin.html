@@ -715,16 +715,19 @@
 
           <!-- ==================== ADMIN TAB 2: MENU (CAKES & DECORATIONS) ==================== -->
           <div id="a-tab-menu" class="a-tab-view hidden space-y-3 pb-28">
-            <!-- Sub-tab Switcher: 3 Tabs (Cakes, Decorations, Recent Photos) -->
-            <div class="grid grid-cols-3 gap-1 bg-white p-1 rounded-full shadow-rose-sm border border-blush-200">
-              <button onclick="setAdminMenuSub('cakes')" id="admin-sub-cakes" class="py-1.5 rounded-full text-[10px] font-extrabold btn-berry text-white shadow-rose-sm transition-all flex items-center justify-center gap-0.5 cursor-pointer">
+            <!-- Sub-tab Switcher: 4 Tabs (Cakes, Decorations, Recent Photos, Categories) -->
+            <div class="grid grid-cols-4 gap-1 bg-white p-1 rounded-full shadow-rose-sm border border-blush-200">
+              <button onclick="setAdminMenuSub('cakes')" id="admin-sub-cakes" class="py-1.5 rounded-full text-[9.5px] font-extrabold btn-berry text-white shadow-rose-sm transition-all flex items-center justify-center gap-0.5 cursor-pointer">
                 <span>Cakes (<span id="admin-sub-cakes-cnt">26</span>)</span>
               </button>
-              <button onclick="setAdminMenuSub('decorations')" id="admin-sub-decorations" class="py-1.5 rounded-full text-[10px] font-bold text-ink-muted transition-all flex items-center justify-center gap-0.5 cursor-pointer">
-                <span>Decorations (<span id="admin-sub-dec-cnt">22</span>)</span>
+              <button onclick="setAdminMenuSub('decorations')" id="admin-sub-decorations" class="py-1.5 rounded-full text-[9.5px] font-bold text-ink-muted transition-all flex items-center justify-center gap-0.5 cursor-pointer">
+                <span>Decor (<span id="admin-sub-dec-cnt">22</span>)</span>
               </button>
-              <button onclick="setAdminMenuSub('creations')" id="admin-sub-creations" class="py-1.5 rounded-full text-[10px] font-bold text-ink-muted transition-all flex items-center justify-center gap-0.5 cursor-pointer">
-                <span>Recent Photos (<span id="admin-sub-creations-cnt">4</span>)</span>
+              <button onclick="setAdminMenuSub('creations')" id="admin-sub-creations" class="py-1.5 rounded-full text-[9.5px] font-bold text-ink-muted transition-all flex items-center justify-center gap-0.5 cursor-pointer">
+                <span>Photos (<span id="admin-sub-creations-cnt">4</span>)</span>
+              </button>
+              <button onclick="setAdminMenuSub('categories')" id="admin-sub-categories" class="py-1.5 rounded-full text-[9.5px] font-bold text-ink-muted transition-all flex items-center justify-center gap-0.5 cursor-pointer">
+                <span>Categories</span>
               </button>
             </div>
 
@@ -753,6 +756,9 @@
 
               <div id="admin-menu-list" class="space-y-2.5"></div>
             </div>
+
+            <!-- DYNAMIC CATEGORIES MANAGER PANEL -->
+            <div id="admin-subview-categories" class="hidden space-y-3"></div>
 
             <!-- EXTRA DECORATIONS MANAGER PANEL -->
             <div id="admin-menu-dec-panel" class="hidden space-y-3">
@@ -1744,9 +1750,9 @@
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script defer src="./js/firebase-config.js?v=14.1"></script>
-  <script defer src="./js/firebase-service.js?v=19.2"></script>
-  <script defer src="./js/shared.js?v=20"></script>
-  <script defer src="./js/admin.js?v=26"></script>
+  <script defer src="./js/firebase-service.js?v=19.3"></script>
+  <script defer src="./js/shared.js?v=21"></script>
+  <script defer src="./js/admin.js?v=27"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

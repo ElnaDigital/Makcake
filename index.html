@@ -343,6 +343,22 @@
               <span class="text-berry font-bold text-sm">&rarr;</span>
             </button>
 
+            <!-- G2. Visit Bole Bakery / Google Maps Directions -->
+            <a id="home-directions-link" href="https://maps.google.com/?q=9.0054,38.7885" target="_blank" rel="noopener noreferrer" class="w-full bg-white rounded-[18px] p-3 shadow-rose border border-blush-200/80 flex items-center justify-between active:scale-[0.99] transition-transform">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="text-left min-w-0">
+                  <div class="text-xs font-extrabold text-ink">Visit Bakery &bull; Get Directions</div>
+                  <div id="home-directions-address" class="text-[10.5px] text-ink-muted truncate">Bole Medhanialem, Addis Ababa</div>
+                </div>
+              </div>
+              <span class="text-emerald-700 font-bold text-xs shrink-0">Maps &rarr;</span>
+            </a>
+
             <!-- H. Recently Baked Real Kitchen Creations (Captured & Uploaded by Owner) -->
             <div class="space-y-2 pt-2 border-t border-blush-200/60">
               <div class="flex items-center justify-between">
@@ -1079,7 +1095,7 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm font-extrabold text-ink">Contact MAK CAKE Bole</h3>
-              <p class="text-[11px] text-ink-muted">Bole Medhanialem, Addis Ababa • Open 8 AM – 9 PM</p>
+              <p id="contact-sheet-address" class="text-[11px] text-ink-muted">Bole Medhanialem, Addis Ababa • Open 8 AM – 9 PM</p>
             </div>
             <button onclick="closeContactSheet()" class="w-7 h-7 rounded-full bg-blush-100 text-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
@@ -1093,6 +1109,10 @@
               <span>Copy Phone</span>
             </button>
           </div>
+          <a id="contact-directions-link" href="https://maps.google.com/?q=9.0054,38.7885" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Get Directions (Google Maps)</span>
+          </a>
           <div class="bg-blush-100 rounded-2xl p-3 text-[11px] text-ink-muted space-y-1">
             <div id="contact-telebirr-line"></div>
             <div id="contact-cbe-line"></div>

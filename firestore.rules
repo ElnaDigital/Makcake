@@ -54,8 +54,19 @@ service cloud.firestore {
       allow read, update, delete: if isAuthorizedAdmin();
     }
 
-    // Catalog & public shop settings: readable by storefront, writable only by admin
+    // Catalog, recent creations, decorations & public shop settings:
+    // readable by storefront, writable only by authorized admin
     match /products/{productId} {
+      allow read: if true;
+      allow write: if isAuthorizedAdmin();
+    }
+
+    match /creations/{creationId} {
+      allow read: if true;
+      allow write: if isAuthorizedAdmin();
+    }
+
+    match /decorations/{decId} {
       allow read: if true;
       allow write: if isAuthorizedAdmin();
     }

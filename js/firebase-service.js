@@ -314,7 +314,9 @@ const FirebaseService = (function () {
   async function saveProduct(product) {
     if (!isFirebaseAvailable()) return false;
     const docId = String(product.id);
-    await firestoreDb.collection('products').doc(docId).set(product, { merge: true });
+    const clean = JSON.parse(JSON.stringify(product, (k, v) => (v === undefined ? null : v)));
+    clean.updatedAt = new Date().toISOString();
+    await firestoreDb.collection('products').doc(docId).set(clean, { merge: true });
     return true;
   }
 
@@ -322,6 +324,73 @@ const FirebaseService = (function () {
     if (!isFirebaseAvailable()) return false;
     await firestoreDb.collection('products').doc(String(productId)).delete();
     return true;
+  }
+
+  function subscribeToProducts(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('products').onSnapshot((snap) => {
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      onUpdate(list);
+    }, (err) => console.warn('Products sync notice:', err.message || err));
+  }
+
+  // -------------------------------------------------------------
+  // 5b. RECENT CREATIONS & DECORATIONS SYNC
+  // -------------------------------------------------------------
+  async function saveCreation(creation) {
+    if (!isFirebaseAvailable()) return false;
+    const docId = String(creation.id);
+    const clean = JSON.parse(JSON.stringify(creation, (k, v) => (v === undefined ? null : v)));
+    if (typeof clean.img === 'string' && clean.img.length > 750000) {
+      throw new Error('Creation image exceeds 750KB safe Firestore limit.');
+    }
+    clean.createdAt = clean.createdAt || new Date().toISOString();
+    clean.updatedAt = new Date().toISOString();
+    await firestoreDb.collection('creations').doc(docId).set(clean, { merge: true });
+    return true;
+  }
+
+  async function deleteCreation(creationId) {
+    if (!isFirebaseAvailable()) return false;
+    await firestoreDb.collection('creations').doc(String(creationId)).delete();
+    return true;
+  }
+
+  function subscribeToCreations(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('creations').orderBy('createdAt', 'desc').onSnapshot((snap) => {
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      onUpdate(list);
+    }, (err) => console.warn('Creations sync notice:', err.message || err));
+  }
+
+  async function saveDecoration(dec) {
+    if (!isFirebaseAvailable()) return false;
+    const docId = String(dec.id);
+    const clean = JSON.parse(JSON.stringify(dec, (k, v) => (v === undefined ? null : v)));
+    if (typeof clean.img === 'string' && clean.img.length > 750000) {
+      throw new Error('Decoration image exceeds 750KB safe Firestore limit.');
+    }
+    clean.updatedAt = new Date().toISOString();
+    await firestoreDb.collection('decorations').doc(docId).set(clean, { merge: true });
+    return true;
+  }
+
+  async function deleteDecoration(decId) {
+    if (!isFirebaseAvailable()) return false;
+    await firestoreDb.collection('decorations').doc(String(decId)).delete();
+    return true;
+  }
+
+  function subscribeToDecorations(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('decorations').onSnapshot((snap) => {
+      const list = [];
+      snap.forEach(doc => list.push(doc.data()));
+      onUpdate(list);
+    }, (err) => console.warn('Decorations sync notice:', err.message || err));
   }
 
   // -------------------------------------------------------------
@@ -341,8 +410,17 @@ const FirebaseService = (function () {
 
   async function saveSettings(settings) {
     if (!isFirebaseAvailable()) return false;
-    await firestoreDb.collection('settings').doc('business').set(settings, { merge: true });
+    const clean = JSON.parse(JSON.stringify(settings, (k, v) => (v === undefined ? null : v)));
+    clean.updatedAt = new Date().toISOString();
+    await firestoreDb.collection('settings').doc('business').set(clean, { merge: true });
     return true;
+  }
+
+  function subscribeToSettings(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('settings').doc('business').onSnapshot((doc) => {
+      if (doc.exists) onUpdate(doc.data());
+    }, (err) => console.warn('Settings sync notice:', err.message || err));
   }
 
   // -------------------------------------------------------------
@@ -450,8 +528,16 @@ const FirebaseService = (function () {
     getProducts,
     saveProduct,
     deleteProduct,
+    subscribeToProducts,
+    saveCreation,
+    deleteCreation,
+    subscribeToCreations,
+    saveDecoration,
+    deleteDecoration,
+    subscribeToDecorations,
     getSettings,
     saveSettings,
+    subscribeToSettings,
     seedFirestoreFromLocal,
     signInWithEmailPassword,
     signInWithGoogle,

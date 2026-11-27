@@ -454,6 +454,13 @@ const FirebaseService = (function () {
     }, (err) => console.warn('Settings sync notice:', err.message || err));
   }
 
+  function subscribeToSubscription(onUpdate) {
+    if (!isFirebaseAvailable() || typeof onUpdate !== 'function') return () => {};
+    return firestoreDb.collection('settings').doc('subscription').onSnapshot((doc) => {
+      if (doc.exists) onUpdate(doc.data());
+    }, (err) => console.warn('Subscription sync notice:', err.message || err));
+  }
+
   // -------------------------------------------------------------
   // 7. AUTO-SEEDING FROM LOCAL JSON (Runs seamlessly if Firestore empty)
   // -------------------------------------------------------------
@@ -570,6 +577,7 @@ const FirebaseService = (function () {
     getSettings,
     saveSettings,
     subscribeToSettings,
+    subscribeToSubscription,
     seedFirestoreFromLocal,
     signInWithEmailPassword,
     signInWithGoogle,

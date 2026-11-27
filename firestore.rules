@@ -9,6 +9,20 @@ service cloud.firestore {
         ];
     }
 
+    function getActivePackageId() {
+      return exists(/databases/$(database)/documents/settings/subscription)
+        ? get(/databases/$(database)/documents/settings/subscription).data.activePackageId
+        : 'pkg-basic';
+    }
+
+    function isAdvancedOrHigher() {
+      return getActivePackageId() in ['pkg-advanced', 'pkg-premium'];
+    }
+
+    function isPremiumPlan() {
+      return getActivePackageId() == 'pkg-premium';
+    }
+
     function isValidOrderCreate(orderId) {
       let d = request.resource.data;
       return !exists(/databases/$(database)/documents/orders/$(orderId))
@@ -88,7 +102,14 @@ service cloud.firestore {
 
     match /decorations/{decId} {
       allow read: if true;
-      allow write: if isAuthorizedAdmin();
+      allow write: if isAuthorizedAdmin() && isAdvancedOrHigher();
+    }
+
+    // Subscription package doc: readable by app, NEVER writable by any client
+    // (update manually in Firebase Console after confirming payment)
+    match /settings/subscription {
+      allow read: if true;
+      allow write: if false;
     }
 
     match /settings/{docId} {

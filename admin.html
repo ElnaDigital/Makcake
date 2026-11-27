@@ -1430,12 +1430,16 @@
             <!-- Category & Price in 2 Columns -->
             <div class="grid grid-cols-2 gap-2.5">
               <div>
-                <label class="block text-[11px] font-bold text-ink mb-1">Category *</label>
-                <select id="cake-form-cat" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-semibold text-xs">
+                <div class="flex items-center justify-between mb-1">
+                  <label class="block text-[11px] font-bold text-ink">Category *</label>
+                  <button type="button" onclick="promptAndAddCustomCategory('cakes', 'cake-form-cat')" class="text-[10px] font-extrabold text-berry hover:underline cursor-pointer">+ Add New</button>
+                </div>
+                <select id="cake-form-cat" onchange="if(this.value==='__add_new__'){promptAndAddCustomCategory('cakes','cake-form-cat');}" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-semibold text-xs">
                   <option value="Normal">Normal</option>
                   <option value="Special">Special</option>
                   <option value="Cupples">Cupples</option>
                   <option value="Mini Cakes">Mini Cakes</option>
+                  <option value="__add_new__">+ Add New Category...</option>
                 </select>
               </div>
               <div>
@@ -1514,8 +1518,11 @@
 
               <div class="grid grid-cols-2 gap-2.5">
                 <div>
-                  <label class="block text-[11px] font-bold text-ink-muted mb-1">Cake Category *</label>
-                  <select id="new-cr-cat" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-bold text-xs">
+                  <div class="flex items-center justify-between mb-1">
+                    <label class="block text-[11px] font-bold text-ink-muted">Cake Category *</label>
+                    <button type="button" onclick="promptAndAddCustomCategory('creations', 'new-cr-cat')" class="text-[10px] font-extrabold text-berry hover:underline cursor-pointer">+ Add New</button>
+                  </div>
+                  <select id="new-cr-cat" onchange="if(this.value==='__add_new__'){promptAndAddCustomCategory('creations','new-cr-cat');}" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-bold text-xs">
                     <option value="Chocolate Cakes">Chocolate Cakes</option>
                     <option value="Red Velvet">Red Velvet</option>
                     <option value="Bento & Pastel">Bento & Pastel</option>
@@ -1524,6 +1531,7 @@
                     <option value="Wedding & Tiered">Wedding & Tiered</option>
                     <option value="Cheesecakes">Cheesecakes</option>
                     <option value="Luxury Custom Cakes">Luxury Custom Cakes</option>
+                    <option value="__add_new__">+ Add New Category...</option>
                   </select>
                 </div>
                 <div>
@@ -1572,13 +1580,17 @@
 
             <div class="grid grid-cols-2 gap-2.5">
               <div>
-                <label class="block text-[11px] font-bold text-ink-muted mb-1">2. Category *</label>
-                <select id="admin-dec-form-cat" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-bold text-xs">
+                <div class="flex items-center justify-between mb-1">
+                  <label class="block text-[11px] font-bold text-ink-muted">2. Category *</label>
+                  <button type="button" onclick="promptAndAddCustomCategory('decorations', 'admin-dec-form-cat')" class="text-[10px] font-extrabold text-berry hover:underline cursor-pointer">+ Add New</button>
+                </div>
+                <select id="admin-dec-form-cat" onchange="if(this.value==='__add_new__'){promptAndAddCustomCategory('decorations','admin-dec-form-cat');}" class="w-full px-3 py-2 rounded-xl bg-blush-50 border border-blush-200 text-ink font-bold text-xs">
                   <option value="Candles & Toppers">Candles &amp; Toppers</option>
                   <option value="Surprise Items">Surprise Items</option>
                   <option value="Party Accessories">Party Accessories</option>
                   <option value="Tableware & Decor">Tableware &amp; Decor</option>
                   <option value="Personalized Extras">Personalized Extras</option>
+                  <option value="__add_new__">+ Add New Category...</option>
                 </select>
               </div>
 
@@ -1734,7 +1746,7 @@
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.2"></script>
   <script defer src="./js/shared.js?v=20"></script>
-  <script defer src="./js/admin.js?v=24"></script>
+  <script defer src="./js/admin.js?v=25"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

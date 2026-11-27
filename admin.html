@@ -825,7 +825,7 @@
                   <h2 class="font-extrabold text-[15px] text-ink flex items-center gap-1.5">
                     <span>Settings &amp; Packages</span>
                   </h2>
-                  <p class="text-[10px] text-ink-muted">Basic Packages, Grams &amp; Operational Config</p>
+                  <p class="text-[10px] text-ink-muted">Packages &amp; Operational Config</p>
                 </div>
               </div>
               <button onclick="switchAdminTab('overview')" class="text-[11px] font-bold text-berry hover:underline flex items-center gap-1 cursor-pointer">
@@ -837,30 +837,6 @@
             <div id="settings-hub-pills" class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1"></div>
             <div id="settings-hub-body" class="space-y-3"></div>
             <div id="settings-legacy-packages-wrap" class="space-y-3">
-
-
-            <!-- SECTION: BASIC PACKAGES (Package Sizes, Grams & Prices) -->
-            <div class="bg-white rounded-[22px] p-4 shadow-rose border border-white space-y-3">
-              <div class="flex items-center justify-between border-b border-blush-100 pb-2.5">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-lg bg-blush-100 text-berry flex items-center justify-center font-bold">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
-                  </div>
-                  <div>
-                    <h3 class="text-xs font-black text-ink">Basic Packages &amp; Gram Tiers</h3>
-                    <p class="text-[9.5px] text-ink-muted">Package sizes (e.g. Bento 4", 500g, 1.5kg) &amp; custom ETB prices</p>
-                  </div>
-                </div>
-                <button type="button" onclick="addNewPackageTier()" class="px-2.5 py-1 rounded-full btn-berry text-white text-[10px] font-extrabold shadow-rose-sm active:scale-95 transition-transform flex items-center gap-1 cursor-pointer">
-                  <span>+ Add Tier</span>
-                </button>
-              </div>
-
-              <!-- List of active packages -->
-              <div id="admin-packages-list" class="space-y-2 text-xs">
-                <!-- Rendered dynamically by renderAdminPackages() -->
-              </div>
-            </div>
 
             <!-- OPERATIONAL SETTINGS -->
             <div class="bg-white rounded-[22px] p-4 shadow-rose border border-white space-y-3">
@@ -895,9 +871,9 @@
             </div>
 
             <div class="pt-1">
-              <button onclick="saveAdminPackages(); showAdminToast('✓ Settings &amp; Basic Packages saved successfully!');" class="w-full py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform flex items-center justify-center gap-1.5 cursor-pointer">
+              <button onclick="saveAdminPackages(); showAdminToast('✓ Operational settings saved successfully!');" class="w-full py-3 rounded-full btn-berry text-white font-extrabold text-xs shadow-rose-sm active:scale-95 transition-transform flex items-center justify-center gap-1.5 cursor-pointer">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Save Settings &amp; Packages</span>
+                <span>Save Operational Settings</span>
               </button>
             </div>
           </div>
@@ -1718,7 +1694,7 @@
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.0"></script>
   <script defer src="./js/shared.js?v=11"></script>
-  <script defer src="./js/admin.js?v=12"></script>
+  <script defer src="./js/admin.js?v=13"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">

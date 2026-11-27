@@ -11,8 +11,8 @@
  * 6. Web Push Notifications for live order status & Bole Kitchen updates.
  */
 
-const CACHE_NAME = 'mak-cake-pwa-v3.40';
-const ADMIN_CACHE_NAME = 'mak-cake-admin-v3.40';
+const CACHE_NAME = 'mak-cake-pwa-v3.41';
+const ADMIN_CACHE_NAME = 'mak-cake-admin-v3.41';
 const VALID_CACHES = [CACHE_NAME, ADMIN_CACHE_NAME];
 
 // Customer-only & shared app shell (admin.html, dual.html, and js/admin.js are intentionally excluded)
@@ -20,8 +20,8 @@ const APP_SHELL = [
   './',
   './index.html',
   './manifest.json',
-  './css/styles.css?v=3',
-  './css/app.css?v=4',
+  './css/styles.css?v=4',
+  './css/app.css?v=5',
   './images/mak-cake-logo.webp',
   './images/hero-banner.jpg',
   './images/hero-cake-only.jpg',

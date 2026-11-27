@@ -868,6 +868,17 @@
                 </div>
                 <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Enabled</span>
               </div>
+
+              <!-- Reset Demo Data -->
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-blush-50 border border-blush-200/80">
+                <div>
+                  <div class="text-xs font-bold text-ink">Reset Demo Data</div>
+                  <div class="text-[10px] text-ink-muted">Restore default local catalog &amp; clear local cache</div>
+                </div>
+                <button type="button" onclick="if (confirm('Reset local demo data to defaults?')) { resetDemo(); }" class="px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-rose-300 text-rose-600 hover:bg-rose-50 cursor-pointer">
+                  Reset Demo
+                </button>
+              </div>
             </div>
 
             <div class="pt-1">

@@ -19,14 +19,14 @@
   <title>MAK CAKE — Addis Ababa Luxury Bakery &amp; Mobile Admin App</title>
 
   <!-- Compiled Tailwind CSS -->
-  <link rel="stylesheet" href="./css/styles.css?v=2" />
+  <link rel="stylesheet" href="./css/styles.css?v=3" />
 
   <!-- Google Fonts: Plus Jakarta Sans, Playfair Display & Great Vibes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./css/app.css?v=3" />
+  <link rel="stylesheet" href="./css/app.css?v=4" />
   <!-- Early SVG Fallback definition -->
   </head>
 <body class="standalone-app standalone-admin workspace-bg min-h-screen font-sans text-ink antialiased selection:bg-blush-300 flex flex-col">
@@ -569,7 +569,7 @@
         </div>
 
         <!-- ADMIN SCROLLABLE CONTENT AREA -->
-        <div id="admin-scroll-area" class="flex-1 overflow-y-auto no-scrollbar phone-scroll px-4 pb-24 space-y-3.5 relative" style="overscroll-behavior-y: none;">
+        <div id="admin-scroll-area" class="flex-1 overflow-y-auto no-scrollbar phone-scroll px-3 sm:px-5 lg:px-6 pb-24 space-y-3.5 relative" style="overscroll-behavior-y: none;">
           <!-- Pull-To-Refresh Visual Elastic Indicator (Admin Overview Only) -->
           <div id="admin-pull-refresh-indicator" class="pull-refresh-indicator pointer-events-none absolute top-2 left-0 right-0 z-30 flex items-center justify-center opacity-0" style="will-change: transform, opacity;">
             <div id="admin-pull-refresh-badge" class="w-9 h-9 rounded-full bg-white/95 backdrop-blur-md border border-blush-200/90 shadow-rose flex items-center justify-center text-berry" style="transition: border-color 0.2s ease, box-shadow 0.2s ease;">
@@ -1408,7 +1408,7 @@
         </div>
         <!-- ADMIN FULL CAKE EDIT & CREATE BOTTOM-SHEET -->
         <div id="add-cake-backdrop" onclick="closeAddCakeSheet()" class="hidden absolute inset-0 bg-ink/50 backdrop-blur-[2px] z-40"></div>
-        <div id="add-cake-sheet" class="hidden absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl translate-y-full transition-transform duration-300 max-h-[90vh] flex flex-col space-y-3">
+        <div id="add-cake-sheet" class="hidden absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl translate-y-full transition-transform duration-300 max-h-[90dvh] flex flex-col space-y-3 sm:max-w-[540px] sm:mx-auto">
           <div class="flex items-center justify-between border-b border-blush-100 pb-2.5">
             <div>
               <h3 id="cake-modal-title" class="text-sm font-extrabold text-ink">+ Add New Cake</h3>
@@ -1506,7 +1506,7 @@
 
         <!-- ADMIN "+ CAPTURE & UPLOAD RECENT CREATION" MODAL -->
         <div id="admin-add-creation-modal" class="hidden absolute inset-0 z-50 bg-ink/50 backdrop-blur-xs flex flex-col justify-end">
-          <div class="bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl space-y-3.5 max-h-[90%] overflow-y-auto no-scrollbar animate-scaleIn">
+          <div class="bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl space-y-3.5 max-h-[90dvh] overflow-y-auto no-scrollbar animate-scaleIn w-full sm:max-w-[540px] sm:mx-auto">
             <div class="flex items-center justify-between">
               <div>
                 <h3 id="creation-modal-title" class="text-sm font-extrabold text-ink">+ Capture &amp; Upload Real Cake</h3>
@@ -1590,7 +1590,7 @@
 
         <!-- ADMIN FULL DECORATION EDIT & CREATE BOTTOM-SHEET -->
         <div id="admin-dec-backdrop" onclick="closeAdminDecModal()" class="hidden absolute inset-0 bg-ink/50 backdrop-blur-[2px] z-40"></div>
-        <div id="admin-dec-sheet" class="hidden absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl translate-y-full transition-transform duration-300 max-h-[90vh] flex flex-col space-y-3">
+        <div id="admin-dec-sheet" class="hidden absolute inset-x-0 bottom-0 z-50 bg-white rounded-t-[28px] p-5 pb-6 shadow-2xl translate-y-full transition-transform duration-300 max-h-[90dvh] flex flex-col space-y-3 sm:max-w-[540px] sm:mx-auto">
           <div class="flex items-center justify-between border-b border-blush-100 pb-2.5">
             <div>
               <h3 id="admin-dec-modal-title" class="text-sm font-extrabold text-ink">Edit Decoration</h3>

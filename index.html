@@ -153,9 +153,82 @@
           </div>
         </div>
 
+        <!-- CUSTOMER LEFT-SIDE NAVIGATION DRAWER -->
+        <div id="cust-sidebar-backdrop" onclick="closeCustomerSidebar()" class="hidden opacity-0 absolute inset-0 bg-ink/50 backdrop-blur-[2px] z-[65] transition-opacity duration-200"></div>
+        <aside id="cust-sidebar-drawer" aria-label="Customer Navigation Drawer" class="hidden -translate-x-full absolute inset-y-0 left-0 w-[285px] max-w-[85vw] bg-white z-[75] shadow-2xl border-r border-blush-200 flex flex-col transition-transform duration-250 ease-out">
+          <div class="p-4 border-b border-blush-100 flex items-center justify-between bg-blush-50/70">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-10 h-10 rounded-full bg-white shadow-rose-sm border border-blush-200 flex flex-col items-center justify-center shrink-0">
+                <svg class="w-4 h-3.5 text-berry -mb-0.5" viewBox="0 0 28 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 16h12v3H8z"/>
+                  <path d="M9 16v-2.5A4.2 4.2 0 0 1 6.5 6a4.5 4.5 0 0 1 7.5-3.2A4.5 4.5 0 0 1 21.5 6a4.2 4.2 0 0 1-2.5 7.5V16"/>
+                </svg>
+                <span class="font-serif font-bold text-[10px] text-berry leading-[0.9]">Mak</span>
+              </div>
+              <div class="min-w-0">
+                <div class="font-extrabold text-sm text-ink truncate">MAK CAKE</div>
+                <div class="text-[10px] text-ink-muted font-semibold truncate">Addis Ababa • Menu</div>
+              </div>
+            </div>
+            <button type="button" onclick="closeCustomerSidebar()" aria-label="Close Menu" class="w-8 h-8 rounded-full bg-white border border-blush-200 text-ink flex items-center justify-center active:scale-90 transition-transform cursor-pointer">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <div class="flex-1 overflow-y-auto no-scrollbar p-3 space-y-1.5 text-xs font-bold text-ink">
+            <button type="button" onclick="closeCustomerSidebar(); switchCustomerTab('home');" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-berry-soft text-berry flex items-center justify-center shrink-0">🏠</span>
+              <span>Home</span>
+            </button>
+            <button type="button" onclick="closeCustomerSidebar(); switchCustomerTab('categories');" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-berry-soft text-berry flex items-center justify-center shrink-0">🧁</span>
+              <span>Categories</span>
+            </button>
+            <button type="button" onclick="closeCustomerSidebar(); switchCustomerTab('menu');" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-berry-soft text-berry flex items-center justify-center shrink-0">🎂</span>
+              <span>Full Menu</span>
+            </button>
+            <button type="button" onclick="closeCustomerSidebar(); switchCustomerTab('favorites');" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-berry-soft text-berry flex items-center justify-center shrink-0">❤️</span>
+              <span>Saved Favorites</span>
+            </button>
+            <button type="button" onclick="closeCustomerSidebar(); switchCustomerTab('cart');" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-berry-soft text-berry flex items-center justify-center shrink-0">🛒</span>
+              <span>My Cake Cart</span>
+            </button>
+            <div class="my-2 border-t border-blush-100"></div>
+            <button type="button" onclick="closeCustomerSidebar(); openTrackerSheet();" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-blush-100 text-berry flex items-center justify-center shrink-0">📦</span>
+              <span>Track My Cake Order</span>
+            </button>
+            <button type="button" onclick="closeCustomerSidebar(); openContactSheet();" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-blush-50 active:bg-blush-100 transition-colors text-left cursor-pointer">
+              <span class="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">📞</span>
+              <span>Contact Bakery</span>
+            </button>
+          </div>
+
+          <!-- Powered by Elna Digital Footer -->
+          <div class="p-3.5 border-t border-blush-200/80 bg-gradient-to-br from-blush-50 to-white space-y-2.5">
+            <div class="flex items-center gap-2.5">
+              <img src="./images/elna-digital-logo.jpg" alt="Elna Digital Logo" class="w-10 h-10 rounded-xl object-cover border border-blush-200 shadow-2xs bg-white shrink-0" />
+              <div class="min-w-0">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-ink-muted">Powered by</div>
+                <div class="text-xs font-black text-ink truncate">Elna Digital</div>
+              </div>
+            </div>
+            <a href="tel:0931075881" class="block w-full p-2.5 rounded-xl bg-white border border-blush-200/90 shadow-2xs hover:border-berry/40 transition-colors">
+              <div class="text-[10px] text-ink-muted font-semibold leading-snug">Want a system like this? Call us:</div>
+              <div class="text-xs font-black text-berry mt-0.5 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>0931075881</span>
+              </div>
+            </a>
+          </div>
+        </aside>
+
         <!-- A. TOP APP BAR (Exact match to screenshot) -->
         <div class="shrink-0 px-4 pt-1 pb-2.5 flex items-center justify-between z-20">
-          <button onclick="switchCustomerTab('home');" title="Tap to Refresh MAK CAKE" class="flex items-center gap-2.5 text-left group">
+          <button onclick="openCustomerSidebar()" aria-label="Open Navigation Menu" title="Open Menu" class="flex items-center gap-2.5 text-left group cursor-pointer">
             <!-- 48px Circular White Logo Badge with Pink Chef Hat + Stacked Mak Cake -->
             <div class="w-12 h-12 rounded-full bg-white shadow-rose flex flex-col items-center justify-center shrink-0 border border-blush-200/80 group-active:scale-95 transition-transform">
               <svg class="w-5 h-4 text-berry -mb-0.5" viewBox="0 0 28 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1146,7 +1219,7 @@
   <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.4"></script>
-  <script defer src="./js/shared.js?v=30"></script>
+  <script defer src="./js/shared.js?v=31"></script>
   <script defer src="./js/app.js?v=18"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">

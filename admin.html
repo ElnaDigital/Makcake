@@ -166,8 +166,14 @@
             </div>
           </div>
 
-          <!-- Top Right Controls: Single Unified Notification Bell & Shop -->
-          <div class="flex items-center gap-2">
+          <!-- Top Right Controls: Undo / Redo & Unified Notification Bell -->
+          <div class="flex items-center gap-1.5">
+            <button id="admin-undo-btn" type="button" onclick="adminUndo()" disabled aria-label="Undo" title="Undo last change" class="w-8 h-8 rounded-full bg-white shadow-rose-sm border border-blush-200 text-ink hover:text-berry flex items-center justify-center transition-all active:scale-95 opacity-40 pointer-events-none cursor-pointer">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+            </button>
+            <button id="admin-redo-btn" type="button" onclick="adminRedo()" disabled aria-label="Redo" title="Redo change" class="w-8 h-8 rounded-full bg-white shadow-rose-sm border border-blush-200 text-ink hover:text-berry flex items-center justify-center transition-all active:scale-95 opacity-40 pointer-events-none cursor-pointer">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/></svg>
+            </button>
             <!-- 1. Single Unified Notification Bell (With Unread Counter Badge) -->
             <button id="admin-notif-btn" onclick="toggleAdminNotifications()" aria-label="Admin Notifications" class="relative w-8 h-8 rounded-full bg-white shadow-rose-sm border border-blush-200 text-ink hover:text-berry flex items-center justify-center transition-all active:scale-95 cursor-pointer" title="Admin Notifications & Kitchen Alerts">
               <svg class="w-4 h-4 text-berry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1787,7 +1793,7 @@
   <script defer src="./js/firebase-config.js?v=14.1"></script>
   <script defer src="./js/firebase-service.js?v=19.4"></script>
   <script defer src="./js/shared.js?v=31"></script>
-  <script defer src="./js/admin.js?v=36"></script>
+  <script defer src="./js/admin.js?v=37"></script>
   <!-- PWA Install Prompt Banner (Android & Desktop) -->
   <div id="pwa-install-banner" class="hidden fixed bottom-20 inset-x-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[9999] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-blush-200 shadow-rose-lg transition-all animate-bounce-subtle">
     <div class="flex items-center gap-3">
